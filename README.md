@@ -1,7 +1,6 @@
-# TLMS
-Pro Account Lanka Pvt Ltd, IT Team Job Manager Web App
-Welcome to the ProAccount Lanka Web App! 
-This web application is specifically designed for the company ProAccount Lanka to streamline and enhance various aspects of their business operations.
+# TLMS (Task Link Management System)
+
+TLMS (Task Link Management System) is a web application designed to help users manage and organize tasks efficiently. This README file provides information on the installation, usage, contributing, and licensing of TLMS.
 
 
 ## Table of Contents
@@ -15,43 +14,56 @@ This web application is specifically designed for the company ProAccount Lanka t
 
 ## Introduction
 
-ProAccount Lanka is a company that specializes in providing data veriification and template design services. 
-The ProAccount Lanka Web App, ProAccITConnect, is developed to assist the company IT Team in managing their job template design and other related tasks. 
-By leveraging this web app, ProAccount Lanka can automate manual processes, reduce errors, and improve overall productivity.
+TLMS (Task Link Management System) is a powerful web application that allows users to effectively manage their tasks. Whether you are working on personal projects or collaborating with a team, TLMS provides the necessary tools to keep your tasks organized and easily accessible. With TLMS, you can create tasks, assign them to team members, set due dates, and track progress.
+
 
 ## Features
 
-The ProAccount Lanka Web App offers the following key features:
+TLMS offers the following key features:
 
-1. 
+- Task Creation: Users can create tasks, providing details such as title, description, and due dates.
+- Task Assignment: Assign tasks to specific team members for ownership and accountability.
+- Task Tracking: Monitor the progress of tasks and mark them as complete when finished.
+- Task Linking: Associate tasks with related documents, resources, or external references.
+- User Management: Create user accounts and manage user roles and permissions.
+- Notifications: Receive notifications for task updates, assignments, and deadlines.
+- Dashboard: View an overview of tasks, including pending, completed, and overdue tasks.
+- Search and Filtering: Quickly find specific tasks based on various criteria.
+- Collaboration: Facilitate teamwork by enabling users to communicate and collaborate on tasks.
+
 
 ## Installation
 
-To install and run the ProAccount Lanka Web App locally, follow these steps:
-
-1. Clone the repository from GitHub.
-
+To install and run the TLMS Web App locally, follow these steps:
 
 ## Usage
 
-Once the ProAccount Lanka Web App is installed and running, follow these guidelines to effectively use the application:
+Once TLMS is installed and running, you can access the application through a web browser. Here are the general steps to get started:
 
-1. Sign in using your registered account credentials.
-2. Explore the different sections and features of the web app.
+1. Create a user account by registering with your email and password
+2. Log in to TLMS using your credentials.
+3. Start creating tasks by providing the required details.
+4. Assign tasks to team members and set due dates.
+5. Monitor the progress of tasks on the dashboard and mark them as complete when finished.
+6. Utilize additional features such as task linking, search and filtering, and collaboration tools to enhance your task management experience.
+For more detailed usage instructions, please refer to the documentation provided in the repository.
 
 ## Contributing
 
-We welcome contributions to the ProAccount Lanka Web App. If you would like to contribute, please follow these steps:
+Contributions to TLMS are welcome and encouraged! If you'd like to contribute to the project, please follow these steps:
 
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push them to your forked repository.
-4. Submit a pull request, explaining the changes you have made and their purpose.
-5. Ensure your code adheres to the project's coding guidelines and best practices.
-6. Engage in discussions with the project maintainers, addressing any feedback or questions.
-
+- Fork the repository on GitHub.
+- Clone your forked repository to your local machine.
+- Create a new branch to work on.
+- Make your changes and commit them with descriptive commit messages.
+- Push your changes to your forked repository.
+- Submit a pull request to the main repository, detailing the changes you made and any additional information.
 ## License
-The ProAccount Lanka Web App is released under the Apache License 2.0. 
-You are free to use, modify, and distribute the app, subject to the terms and conditions outlined in the license.
+TLMS is licensed under the Apache License 2.0. For more details, please refer to the LICENSE file.
 
-Please note that while this web app is designed specifically for ProAccount Lanka, it can be customized and adapted to suit other companies' needs as well.
+Thank you for choosing TLMS for your task management needs. We hope you find it useful and effective in organizing your work and boosting productivity. Should you have any questions or encounter any issues, please don't hesitate to reach out to us. Happy task management!
+
+
+
+
+
