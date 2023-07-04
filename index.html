@@ -18,17 +18,30 @@
 <body>
     <!-- HEADER -->
     <header class="header" id="header">
-        
+        <div class="header__btns">
+            <div class="dropdown">
+                <i class="uil uil-setting settings" onclick="toggleDropdown()"></i>
+                
+                <div id="dropdown__settings" class="dropdown__settings">
+                    <a href="#"><i class="uil uil-moon change-theme" id="theme-button">Dark Mode</i></a>
+                    <a href="#">About</a>
+                </div>
+              </div>
+        </div>
     </header>
 
     <!-- MAIN -->
     <main class="main" id="main">
-
+        <div class="colors">
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="footer">
 
     </footer>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
