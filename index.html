@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- UNICONS -->
@@ -18,18 +19,56 @@
 <body>
     <!-- HEADER -->
     <header class="header" id="header">
-        <div class="header__btns">
-            <i class="uil uil-moon change-theme" id="theme-button"></i>
+        <div class="container">
+            <div class="theme__btn">
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+            </div>
+            <div class="header__logo__container">
+                <img class="header__logo" id="header__logo" src="./assets/img/favicon_io/apple-touch-icon.png" alt="TLMSimg" />
+            </div>
+            <div class="header__name__container">
+                <h1 class="header__name">Task Link Management System</h1>
+            </div>
         </div>
     </header>
 
     <!-- MAIN -->
     <main class="main" id="main">
         <div class="container">
-            <div class="content">
-                <img class="index__img" id="index__img" src="./assets/img/TLMS.png" alt="TLMSimg" />
-                <h1 class="title">Task Link Management System</h1>
-            </div>
+            <section class="login section" id="login">
+
+                <div class="login__model">
+                    <div class="login__model-content">
+                        
+                        <form autocomplete="off" action="" class="login__form grid" method="post" >
+                            <div class="login__inputs grid">
+                                <input type="hidden" id="actionLog" value="login" >
+    
+                                <div class="login__content">
+                                    <label for="loginEmail" class="login__label">Email</label>
+                                    <input id="emailLogin" name="loginEmail" type="email" class="login__input email"  placeholder="Enter email here" required>
+                                </div>
+                                <div class="login__content">
+                                    <label for="LoginPassword" class="login__label">Password</label>
+                                    <input id="passwordLogin" name="LoginPassword" type="password" class="login__input password"  placeholder="Enter password here" required>
+                                </div>
+                                <div class="">
+                                    <label for="showPasswordLogin" class="">Show password</label>
+                                    <input type="checkbox" id="showPasswordLogin" class="">
+                                </div>
+    
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="login-button" id="login-submit">Login</button>
+                            </div>
+                            
+                        </form>
+    
+                    </div>
+                </div>
+    
+            </section>
         </div>
     </main>
 
