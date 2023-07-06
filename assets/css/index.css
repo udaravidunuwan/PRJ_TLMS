@@ -155,7 +155,9 @@ h1, h2, h3 {
 
 /* HEADER */
 .header {
+    background: #8b8b8b;
     width: 100%;
+    height: 40%;
     position: absolute;
     top: 0;
     bottom: initial;
@@ -188,9 +190,9 @@ h1, h2, h3 {
 }
 
 /* MAIN */
-.main {
-
-}
+/* .main {
+    
+} */
 
 /* LOGIN */
 .login__button{
@@ -217,16 +219,17 @@ h1, h2, h3 {
 
 .login__model_content {
     position: relative;
-    /* background-color: var(--container-color); */
+    background-color: var(--container-color);
     padding: 1.5rem;
     border-radius: .5rem;
 }
 
-.login__content {
-    /* background-color: var(--input-color); */
+/* .login__content {
+    background-color: rgb(180, 176, 176);
     border-radius: .5rem;
     padding: .75rem 1rem .25rem;
-}
+    
+} */
 
 .login__label {
     font-size: var(--smaller-font-size);
@@ -234,18 +237,46 @@ h1, h2, h3 {
 }
 
 .login__input {
-    width: 100%;
+    /* width: 100%; */
     /* background-color: var(--input-color); */
-    background-color: transparent;
+    /* background-color: transparent;
+    width: 50vh;
+    height: 3rem;
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: var(--noraml-font-size);
-    border: 1px solid var(--input-color);
-    border-radius: 5px;
-    outline: none;
-    padding: .25rem .5rem .5rem 0;
+    border: 1px solid var(--input-color); */
+    /* border: none; */
+    /* border-radius: 5px; */
+    /* outline: none;
+    padding: .25rem .5rem .5rem 0; */
+    background: rgb(180, 176, 176);
+    width: 55vh;
+    height: 3.5rem;
+    margin: 15px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    padding-right: 2rem;
+    overflow: hidden;
 }
-
+input{
+    width: 100%;
+    background: transparent;
+    font-size: var(--noraml-font-size);
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+label{
+    margin-top: 5vh;
+    align-items: center;
+}
+.showPasswordLogin{
+    margin-top: -2vh;
+}
 .login-button {
     width: 100%;
     height: 45px;
@@ -258,7 +289,16 @@ h1, h2, h3 {
     color: #FFF;
     font-weight: var(--font-medium);
 }
+.login__form {
+    margin-top: 30vh;
+}
+.fa-solid{
+    background: rgb(180, 176, 176);
+    width: 5%;
+    margin-right: .5rem;
 
+}
+ 
 
 
 

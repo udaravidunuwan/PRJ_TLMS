@@ -13,6 +13,8 @@
 
     <!-- FAVICON -->
     <link rel="icon" href="./assets/img/favicon_io/favicon.ico" type="image/x-icon">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/eb9529bc50.js" crossorigin="anonymous"></script>
 
     <title>TLMS</title>
 </head>
@@ -45,16 +47,19 @@
                                 <input type="hidden" id="actionLog" value="login" >
     
                                 <div class="login__content">
-                                    <label for="loginEmail" class="login__label">Email</label>
+                                    <!-- <label for="loginEmail" class="login__label">Email</label> -->
+                                    <i class="fa-solid fa-user-group"></i>
                                     <input id="emailLogin" name="loginEmail" type="email" class="login__input email"  placeholder="Enter email here" required>
                                 </div>
                                 <div class="login__content">
-                                    <label for="LoginPassword" class="login__label">Password</label>
-                                    <input id="passwordLogin" name="LoginPassword" type="password" class="login__input password"  placeholder="Enter password here" required>
+                                    <!-- <label for="LoginPassword" class="login__label">Password</label> -->
+                                    <i class="fa-solid fa-key"></i>
+                                   <input id="passwordLogin" name="LoginPassword" type="password" class="login__input password"  placeholder="Enter password here" required>
                                 </div>
-                                <div class="">
-                                    <label for="showPasswordLogin" class="">Show password</label>
-                                    <input type="checkbox" id="showPasswordLogin" class="">
+                                <div class="showpassword"><!--create a class called "showpassword"-->
+                                    <label for="showPasswordLogin" class="">Show password
+                                    <input type="checkbox" id="showPasswordLogin" class="showPasswordLogin">
+                                    </label>
                                 </div>
     
                             </div>
