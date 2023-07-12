@@ -7,7 +7,7 @@
 #header{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(33, 33, 51, 0.747),rgba(100, 100, 107, 0.8)), url(./index_assets/background-image); 
+    background-image: linear-gradient(rgba(33, 33, 51, 0.747),rgba(100, 100, 107, 0.8)), url(./index_); 
     background-position: center;
     background-size: cover;
     position: relative;
