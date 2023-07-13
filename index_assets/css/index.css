@@ -54,7 +54,7 @@
     content: '';
     width: 0;
     height: 5px;
-    background: #15142b;
+    background: rgb(167, 167, 167);
     position: absolute;
     margin-right:-20vh;
     left: 0;
