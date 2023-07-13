@@ -33,23 +33,30 @@
   nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 20px 2px;
+    margin: 20px 20px;
   }
   
   nav ul li a {
-    color: #fff;
+    color: rgb(167, 167, 167);
     text-decoration: none;
     font-size: 18px;
     position: relative;
   }
+
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
   
   nav ul li a::after {
     content: '';
     width: 0;
-    height: 3px;
-    background: #491c3c;
-    position: relative;
-    margin-right: 10vh;
+    height: 5px;
+    background: #15142b;
+    position: absolute;
+    margin-right:-20vh;
     left: 0;
     bottom: -6px;
     transition: 0.5s;
@@ -74,4 +81,4 @@
     margin-top: -20vh;
     margin-left: 65vh;
 }
-  
+
