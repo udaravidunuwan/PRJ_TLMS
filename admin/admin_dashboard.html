@@ -28,151 +28,108 @@
                         TLMS
                     </a>
                 </div>
-                <!-- <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <i class="bi bi-three-dots-vertical"></i>
-                </button> -->
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-                    <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0"> -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                        </li> -->
-                    <!-- </ul> -->
-                    <!-- <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
-                <!-- </div> -->
+                
                 <div>
                     <button class="btn btn-outline-secondary border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotification" aria-controls="offcanvasNotification">
                         <i class="bi bi-bell"></i>
                     </button>
-                    <button class="btn btn-outline-danger border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNotification" aria-controls="offcanvasNotification">
+                    <button class="btn btn-outline-danger border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile" aria-controls="offcanvasProfile">
                         <i class="bi bi-person-circle"></i>
                     </button>
 
-                    <!-- <a class="navbar-brand ms-3" href="#">
-                        <img src="./" alt="Profile Pic" style="width:40px;" class="rounded-pill">
-                        <i class="bi bi-person-circle"></i>
-                    </a> -->
+                    
                 </div>
             </div>
         </nav>
 
         <div class="offcanvas offcanvas-start rounded-4 rounded-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin Dashboard</h5>
+              <h5 class="offcanvas-title " id="offcanvasExampleLabel">Admin Dashboard</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <hr >
+            <hr>
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title " id="offcanvasExampleLabel">Admin Dashboard</h5>
+            </div>
+            <hr>
             <div class="offcanvas-body">
 
-                <div id="accordion">
-
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                                Collapsible Group Item #1
-                            </a>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Users
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="list-group list-group-flush ">
+                                <button type="button" class="list-group-item list-group-item-action">View Users</button>
+                                <button type="button" class="list-group-item list-group-item-action">Add Users</button>
+                            </div>
                         </div>
-                        <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
-                            <div class="card-body">
-                                Lorem ipsum..
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Client
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="list-group list-group-flush ">
+                                    <button type="button" class="list-group-item list-group-item-action">View Clients</button>
+                                    <button type="button" class="list-group-item list-group-item-action">Add Clients</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
-                            Collapsible Group Item #2
-                        </a>
-                        </div>
-                        <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum..
-                        </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
-                            Collapsible Group Item #3
-                        </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            Lorem ipsum..
-                        </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Jobs
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="list-group list-group-flush ">
+                                    <button type="button" class="list-group-item list-group-item-action">View Jobs</button>
+                                    <button type="button" class="list-group-item list-group-item-action">Add Jobs</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-
             </div>
+
         </div>
+    
 
 
         <div class="offcanvas offcanvas-end rounded-4 rounded-end" tabindex="-1" id="offcanvasNotification" aria-labelledby="offcanvasNotificationLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNotificationLabel">Offcanvas right</h5>
+              <h5 class="offcanvas-title" id="offcanvasNotificationLabel">Notifications</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
               ...
             </div>
-          </div>
+        </div>
         
-        <!-- <header class="header" id="header">
-            <nav class="nav container">
-                <img src="./assets/img/favicon_io/apple-touch-icon.png" alt="" class="header__img">
-                <a href="#" class="nav__logo"></a>
-                
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#users" class="nav__link active-link">
-                                <i class="uil uil-estate nav__icon"></i> Users
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#clients" class="nav__link">
-                                <i class="uil uil-user nav__icon"></i> Clients
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#jobs" class="nav__link">
-                                <i class="uil uil-file-alt nav__icon"></i> Jobs
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#reports" class="nav__link">
-                                <i class="uil uil-file-bookmark-alt nav__icon"></i> Reports
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="uil uil-times nav__close" id="nav-close"></i>
-                </div>
-            </nav>
-        </header> -->
+        <div class="offcanvas offcanvas-end rounded-4 rounded-end" tabindex="-1" id="offcanvasProfile" aria-labelledby="offcanvasProfileLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title " id="offcanvasProfileLabel">Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <a class="navbar-brand ms-3" href="#">
+                        <img src="./" alt="Profile Pic" style="width:40px;" class="rounded-pill">
+                </a>
+            </div>
+        </div>
+        
+
 
 
 
