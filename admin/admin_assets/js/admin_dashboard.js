@@ -72,4 +72,7 @@
         })
     })
   })()
-  
+
+function updateDropdownLabel(label) {
+  document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<svg class="bi"><use xlink:href="#calendar3"/></svg>`+label;
+}

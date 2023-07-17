@@ -10,6 +10,7 @@
 
 .accordion_button_dashboard::after {
     display: none;
+    font-size: small;
 }
 
 .accordion-button:hover {
@@ -23,9 +24,6 @@
     vertical-align: -.125em;
     fill: currentColor;
 }
-
-/* .bi {
-  } */
 
 .btn-bd-primary {
     --bd-grey-bg: #6c757d;
@@ -48,3 +46,8 @@
 .bd-mode-toggle {
     z-index: 1500;
 }
+
+.offcanvas {
+    width: 300px !important;
+}
+  
