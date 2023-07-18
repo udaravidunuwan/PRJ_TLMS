@@ -75,7 +75,7 @@ body {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(58, 58, 78, 0.747), rgba(100, 100, 107, 0.8)),
-    url(../img);
+    url(../im);
   background-position: center;
   background-size: cover;
   position: relative;
