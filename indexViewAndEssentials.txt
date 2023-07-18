@@ -10,3 +10,7 @@ https://pinetools.com/lighten-color
 dark mode switch
 https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
 
+new tamplate
+https://coderthemes.com/hyper/modern/index.html
+
+use bootastrap 5 qyuick snippets extension
