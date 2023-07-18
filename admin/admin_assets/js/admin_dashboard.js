@@ -78,5 +78,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function updateDropdownLabel(label) {
-  document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<svg class="bi"><use xlink:href="#calendar3"/></svg>`+label;
+  document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
 }
