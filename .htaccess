@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^adminn$ ./admin/admin_portal.html [NC,L]
+RewriteRule ^managerr$ ./manager/manager_portal.html [NC,L]
+RewriteRule ^userr$ ./user/user_portal.html [NC,L]
+RewriteRule ^index$ indexxx.html [NC,L]
