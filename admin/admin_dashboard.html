@@ -30,7 +30,7 @@
                     <div class="container-fluid">
                         <div>
                             <button 
-                                class="btn btn-outline-secondary border-0" 
+                                class="btn btn-outline-secondary border-1" 
                                 type="button" 
                                 data-bs-toggle="offcanvas" 
                                 data-bs-target="#offcanvasMenu" 
@@ -46,126 +46,38 @@
                         
                         <div>
                             <button 
-                                class="btn btn-outline-secondary border-0" 
-                                type="button" 
-                                data-bs-toggle="offcanvas" 
-                                data-bs-target="#offcanvasNotification" 
-                                aria-controls="offcanvasNotification">
-                                    <i class="bi bi-bell"></i>
-                                </button>
-                                <button 
-                                class="btn btn-outline-danger border-0" 
-                                type="button" 
-                                data-bs-toggle="offcanvas" 
-                                data-bs-target="#offcanvasProfile" 
-                                aria-controls="offcanvasProfile">
-                                    <i class="bi bi-person"></i>
+                                class="btn btn-outline-secondary border-1 position-relative" 
+                                type="button">
+                                <i class="bi bi-bell" style="position: relative; top: 1px;"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary notification-count">1</span>
                             </button>
+                     
                         </div>
                     </div>
                 </nav>
 
                 <!-- Offcanvas Left Sidebar -->
                 <div class="offcanvas offcanvas-start rounded-4 rounded-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel" aria-modal="true" role="dialog">
-                    <div class="offcanvas-header">
-                        <h6 class="offcanvas-title " id="offcanvas_Sidebar_UserRole">System Administrator</h6>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <!-- <hr class="mt-0 mb-1"> -->
-                    
-                    <div class="offcanvas-body">
-
-                        <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                    <div class="offcanvas-header d-flex justify-content-between align-items-start">
+                        <div class="d-flex align-items-top">
+                            <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
+                            <div>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                            </div>
                         </div>
-                        <hr class="mt-2 mb-4">
-                        
-                        <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Sample</a>
-                        </div>
-                    </div>
-
-                </div>
-            
-                <!-- Offcanvas Right Notidications -->
-                <div class="offcanvas offcanvas-end rounded-4 rounded-end" tabindex="-1" id="offcanvasNotification" aria-labelledby="offcanvasNotificationLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNotificationLabel">Notifications</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <hr class="mt-0 mb-1">
-                    <div class="offcanvas-body">
-                        <div class="d-flex justify-content-end mb-3">
-                            <a href="#" class="text-secondary text-decoration-underline">
-                                <small>Clear All</small>
-                            </a>
-                        </div>
-                        <!-- noti items -->
-                        <a href="javascript:void(0);" class="dropdown-item p-0 card mb-2">
-                            <div class="card-body">
-                                <span class="float-end noti-close-btn text-muted"><i class="bi bi-x-lg"></i></span>
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0">
-                                        <div class="notify-icon bg-primary">
-                                            <i class="mdi mdi-comment-account-outline"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 text-truncate ms-2">
-                                        <small class="fw-normal text-muted ms-1">1 min ago</small>
-                                        <h5 class="noti-item-title fw-semibold font-14">New Job Request</h5>
-                                        <small class="noti-item-subtitle text-muted">KGH/ DB Schenker - Coolent </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                    
+                    <div class="offcanvas-body d-flex flex-column">
 
-                        <!-- noti items-->
-                        <a href="javascript:void(0);" class="dropdown-item p-0 card mb-2">
-                            <div class="card-body">
-                                <span class="float-end noti-close-btn text-muted"><i class="bi bi-x-lg"></i></span>
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0">
-                                        <div class="notify-icon bg-primary">
-                                            <i class="mdi mdi-comment-account-outline"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 text-truncate ms-2">
-                                        <small class="fw-normal text-muted ms-1">10 min ago</small>
-                                        <h5 class="noti-item-title fw-semibold font-14">New Client Register Request</h5>
-                                        <small class="noti-item-subtitle text-muted">KGH/ New Client</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-secondary py-2 mt-3">
-                            View All
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Offcanvas Right Profile -->
-                <div class="offcanvas offcanvas-end rounded-4 rounded-end" tabindex="-1" id="offcanvasProfile" aria-labelledby="offcanvasProfileLabel">
-                    <div class="offcanvas-header d-flex justify-content-between align-items-start">
-                        <div class="d-flex align-items-top">
-                            <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
-                            <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sys Admin Name</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">Designation</p>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-close mt-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <!-- <hr class="mt-0 mb-1"> -->
-                    <div class="offcanvas-body">
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <hr class="mt-2 mb-4">
-                        <!-- <div class="list-group list-group-sm">
+
+                        <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
@@ -174,11 +86,20 @@
                         <hr class="mt-2 mb-4">
                         
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Sample</a>
-                        </div> -->
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
+                        </div>
+                        <!-- <hr class="mt-2 mb-4"> -->
+                        
+                        <div class="flex-fill">
+                        </div>
+                        <div class="list-group list-group-sm">
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                        </div>   
                     </div>
-                </div>
 
+                </div>
+    
                 
             </div>
         </header>
@@ -239,7 +160,7 @@
                                             <div class="row g-0">
                                                 <!-- card 1 -->
                                                 <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-top-0 border-start-0 border-bottom-0 border-light">
+                                                    <div class="card rounded-0 shadow-none m-0 border-1">
                                                         <div class="card-body text-center">
                                                             <h3><span>29</span></h3>
                                                             <p class="text-muted font-15 mb-0">Completed</p>
@@ -249,7 +170,7 @@
                                                 <!-- end card 1 -->
                                                 <!-- card 2 -->
                                                 <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-top-0 border-start-0 border-bottom-0 border-light">
+                                                    <div class="card rounded-0 shadow-none m-0 border-1">
                                                         <div class="card-body text-center">
                                                             <h3><span>715</span></h3>
                                                             <p class="text-muted font-15 mb-0">Pending</p>
@@ -259,7 +180,7 @@
                                                 <!-- end card 2 -->
                                                 <!-- card 3 -->
                                                 <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-top-0 border-start-0 border-bottom-0 border-light">
+                                                    <div class="card rounded-0 shadow-none m-0 border-1">
                                                         <div class="card-body text-center">
                                                             <h3><span>31</span></h3>
                                                             <p class="text-muted font-15 mb-0">Wroking On</p>
@@ -269,7 +190,7 @@
                                                 <!-- end card 3 -->
                                                 <!-- card 4 -->
                                                 <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-0 ">
+                                                    <div class="card rounded-0 shadow-none m-0 border-1 ">
                                                         <div class="card-body text-center">
                                                             <h3><span>93</span></h3>
                                                             <p class="text-muted font-15 mb-0">New</p>
