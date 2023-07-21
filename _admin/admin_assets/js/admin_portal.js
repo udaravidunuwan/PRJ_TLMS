@@ -1,10 +1,12 @@
-/**theme icon */
-
+// THEME CHANGE ICON
 (() => {
     'use strict'
   
     const getStoredTheme = () => localStorage.getItem('theme')
     const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+    const lightThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png';
+    const darkThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io_dark/android-chrome-192x192.png';
   
     const getPreferredTheme = () => {
       const storedTheme = getStoredTheme()
@@ -18,8 +20,14 @@
     const setTheme = theme => {
       if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
-      } else {
-        document.documentElement.setAttribute('data-bs-theme', theme)
+        document.querySelector('img').setAttribute('src', lightThemeImgUrl);
+      } else if (theme === 'light') {
+          document.documentElement.setAttribute('data-bs-theme', theme)
+          document.querySelector('img').setAttribute('src', darkThemeImgUrl);
+      }
+      else {
+          document.documentElement.setAttribute('data-bs-theme', theme)
+          document.querySelector('img').setAttribute('src', lightThemeImgUrl);
       }
     }
   
