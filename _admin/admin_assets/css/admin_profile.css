@@ -32,7 +32,7 @@
 .bd-mode-toggle {
     z-index: 1500;
 }
-/* 
+
 .offcanvas {
     width: 350px !important;
 }
@@ -54,77 +54,3 @@
     transform: translate(-50%, -50%);
 }
 
-
-  .bd-mode-toggle {
-    z-index: 1500;
- }
-
-html,
-body {
-  width: 100%;
-}
-
-.header_logo_img {
-  margin-bottom: 0.5rem; 
-}
-
-.form-signin {
-  max-width: 420px;
-  height: 20rem;
-  padding: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 0; 
-}
-
-.container {
-  margin-top: -3rem;
-  min-height: 95vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.form-signin input[type="email"] {
-  width: 20rem;
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  width: 20rem;
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.btn{
-  margin-top: 1.5rem;
-} */
-
-html,
-body {
-  height: 100%;
-}
-
-.form-signin {
-  max-width: 400px;
-  padding: 1rem;
-}
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}

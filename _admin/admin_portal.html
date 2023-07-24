@@ -6,16 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>TLMS/ Admin</title>
+
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
         <link rel="stylesheet" href="http://localhost/TLMS/_admin/admin_assets/css/admin_portal.css" />
         <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_admin/admin_assets/css/admin_portal.css" /> -->
+
         <!-- favicon -->
         <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+
         <!-- bootstrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+        <meta name="theme-color" content="#f8f8fb">
     </head>
     
-    <body class="d-flex align-items-center py-4 ">
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check2" viewBox="0 0 16 16">
@@ -69,7 +75,7 @@
         </div>
 
 
-        <div class="container  d-flex flex-column align-items-center">
+        <!-- <div class="container  d-flex flex-column align-items-center">
 
             <div class="header_logo_img text-center mb-4">
                 <img src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="100" height="100">
@@ -94,16 +100,47 @@
                     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
                 </form>
             </main>
-        </div>
+        </div> -->
 
+        <main class="form-signin w-100 m-auto">
+            <form>
+                <div class="d-flex flex-column align-items-center">
+                    <img class="mb-4" src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="150" height="150">
+                </div>
+                
+                <div class="border rounded p-5 bg-body">
+                    <div class="form-floating">
+                        <input type="email" class="form-control bg-body-tertiary" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control bg-body-tertiary" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                
+                    <div class="form-check text-start my-3">
+                        <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                </div>
+            </form>
+        </main>
 
         <!-- FOOTER -->
         <footer class="footer" id="footer">
 
         </footer>
+
+        
         <!-- Have to change the absolute path when hosting -->
         <script src="http://localhost/TLMS/_admin/admin_assets/js/admin_portal.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
     </body>
 </html>
