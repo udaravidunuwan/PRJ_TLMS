@@ -3,37 +3,40 @@
 
 <script type="text/javascript">
     // admin signin 
-    function adminSignin(){
-        $(document).ready(function(){
-            var data = {
-                action: '',
-                emailSignin: $('#adminEmail').val(),
-                passwordSignin: $('#adminPassword').val(),
-            };
+    // function adminSignin(){
+    //     // $(document).ready(function(){
+    //     //     // alert("Admin");
 
-            alert(data);
-            // if ($('#register-submit').is(':focus')) {
-            //     data.action = $('#actionReg').val();
-            // } else if ($('#login-submit').is(':focus')) {
-            //     data.action = $('#actionLog').val();
-            // }
+    //     //     // var data = {
+    //     //     //     action: '',
+    //     //     //     emailSignin: $('#adminEmail').val(),
+    //     //     //     passwordSignin: $('#adminPassword').val(),
+    //     //     // };
 
-            // $.ajax({
-            //     url: 'function.php',
-            //     type: 'post',
-            //     data: data,
-            //     success: function(response){
-            //         alert(response);
-            //         if(response == "Login successful"){
-            //             window.location.reload();
-            //         } 
-            //     }
-            // });
-        });
-    }
+
+    //     //     // if ($('#register-submit').is(':focus')) {
+    //     //     //     data.action = $('#actionReg').val();
+    //     //     // } else if ($('#login-submit').is(':focus')) {
+    //     //     //     data.action = $('#actionLog').val();
+    //     //     // }
+
+    //     //     // $.ajax({
+    //     //     //     url: 'function.php',
+    //     //     //     type: 'post',
+    //     //     //     data: data,
+    //     //     //     success: function(response){
+    //     //     //         alert(response);
+    //     //     //         if(response == "Login successful"){
+    //     //     //             window.location.reload();
+    //     //     //         } 
+    //     //     //     }
+    //     //     // });
+    //     // });
+
+    //     let a = "ajax";
+        
+    //     alert(a);
+
+    // }
     
-
-    
-
-
 </script>

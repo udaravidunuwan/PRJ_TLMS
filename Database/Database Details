@@ -1,1 +1,2 @@
-Database name: "tlms_db"
+Database name:      "tlms_db"
+Admin table name:   "tlms_admin"
