@@ -112,12 +112,12 @@
                 
                 <div class="border rounded p-5 bg-body">
                     <div class="form-floating">
-                        <input type="email" class="form-control bg-body-tertiary" id="floatingInput" name="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                        <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" required>
+                        <label for="adminEmail">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control bg-body-tertiary" id="floatingPassword" name="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
+                        <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="Password" required>
+                        <label for="adminPassword">Password</label>
                     </div>
                 
                     <div class="form-check text-start my-3">
@@ -126,7 +126,7 @@
                         Remember me
                         </label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSignin" onclick="adminSignin();">Sign in</button>
                 </div>
             </form>
         </main>
@@ -136,6 +136,8 @@
 
         </footer>
 
+        <!-- Script to pass data to Ajax -->
+        <?php require 'script.php' ?>
         
         <!-- Have to change the absolute path when hosting -->
         <script src="http://localhost/TLMS/_admin/admin_assets/js/admin_portal.js"></script>
