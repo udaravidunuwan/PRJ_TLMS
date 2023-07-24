@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^admin$ ./_admin/admin_portal.html [NC,L]
+RewriteRule ^admin$ ./_admin/admin_portal.php [NC,L]
 RewriteRule ^manager$ ./_manager/manager_portal.html [NC,L]
 RewriteRule ^user$ ./_user/user_portal.html [NC,L]
 

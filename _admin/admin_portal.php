@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -103,18 +104,19 @@
         </div> -->
 
         <main class="form-signin w-100 m-auto">
-            <form>
+            <form autocomplete="off" action="" method="post">
+                <input type="hidden" id="actionLog" value="signin" >
                 <div class="d-flex flex-column align-items-center">
                     <img class="mb-4" src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="150" height="150">
                 </div>
                 
                 <div class="border rounded p-5 bg-body">
                     <div class="form-floating">
-                        <input type="email" class="form-control bg-body-tertiary" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control bg-body-tertiary" id="floatingInput" name="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control bg-body-tertiary" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control bg-body-tertiary" id="floatingPassword" name="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
                 
