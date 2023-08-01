@@ -1,0 +1,77 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Booostrap Import */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+html,
+body {
+  height: 100%;
+}
+
+.bi {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+}
+
+.btn-bd-primary {
+    --bd-grey-bg: #6c757d;
+    --bd-grey-rgb: 98, 107, 115;
+    --bs-white: white;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-grey-bg);
+    --bs-btn-border-color: var(--bd-grey-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6c757d;
+    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-focus-shadow-rgb: var(--bd-grey-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #6c757d;
+    --bs-btn-active-border-color: #6c757d;
+}
+  
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+
+/* Custom default button */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+body {
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 90%;
+}
+
+.nav-masthead .nav-link {
+  /* color: rgba(255, 255, 255, .5); */
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
