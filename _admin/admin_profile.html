@@ -4,6 +4,7 @@
         <script src="http://localhost/tlms/_admin/admin_assets/js/admin_profile.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="http://localhost/tlms/">
 
         <title>TLMS/ Admin</title>
 
@@ -118,27 +119,6 @@
                         <div class="px-md-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 class="h2">Profile</h1>
-                                <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                                    <div class="btn-group me-2">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button 
-                                            type="button" 
-                                            id="dropdownButton_dashboard-cards" 
-                                            class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" 
-                                            data-bs-toggle="dropdown" 
-                                            aria-expanded="false">
-                                                <i class="bi bi-calendar3"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Today')">Today</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Week')">This Week</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Month')">This Month</a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -148,7 +128,7 @@
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System Administrator</li>
+                                    <li class="breadcrumb-item">System Admin</li>
                                     <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                 </ol>
                             </nav>
@@ -222,90 +202,125 @@
 
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-            <nav class="nav nav-borders">
-                <a class="nav-link active ms-0" href="" target="__blank">Profile</a>
-                <!-- <a class="nav-link" href="" target="__blank">Billing</a> -->
-                <a class="nav-link" href="" target="__blank">Security</a>
-                <a class="nav-link" href=""  target="__blank">Notifications</a>
-            </nav>
+            <ul class="nav nav-borders" role="tablist" id="nav_tabs">
+                <li class="nav-item " role="presentation">
+                    <a 
+                        class="nav-link active ms-0"
+                        id="profile-tab"
+                        data-mdb-toggle="tab"
+                        href="#profile_tab"
+                        role="tab"
+                        aria-controls="profile_tab"
+                        aria-selected="true"
+                        >Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a 
+                    class="nav-link"
+                    id="security-tab"
+                    data-mdb-toggle="tab"
+                    href="#security_tab"
+                    role="tab"
+                    aria-controls="security_tab"
+                    aria-selected="false"
+                    >Security</a>
+                    </li>
+            </ul>
+            <!-- end nav -->
             <hr class="mt-0 mb-4">
-            <div class="row">
-                <div class="col-xl-4">
-                    <!-- Profile picture card-->
-                    <div class="card mb-4 mb-xl-0">
-                        <div class="card-header">Profile Picture</div>
-                        <div class="card-body text-center">
-                            <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle mb-2" src="../_assets/blank_profile_pics/21806614.jpg" alt="">
-                            <!-- Profile picture help block-->
-                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                            <!-- Profile picture upload button-->
-                            <button class="btn btn-primary" type="button">Upload new image</button>
+            
+            
+            <div class="tab-content">
+                <!-- Profile Tab Cantent -->
+                <div class="tab-pane fade show active" id="profile_tab" role="tabpanel" aria-labelledby="profile_tab">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <!-- Profile picture card-->
+                            <div class="card mb-4 mb-xl-0">
+                                <div class="card-header">Profile Picture</div>
+                                <div class="card-body text-center">
+                                    <!-- Profile picture image-->
+                                    <img class="img-account-profile rounded-circle mb-2" src="./_assets/blank_profile_pics/21806614.jpg" alt="">
+                                    <!-- Profile picture help block-->
+                                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                    <!-- Profile picture upload button-->
+                                    <button class="btn btn-primary" type="button">Upload new image</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <!-- Account details card-->
+                            <div class="card mb-4">
+                                <div class="card-header">Account Details</div>
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Form Group (username)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="">
+                                        </div>
+                                        <!-- Form Row-->
+                                        <div class="row gx-3 mb-3">
+                                            <!-- Form Group (first name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="">
+                                            </div>
+                                            <!-- Form Group (last name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
+                                        </div>
+                                        <!-- Save changes button-->
+                                        <button class="btn btn-primary" type="button">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-8">
-                    <!-- Account details card-->
-                    <div class="card mb-4">
-                        <div class="card-header">Account Details</div>
-                        <div class="card-body">
-                            <form>
-                                <!-- Form Group (username)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                    <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="">
-                                </div>
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (first name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputFirstName">First name</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="">
+                <!-- End of Profile  -->
+                <!-- Security Tab Content -->
+                <div class="tab-pane fade" id="security_tab" role="tabpanel" aria-labelledby="security_tab">
+                    <div class="col-lg-8">
+                        <!-- Change password card-->
+                        <div class="card mb-4">
+                            <div class="card-header">Change Password</div>
+                            <div class="card-body">
+                                <form>
+                                    <!-- Form Group (current password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="currentPassword">Current Password</label>
+                                        <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
                                     </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLastName">Last name</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="">
+                                    <!-- Form Group (new password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="newPassword">New Password</label>
+                                        <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
                                     </div>
-                                </div>
-                                <!-- Form Row        -->
-                                <!-- <div class="row gx-3 mb-3"> -->
-                                    <!-- Form Group (organization name)-->
-                                    <!-- <div class="col-md-6">
-                                        <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                        <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="">
-                                    </div> -->
-                                    <!-- Form Group (location)-->
-                                    <!-- <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLocation">Location</label>
-                                        <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="">
+                                    <!-- Form Group (confirm password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                        <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
                                     </div>
-                                </div> -->
-                                <!-- Form Group (email address)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
-                                </div>
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (phone number)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="">
-                                    </div>
-                                    <!-- Form Group (birthday)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="">
-                                    </div>
-                                </div>
-                                <!-- Save changes button-->
-                                <button class="btn btn-primary" type="button">Save changes</button>
-                            </form>
+                                    <button class="btn btn-primary" type="button">Save</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- End of Security  -->
             </div>
+            <!-- ENd of Tab Content -->
+
+            
+
         </div>
 
         
