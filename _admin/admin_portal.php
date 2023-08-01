@@ -75,40 +75,12 @@
             </ul>
         </div>
 
-
-        <!-- <div class="container  d-flex flex-column align-items-center">
-
-            <div class="header_logo_img text-center mb-4">
-                <img src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="100" height="100">
-            </div>
-
-            <main class="form-signin w-100 justify-content-center rounded border border-sec">
-
-                <form>
-                    <div class="form-floating mb-1">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                    </div>    
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div>
-
-                    <div class="form-check text-start my-3">
-                        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Remember me</label>
-                    </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                </form>
-            </main>
-        </div> -->
-
         <main class="form-signin w-100 m-auto">
             <form autocomplete="on" action="" method="post">
                 <input type="hidden" id="actionLog" value="signin" >
-                <div class="d-flex flex-column align-items-center">
+                <!-- <div class="d-flex flex-column align-items-center">
                     <img class="mb-4" src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="150" height="150">
-                </div>
+                </div> -->
                 
                 <div class="border rounded p-5 bg-body">
                     <div class="form-floating">
@@ -137,7 +109,7 @@
         </footer>
 
         <!-- Script to pass data to Ajax -->
-        <?php require 'signin_script.php' ?>
+        <?php require 'admin_signin_scripts.php' ?>
         
         <!-- Have to change the absolute path when hosting -->
         <script src="http://localhost/TLMS/_admin/admin_assets/js/admin_portal.js"></script>
