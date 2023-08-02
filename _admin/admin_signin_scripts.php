@@ -3,40 +3,37 @@
 
 <script type="text/javascript">
     // admin signin 
-    // function adminSignin(){
-    //     // $(document).ready(function(){
-    //     //     // alert("Admin");
+    function adminSignin(){
+        alert("check signin");
+    }
 
-    //     //     // var data = {
-    //     //     //     action: '',
-    //     //     //     emailSignin: $('#adminEmail').val(),
-    //     //     //     passwordSignin: $('#adminPassword').val(),
-    //     //     // };
+    function test() {
+        // alert("test 1");
+        $(document).ready(function(){
+            // alert("test 2");
 
-
-    //     //     // if ($('#register-submit').is(':focus')) {
-    //     //     //     data.action = $('#actionReg').val();
-    //     //     // } else if ($('#login-submit').is(':focus')) {
-    //     //     //     data.action = $('#actionLog').val();
-    //     //     // }
-
-    //     //     // $.ajax({
-    //     //     //     url: 'function.php',
-    //     //     //     type: 'post',
-    //     //     //     data: data,
-    //     //     //     success: function(response){
-    //     //     //         alert(response);
-    //     //     //         if(response == "Login successful"){
-    //     //     //             window.location.reload();
-    //     //     //         } 
-    //     //     //     }
-    //     //     // });
-    //     // });
-
-    //     let a = "ajax";
-        
-    //     alert(a);
-
-    // }
+            var data = {
+                action: "action1",
+                emailSignin: "admin@mail.com",
+                passwordSignin: "admin",
+            };
+            // alert("test 3")
+            // alert(data.action)
+            // alert(data.emailSignin)
+            // alert(data.passwordSignin)
+            // alert("test 4")
+            $.ajax({
+                url: 'admin_signin_functions.php',
+                type: 'post',
+                data: data,
+                success: function(response){
+                    alert(response);
+                    // if(response == "Login successful"){
+                    //     window.location.reload();
+                    // } 
+                }
+            });
+        });
+    }
     
 </script>

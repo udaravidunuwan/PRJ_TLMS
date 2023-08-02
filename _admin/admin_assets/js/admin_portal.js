@@ -5,8 +5,8 @@
     const getStoredTheme = () => localStorage.getItem('theme')
     const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
-    const lightThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png';
-    const darkThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io_dark/android-chrome-192x192.png';
+    // const lightThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png';
+    // const darkThemeImgUrl = 'http://localhost/TLMS/_assets/favicon_io_dark/android-chrome-192x192.png';
   
     const getPreferredTheme = () => {
       const storedTheme = getStoredTheme()
@@ -20,14 +20,14 @@
     const setTheme = theme => {
       if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
-        document.querySelector('img').setAttribute('src', lightThemeImgUrl);
+        // document.querySelector('img').setAttribute('src', lightThemeImgUrl);
       } else if (theme === 'light') {
           document.documentElement.setAttribute('data-bs-theme', theme)
-          document.querySelector('img').setAttribute('src', darkThemeImgUrl);
+          // document.querySelector('img').setAttribute('src', darkThemeImgUrl);
       }
       else {
           document.documentElement.setAttribute('data-bs-theme', theme)
-          document.querySelector('img').setAttribute('src', lightThemeImgUrl);
+          // document.querySelector('img').setAttribute('src', lightThemeImgUrl);
       }
     }
   
