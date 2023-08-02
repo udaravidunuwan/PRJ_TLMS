@@ -1,17 +1,10 @@
 <?php
 session_start();
-include("./connection.php");
+include("./conf/conn.php");
 
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
-
-if(isset($_POST['action'])){
-    if($_POST['action'] == "action"){
-        signinAdmin();
-    }
+if($_POST["action"] == "action1"){
+    signinAdmin();
 }
-
 
 function signinAdmin(){
     global $connection;

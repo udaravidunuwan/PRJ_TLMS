@@ -20,8 +20,6 @@
             };
             // alert(data);
             // alert(JSON.stringify(data));
-            // alert(data);
-            // alert(JSON.stringify(data));
             $.ajax({
                 url: 'admin_signin_functions.php',
                 type: 'POST',
