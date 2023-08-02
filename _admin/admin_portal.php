@@ -104,6 +104,10 @@ if(isset($_SESSION["session_id"])){
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
+            <form class="form-signin" action="" method="post">
+                <input type="hidden" value="testin">
+                <button class="btn btn-primary w-100 py-2" id="" type="submit" onclick="test()">Test</button>
+            </form>
         </main>
         <!-- End of Signin Form -->
         <!-- FOOTER -->
