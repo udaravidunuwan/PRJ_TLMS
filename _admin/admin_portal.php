@@ -14,7 +14,9 @@ if(isset($_SESSION["session_id"])){
 
         <title>TLMS/ Admin</title>
 
+        <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
         <link rel="stylesheet" href="./admin_assets/css/admin_portal.css" />
+        <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_admin/admin_assets/css/admin_portal.css" /> -->
 
         <!-- favicon -->
         <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
@@ -114,6 +116,10 @@ if(isset($_SESSION["session_id"])){
         <script src="./admin_assets/js/admin_portal.js"></script>
          <!-- Script to pass data to Ajax -->
         <?php require 'admin_signin_scripts.php' ?>
+        
+        <!-- Have to change the absolute path when hosting -->
+        <script src="./admin_assets/js/admin_portal.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
