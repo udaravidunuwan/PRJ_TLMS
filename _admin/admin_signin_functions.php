@@ -11,11 +11,7 @@ if(isset($_POST['action'])){
         signinAdmin();
     }
 }
-if(isset($_POST['action'])){
-    if($_POST['action'] == "action"){
-        signinAdmin();
-    }
-}
+
 
 function signinAdmin(){
     global $connection;
