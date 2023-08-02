@@ -9,11 +9,11 @@
         <title>TLMS/ Admin</title>
 
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
-        <link rel="stylesheet" href="http://localhost/TLMS/_admin/admin_assets/css/admin_portal.css" />
+        <link rel="stylesheet" href="./admin_assets/css/admin_portal.css" />
         <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_admin/admin_assets/css/admin_portal.css" /> -->
 
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
 
         <!-- bootstrap CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -77,11 +77,6 @@
 
         <main class="form-signin w-100 m-auto">
             <form autocomplete="on" action="" method="post">
-                <input type="hidden" id="actionLog" value="signin" >
-                <!-- <div class="d-flex flex-column align-items-center">
-                    <img class="mb-4" src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="150" height="150">
-                </div> -->
-                
                 <div class="border rounded p-5 bg-body">
                     <div class="form-floating">
                         <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
@@ -99,6 +94,7 @@
                         </label>
                     </div>
                     <button class="btn btn-primary w-100 py-2" type="submit" id="adminSignin" onclick="adminSignin();">Sign in</button>
+                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.html">Go Back</a>
                 </div>
             </form>
         </main>
@@ -112,7 +108,7 @@
         <?php require 'admin_signin_scripts.php' ?>
         
         <!-- Have to change the absolute path when hosting -->
-        <script src="http://localhost/TLMS/_admin/admin_assets/js/admin_portal.js"></script>
+        <script src="./admin_assets/js/admin_portal.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
