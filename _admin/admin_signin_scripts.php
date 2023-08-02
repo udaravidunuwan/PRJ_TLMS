@@ -3,25 +3,20 @@
 
 <script type="text/javascript">
     // admin signin 
+    $(document).ready(function(){
+        $("#adminSigninBtn").on("click", function(event) {
+            event.preventDefault(); // Prevent form submission for now
+            adminSignin(); // Call your function
+        });
+    });
+
     function adminSignin(){
-        alert("check signin");
-    }
-
-    function test() {
-        // alert("test 1");
         $(document).ready(function(){
-            // alert("test 2");
-
             var data = {
-                action: "action1",
-                emailSignin: "admin@mail.com",
-                passwordSignin: "admin",
+                action: $('#action').val(),
+                emailSignin: $('#adminEmail').val(),
+                passwordSignin: $('#adminPassword').val(),
             };
-            // alert("test 3")
-            // alert(data.action)
-            // alert(data.emailSignin)
-            // alert(data.passwordSignin)
-            // alert("test 4")
             $.ajax({
                 url: 'admin_signin_functions.php',
                 type: 'post',
@@ -33,7 +28,30 @@
                     // } 
                 }
             });
+
         });
     }
+
+    // function test() {
+    //     $(document).ready(function(){
+
+    //         var data = {
+    //             action: "adminSignIn",
+    //             emailSignin: "admin@mail.com",
+    //             passwordSignin: "admin",
+    //         };
+    //         $.ajax({
+    //             url: 'admin_signin_functions.php',
+    //             type: 'post',
+    //             data: data,
+    //             success: function(response){
+    //                 alert(response);
+    //                 // if(response == "Login successful"){
+    //                 //     window.location.reload();
+    //                 // } 
+    //             }
+    //         });
+    //     });
+    // }
     
 </script>

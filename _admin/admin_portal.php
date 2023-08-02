@@ -82,7 +82,7 @@
         <main class="form-signin w-100 m-auto">
             <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
-                    <input type="hidden" id="action" value="signin">
+                    <input type="hidden" id="action" value="adminSignIn">
                     <div class="form-floating">
                         <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
                         <label for="adminEmail">Email address</label>
@@ -96,7 +96,7 @@
                         <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSignin" onclick="adminSignin()">Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.html">Go Back</a>
                 </div>
             </form>

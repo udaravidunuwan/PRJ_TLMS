@@ -1,13 +1,12 @@
 <?php
 session_start();
-include("./conf/conn.php");
+include("./conf/connection.php");
 
-if($_POST["action"] == "action1"){
+if($_POST["action"] == "adminSignIn"){
     signinAdmin();
 }
 
 function signinAdmin(){
-    // echo "check 1";
     global $connection;
 
     $admin_email = $_POST['emailSignin'];
@@ -19,7 +18,6 @@ function signinAdmin(){
     
     $query = "SELECT * FROM tlms_admin WHERE tlms_admin_email = ?";
     $checkStmt = $connection->prepare($query);
-    // echo "check 2";
     if($checkStmt) {
         $checkStmt->bind_param("s", $admin_email);
         $checkStmt->execute();
