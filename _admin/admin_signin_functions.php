@@ -41,7 +41,6 @@ function signinAdmin(){
             $stored_password = $admin['tlms_admin_password'];
 
             if($stored_password == $admin_password) {
-            if($stored_password == $admin_password) {
                 echo "Sign in Successful";
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
@@ -57,5 +56,4 @@ function signinAdmin(){
 
     }
     echo "Error: " . $checkStmt->error;
-} 
-
+}
