@@ -50,6 +50,4 @@ function signinAdmin(){
 
     }
     echo "Error: " . $checkStmt->error;
-    $checkStmt->close();
 } 
-

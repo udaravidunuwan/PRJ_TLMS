@@ -84,7 +84,7 @@ if(isset($_SESSION["session_id"])){
         <!-- End of Theme BUtton -->
         <!-- Signin Form -->
         <main class="form-signin w-100 m-auto">
-            <form autocomplete="on" action="" method="post">
+            <form autocomplete="on" action="" method="POST">
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="action">
                     <div class="form-floating">
@@ -104,10 +104,6 @@ if(isset($_SESSION["session_id"])){
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
-            <form class="form-signin" action="" method="post">
-                <input type="hidden" value="testin">
-                <button class="btn btn-primary w-100 py-2" id="" type="submit" onclick="test()">Test</button>
-            </form>
         </main>
         <!-- End of Signin Form -->
         <!-- FOOTER -->
@@ -123,7 +119,8 @@ if(isset($_SESSION["session_id"])){
         
         <!-- Have to change the absolute path when hosting -->
         <script src="./admin_assets/js/admin_portal.js"></script>
-
+         <!-- Script to pass data to Ajax -->
+        <?php require 'admin_signin_scripts.php' ?>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
