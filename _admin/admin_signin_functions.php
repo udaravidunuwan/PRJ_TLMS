@@ -2,17 +2,18 @@
 session_start();
 include("./connection.php");
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
-if($_POST["action"] == "action"){
-    signinAdmin();
+if(isset($_POST['action'])){
+    if($_POST['action'] == "action"){
+        signinAdmin();
+    }
 }
 
 function signinAdmin(){
     global $connection;
-    
     
     $admin_email = $_POST['emailSignin'];
     $admin_password = $_POST['passwordSignin'];
@@ -36,8 +37,6 @@ function signinAdmin(){
 
             if($stored_password == $admin_password) {
                 echo "Sign in Successful";
-                $_SESSION["signin"] = true;
-                $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 exit;
