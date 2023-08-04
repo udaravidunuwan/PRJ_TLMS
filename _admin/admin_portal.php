@@ -91,7 +91,7 @@ if(isset($_SESSION["session_id"])){
         <!-- End of Theme BUtton -->
         <!-- Signin Form -->
         <main class="form-signin w-100 m-auto">
-            <form autocomplete="on" action="" method="post">
+            <form autocomplete="on" action="" method="POST">
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="action">
                     <div class="form-floating">
@@ -110,10 +110,6 @@ if(isset($_SESSION["session_id"])){
                     <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn" onclick="adminSignin();">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
-            </form>
-            <form class="form-signin" action="" method="post">
-                <input type="hidden" value="testin">
-                <button class="btn btn-primary w-100 py-2" id="" type="submit" onclick="test()">Test</button>
             </form>
         </main>
         <!-- End of Signin Form -->

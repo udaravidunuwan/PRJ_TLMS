@@ -1,8 +1,12 @@
 <?php
 session_start();
-include("./conf/conn.php");
+include("./connection.php");
 
-if($_POST["action"] == "action1"){
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+if($_POST["action"] == "action"){
     signinAdmin();
 }
 
@@ -15,6 +19,7 @@ function signinAdmin(){
 
     if(empty($admin_email) || empty($admin_password)){
         echo "Admin Email and Password are required!";
+        exit;
         exit;
     }
     
@@ -31,6 +36,8 @@ function signinAdmin(){
 
             if($stored_password == $admin_password) {
                 echo "Sign in Successful";
+                $_SESSION["signin"] = true;
+                $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 exit;

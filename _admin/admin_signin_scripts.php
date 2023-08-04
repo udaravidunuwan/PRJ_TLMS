@@ -23,13 +23,9 @@
             $.ajax({
                 url: 'admin_signin_functions.php',
                 type: 'POST',
-                type: 'POST',
                 data: data,
                 success: function(response){
                     alert(response);
-                    if(response == "Sign in Successful"){
-                        window.location.reload();
-                    } 
                     if(response == "Sign in Successful"){
                         window.location.reload();
                     } 
