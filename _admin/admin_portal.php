@@ -84,7 +84,7 @@ if(isset($_SESSION["session_id"])){
         <!-- End of Theme BUtton -->
         <!-- Signin Form -->
         <main class="form-signin w-100 m-auto">
-            <form autocomplete="on" action="" method="POST">
+            <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="action">
                     <div class="form-floating">
