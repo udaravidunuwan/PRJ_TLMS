@@ -82,9 +82,9 @@ if(isset($_SESSION["session_id"])){
         <!-- End of Theme BUtton -->
         <!-- Signin Form -->
         <main class="form-signin w-100 m-auto">
-            <form autocomplete="on" action="" method="POST">
+            <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
-                    <input type="hidden" id="action" value="adminSignIn">
+                    <input type="hidden" id="action" value="action">
                     <div class="form-floating">
                         <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
                         <label for="adminEmail">Email address</label>
@@ -98,7 +98,7 @@ if(isset($_SESSION["session_id"])){
                         <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn" onclick="">Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn" onclick="adminSignin();">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>

@@ -3,12 +3,13 @@
 
 <script type="text/javascript">
     // admin signin 
-    // $(document).ready(function(){
-    //     $("#adminSigninBtn").on("click", function(event) {
-    //         event.preventDefault(); // Prevent form submission for now
-    //         adminSignin(); // Call your function
-    //     });
-    // });
+    $(document).ready(function(){
+        // $("#adminSigninBtn").on("click", function(event) {
+        //     event.preventDefault(); // Prevent form submission for now
+        //     adminSignin(); // Call your function
+        // });
+        
+    });
 
     function adminSignin(){
         $(document).ready(function(){
