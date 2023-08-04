@@ -1,8 +1,10 @@
 <?php 
-// require 'admin_signin_functions.php';
+require 'admin_signin_functions.php';
+if(isset($_SESSION["session_id"])){
+    header("Location: admin_dashboard.php");
+}
 ?>
- <!-- Script to pass data to Ajax -->
- <?php require 'admin_signin_scripts.php' ?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -80,7 +82,7 @@
         <!-- End of Theme BUtton -->
         <!-- Signin Form -->
         <main class="form-signin w-100 m-auto">
-            <form autocomplete="on" action="" method="post">
+            <form autocomplete="on" action="" method="POST">
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="adminSignIn">
                     <div class="form-floating">
@@ -96,13 +98,9 @@
                         <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn">Sign in</button>
-                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.html">Go Back</a>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn" onclick="">Sign in</button>
+                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
-            </form>
-            <form class="form-signin" action="" method="post">
-                <input type="hidden" value="testin">
-                <button class="btn btn-primary w-100 py-2" id="" type="submit" onclick="test()">Test</button>
             </form>
         </main>
         <!-- End of Signin Form -->
@@ -114,7 +112,8 @@
        
         <!-- admin portal JS script -->
         <script src="./admin_assets/js/admin_portal.js"></script>
-
+         <!-- Script to pass data to Ajax -->
+        <?php require 'admin_signin_scripts.php' ?>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
