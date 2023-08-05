@@ -3,40 +3,37 @@
 
 <script type="text/javascript">
     // admin signin 
-    // function adminSignin(){
-    //     // $(document).ready(function(){
-    //     //     // alert("Admin");
-
-    //     //     // var data = {
-    //     //     //     action: '',
-    //     //     //     emailSignin: $('#adminEmail').val(),
-    //     //     //     passwordSignin: $('#adminPassword').val(),
-    //     //     // };
-
-
-    //     //     // if ($('#register-submit').is(':focus')) {
-    //     //     //     data.action = $('#actionReg').val();
-    //     //     // } else if ($('#login-submit').is(':focus')) {
-    //     //     //     data.action = $('#actionLog').val();
-    //     //     // }
-
-    //     //     // $.ajax({
-    //     //     //     url: 'function.php',
-    //     //     //     type: 'post',
-    //     //     //     data: data,
-    //     //     //     success: function(response){
-    //     //     //         alert(response);
-    //     //     //         if(response == "Login successful"){
-    //     //     //             window.location.reload();
-    //     //     //         } 
-    //     //     //     }
-    //     //     // });
-    //     // });
-
-    //     let a = "ajax";
+    $(document).ready(function(){
+        // $("#adminSigninBtn").on("click", function(event) {
+        //     event.preventDefault(); // Prevent form submission for now
+        //     adminSignin(); // Call your function
+        // });
         
-    //     alert(a);
+    });
 
-    // }
+    function adminSignin(){
+        $(document).ready(function(){
+            var data = {
+                action: $('#action').val(),
+                emailSignin: $('#adminEmail').val(),
+                passwordSignin: $('#adminPassword').val(),
+            };
+            // alert(data);
+            // alert(JSON.stringify(data));
+            $.ajax({
+                url: 'admin_signin_functions.php',
+                type: 'POST',
+                data: data,
+                success: function(response){
+                    alert(response);
+                    if(response == "Sign in Successful"){
+                        window.location.reload();
+                    } 
+                }
+            });
+
+        });
+    }
+
     
 </script>

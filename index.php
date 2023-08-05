@@ -1,4 +1,9 @@
-
+<?php 
+require './_admin/admin_signin_functions.php';
+if(isset($_SESSION["session_id"])){
+    header("Location: ./_admin/admin_dashboard.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -10,7 +15,6 @@
 
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
         <link rel="stylesheet" href="./_assets/css/index.css" />
-        <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_admin/admin_assets/css/admin_portal.css" /> -->
 
         <!-- favicon -->
         <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
