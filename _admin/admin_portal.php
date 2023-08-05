@@ -16,11 +16,9 @@ if(isset($_SESSION["session_id"])){
 
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
         <link rel="stylesheet" href="./admin_assets/css/admin_portal.css" />
-        <link rel="stylesheet" href="./admin_assets/css/admin_portal.css" />
         <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_admin/admin_assets/css/admin_portal.css" /> -->
 
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
         <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
 
         <!-- bootstrap CDN -->
