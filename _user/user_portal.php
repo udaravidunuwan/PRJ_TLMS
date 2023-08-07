@@ -1,3 +1,15 @@
+<?php 
+require 'user_signin_functions.php';
+if(isset($_SESSION["session_id"])){
+    if($_SESSION["user_type"] == 1) {
+        header("Location: user_dashboard.php");
+        exit;
+    } elseif($_SESSION["user_type"] == 2) {
+        header("Location: user_dashboard_cus.php");
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -8,7 +20,6 @@
         <title>TLMS/ User</title>
 
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
-        <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_user/user_assets/css/user_portal.css" /> -->
         <link rel="stylesheet" href="./user_assets/css/user_portal.css" />
 
         <!-- favicon -->
@@ -75,13 +86,14 @@
         <main class="form-signin w-100 m-auto">
             <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
+                    <input type="hidden" id="action" value="action">
                     <div class="form-floating">
-                        <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
-                        <label for="adminEmail">Email address</label>
+                        <input type="email" class="form-control bg-body-tertiary" id="userEmail" name="userEmail" placeholder="name@example.com" >
+                        <label for="userEmail">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="Password" >
-                        <label for="adminPassword">Password</label>
+                        <input type="password" class="form-control bg-body-tertiary" id="userPassword" name="userPassword" placeholder="Password" >
+                        <label for="userPassword">Password</label>
                     </div>
                 
                     <div class="form-check text-start my-3">
@@ -90,8 +102,8 @@
                         Remember me
                         </label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSignin" onclick="adminSignin();">Sign in</button>
-                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.html">Go Back</a>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="userSigninBtn"  onclick="userSignin();">Sign in</button>
+                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
         </main>
@@ -101,9 +113,15 @@
 
         </footer>
 
+
+        <!-- Script to pass data to Ajax -->
+        <?php require 'user_signin_scripts.php' ?>
+
         <!-- Have to change the absolute path when hosting -->
-        <!-- <script src="<?php echo $base_url; ?>_user/user_assets/js/user_portal.js"></script> -->
         <script src="./user_assets/js/user_portal.js"></script>
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 

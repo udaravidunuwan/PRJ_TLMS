@@ -86,8 +86,8 @@ if(isset($_SESSION["session_id"])){
                 <!-- <h3 class="float-md-start mb-0">Task Link Management System</h3> -->
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                   <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_admin/admin_portal.php">Admin</a>
-                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_manager/manager_portal.html">Manager</a>
-                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_user/user_portal.html">User</a>
+                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_manager/manager_portal.php">Manager</a>
+                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_user/user_portal.php">User</a>
                 </nav>
               </div>
             </header>

@@ -1,14 +1,23 @@
+<?php 
+require './admin_signin_functions.php';
+if(isset($_SESSION["session_id"])) {
+    $session_id = $_SESSION["session_id"];
+    $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = '$session_id'"));
+} else {
+    header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="http://localhost/tlms/_manager/manager_assets/js/manager_dashboard.js"></script>
+        <script src="http://localhost/tlms/_admin/admin_assets/js/admin_dashboard.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TLMS/ Manager</title>
+        <title>TLMS/ Admin</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_manager/manager_assets/css/manager_dashboard.css">
+        <link rel="stylesheet" href="http://localhost/tlms/_admin/admin_assets/css/admin_dashboard.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -65,10 +74,10 @@
                 <div class="offcanvas offcanvas-start rounded-4 rounded-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel" aria-modal="true" role="dialog">
                     <div class="offcanvas-header d-flex justify-content-between align-items-start">
                         <div class="d-flex align-items-top">
-                            <img src="../assets/img/favicon_io/" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
+                            <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Manager Name</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">Customer Admin</p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -80,10 +89,10 @@
                         
 
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="#" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="#" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="#" class="list-group-item list-group-item-action" id="tab_customers"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
+                            <a href="#" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
@@ -148,7 +157,7 @@
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System Manager</li>
+                                    <li class="breadcrumb-item">Customer Administrator</li>
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>

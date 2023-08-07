@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="http://localhost/tlms/_manager/manager_assets/js/manager_dashboard.js"></script>
+        <script src="http://localhost/tlms/_user/user_assets/js/user_dashboard.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TLMS/ Manager</title>
+        <title>TLMS/ User</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_manager/manager_assets/css/manager_dashboard.css">
+        <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -67,8 +67,8 @@
                         <div class="d-flex align-items-top">
                             <img src="../assets/img/favicon_io/" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Manager Name</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">User Name</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system user</p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -81,8 +81,8 @@
 
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
+                            <!-- <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a> -->
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
@@ -148,7 +148,7 @@
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System Manager</li>
+                                    <li class="breadcrumb-item">System User</li>
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>

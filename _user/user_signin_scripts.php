@@ -4,25 +4,24 @@
 <script type="text/javascript">
     // admin signin 
     $(document).ready(function(){
-        // $("#managerSigninBtn").on("click", function(event) {
+        // $("#userSigninBtn").on("click", function(event) {
         //     event.preventDefault(); // Prevent form submission for now
-        //     managerSignin(); // Call your function
+        //     userSignin(); // Call your function
         // });
         
     });
 
-    function managerSignin(){
+    function userSignin(){
         $(document).ready(function(){
-            // alert("check 1");
             var data = {
                 action: $('#action').val(),
-                emailSignin: $('#managerEmail').val(),
-                passwordSignin: $('#managerPassword').val(),
+                emailSignin: $('#userEmail').val(),
+                passwordSignin: $('#userPassword').val(),
             };
             // alert(data);
             // alert(JSON.stringify(data));
             $.ajax({
-                url: 'manager_signin_functions.php',
+                url: 'user_signin_functions.php',
                 type: 'POST',
                 data: data,
                 success: function(response){

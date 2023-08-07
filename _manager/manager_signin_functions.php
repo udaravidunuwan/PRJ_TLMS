@@ -8,43 +8,43 @@ include("./connection.php");
 
 if(isset($_POST['action'])){
     if($_POST['action'] == "action"){
-        signinAdmin();
+        signinManager();
     }
 }
 
-function signinAdmin(){
+function signinManager(){
     global $connection;
     
-    $admin_email = $_POST['emailSignin'];
-    $admin_password = $_POST['passwordSignin'];
+    $manager_email = $_POST['emailSignin'];
+    $manager_password = $_POST['passwordSignin'];
 
-    if(empty($admin_email) || empty($admin_password)){
-        echo "Admin Email and Password are required!";
+    if(empty($manager_email) || empty($manager_password)){
+        echo "Manager Email and Password are required!";
         exit;
     }
     
-    $query = "SELECT * FROM tlms_admin WHERE tlms_admin_email = ?";
+    $query = "SELECT * FROM tlms_manager WHERE tlms_manager_email = ?";
     $checkStmt = $connection->prepare($query);
     if($checkStmt) {
-        $checkStmt->bind_param("s", $admin_email);
+        $checkStmt->bind_param("s", $manager_email);
         $checkStmt->execute();
         $result = $checkStmt->get_result();
         
         if($result->num_rows == 1) {
-            $admin = $result->fetch_assoc();
-            $stored_password = $admin['tlms_admin_password'];
+            $manager = $result->fetch_assoc();
+            $stored_password = $manager['tlms_manager_password'];
 
-            if($stored_password == $admin_password) {
+            if($stored_password == $manager_password) {
                 echo "Sign in Successful";
                 $_SESSION["signin"] = true;
-                $_SESSION["session_id"] = $admin['tlms_admin_id'];
+                $_SESSION["session_id"] = $manager['tlms_manager_id'];
                 exit;
             } else {
                 echo "Sign in Failed! Please try again";
                 exit;
             }
         } else {
-            echo "No users found with email " . $admin_password . " in the database";
+            echo "No users found with email " . $manager_password . " in the database";
             exit;
         }
 

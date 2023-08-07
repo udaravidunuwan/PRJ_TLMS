@@ -1,3 +1,12 @@
+
+<?php 
+require 'manager_signin_functions.php';
+if(isset($_SESSION["session_id"])){
+    header("Location: manager_dashboard.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -9,7 +18,6 @@
         
         <!-- Have to change the absolute path when hosting -->
         <link rel="stylesheet" href="./manager_assets/css/manager_portal.css" />
-        <!-- <link rel="stylesheet" href="<?php echo $base_url; ?>_manager/manager_assets/css/manager_portal.css" /> -->
 
         <!-- favicon -->
         <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
@@ -74,13 +82,14 @@
         <main class="form-signin w-100 m-auto">
             <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
+                <input type="hidden" id="action" value="action">
                     <div class="form-floating">
-                        <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
-                        <label for="adminEmail">Email address</label>
+                        <input type="email" class="form-control bg-body-tertiary" id="managerEmail" name="managerEmail" placeholder="name@example.com" >
+                        <label for="managerEmail">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="Password" >
-                        <label for="adminPassword">Password</label>
+                        <input type="password" class="form-control bg-body-tertiary" id="managerPassword" name="managerPassword" placeholder="Password" >
+                        <label for="managerPassword">Password</label>
                     </div>
                 
                     <div class="form-check text-start my-3">
@@ -89,8 +98,8 @@
                         Remember me
                         </label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSignin" onclick="adminSignin();">Sign in</button>
-                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.html">Go Back</a>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="managerSigninBtn" onclick="managerSignin();">Sign in</button>
+                    <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
         </main>
@@ -100,6 +109,12 @@
         <footer class="footer" id="footer">
 
         </footer>
+
+         <!-- Script to pass data to Ajax -->
+         <?php require 'manager_signin_scripts.php' ?>
+        
+        <!-- Have to change the absolute path when hosting -->
+        <script src="./manager_assets/js/manager_portal.js"></script>
 
         <!-- Have to change the absolute path when hosting -->
         <script src="./manager_assets/js/manager_portal.js"></script>
