@@ -89,22 +89,21 @@ if(isset($_SESSION["session_id"])) {
                         
 
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action" id="tab_customers"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="#" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="./admin_dashboard_cus.php" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./admin_users_cus.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="./admin_jobs_cus.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
-                        <div class="list-group list-group-sm">
+                        <!-- <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
-                        </div>
+                        </div> -->
                         <!-- <hr class="mt-2 mb-4"> -->
                         
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./admin_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>

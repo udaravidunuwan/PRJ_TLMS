@@ -67,7 +67,7 @@
                         <div class="d-flex align-items-top">
                             <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
                                 <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
                             </div>
                         </div>
@@ -77,30 +77,28 @@
                     
                     <div class="offcanvas-body d-flex flex-column">
 
-                        
 
                         <div class="list-group list-group-sm">
-                            <a href="./admin_dashboard.php " class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="./admin_users.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="./admin_customers.php" class="list-group-item list-group-item-action" id="tab_customers"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="./admin_jobs.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="./admin_dashboard_cus.php" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./admin_users_cus.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="./admin_jobs_cus.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
-                        <div class="list-group list-group-sm">
+                        <!-- <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
-                        </div>
+                        </div> -->
                         <!-- <hr class="mt-2 mb-4"> -->
                         
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="./admin_profile.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./admin_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                            <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                        </div>     
                     </div>
 
                 </div>

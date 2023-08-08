@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="./admin_assets/js/admin_jobs.js"></script>
+        <script src="./admin_assets/js/admin_users.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>TLMS/ Admin</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="./admin_assets/css/admin_jobs.css">
+        <link rel="stylesheet" href="./admin_assets/css/admin_users.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -67,8 +67,8 @@
                         <div class="d-flex align-items-top">
                             <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">Custome User</p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -77,30 +77,27 @@
                     
                     <div class="offcanvas-body d-flex flex-column">
 
-                        
-
                         <div class="list-group list-group-sm">
-                            <a href="./admin_dashboard.php " class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="./admin_users.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="./admin_customers.php" class="list-group-item list-group-item-action" id="tab_customers"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="./admin_jobs.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="./admin_dashboard_cus.php" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./admin_users_cus.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="./admin_jobs_cus.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
-                        <div class="list-group list-group-sm">
+                        <!-- <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
-                        </div>
+                        </div> -->
                         <!-- <hr class="mt-2 mb-4"> -->
                         
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="./admin_profile.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./admin_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                            <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                        </div>     
                     </div>
 
                 </div>
@@ -117,7 +114,7 @@
                     <div class="row">
                         <div class="px-md-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Jobs</h1>
+                                <h1 class="h2">Users</h1>
                             </div>
                         </div>
                     </div>
@@ -128,41 +125,32 @@
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">System Administrator</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Jobs</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Users</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="row">
                         <div class="px-md-4">
-                            <h3>Jobs Table</h3>
+                            <h3>Users Table</h3>
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Job Name</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
-                                            <th scope="col">status</th>
-                                            <th scope="col">Assign To</th>
+                                            <th scope="col">User Name</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Mk001</td>
-                                            <td>Job name</td>
-                                            <td>Customer name</td>
-                                            <td>Creared date here</td>
+                                            <td>User name</td>
                                             <td><span class="badge bg-primary">Status here</span></td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="assignDropdown" data-bs-toggle="dropdown" aria-expanded="false">Assign To</button>
-                                                    <ul class="dropdown-menu" aria-labelledby="assignDropdown">
-                                                        <li><a class="dropdown-item" href="#">Name1</a></li>
-                                                        <li><a class="dropdown-item" href="#">Name2</a></li>
-                                                    </ul>
-                                                </div>
+                                             <td>
+                                                <a data-bs-placement="top" class="me-3" title="Edit"><i class="bi bi-pen"></i></a>
+                                                <a data-bs-placement="top" title="Delete"><i class="bi bi-trash3"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

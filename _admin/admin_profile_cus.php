@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="./admin_assets/js/admin_jobs.js"></script>
+        <script src="./admin_assets/js/admin_profile.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <base href="http://localhost/tlms/"> -->
 
         <title>TLMS/ Admin</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="./admin_assets/css/admin_jobs.css">
+        <link rel="stylesheet" href="./admin_assets/css/admin_profile.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -67,7 +68,7 @@
                         <div class="d-flex align-items-top">
                             <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
                                 <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
                             </div>
                         </div>
@@ -80,27 +81,26 @@
                         
 
                         <div class="list-group list-group-sm">
-                            <a href="./admin_dashboard.php " class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="./admin_users.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="./admin_customers.php" class="list-group-item list-group-item-action" id="tab_customers"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="./admin_jobs.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="./admin_dashboard_cus.php" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./admin_users_cus.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="./admin_jobs_cus.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
-                        <div class="list-group list-group-sm">
+                        <!-- <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
-                        </div>
+                        </div> -->
                         <!-- <hr class="mt-2 mb-4"> -->
                         
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="./admin_profile.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./admin_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                            <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                        </div>    
                     </div>
 
                 </div>
@@ -117,7 +117,7 @@
                     <div class="row">
                         <div class="px-md-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Jobs</h1>
+                                <h1 class="h2">Profile</h1>
                             </div>
                         </div>
                     </div>
@@ -127,50 +127,16 @@
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System Administrator</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Jobs</li>
+                                    <li class="breadcrumb-item">System Admin</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="px-md-4">
-                            <h3>Jobs Table</h3>
-                            <div class="table-responsive small">
-                                <table class="table table-striped table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Job Name</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
-                                            <th scope="col">status</th>
-                                            <th scope="col">Assign To</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job name</td>
-                                            <td>Customer name</td>
-                                            <td>Creared date here</td>
-                                            <td><span class="badge bg-primary">Status here</span></td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="assignDropdown" data-bs-toggle="dropdown" aria-expanded="false">Assign To</button>
-                                                    <ul class="dropdown-menu" aria-labelledby="assignDropdown">
-                                                        <li><a class="dropdown-item" href="#">Name1</a></li>
-                                                        <li><a class="dropdown-item" href="#">Name2</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end table -->
+                    <!-- end breadcrumb -->
+                    <!-- start show profile -->
+                    <!-- end show profile -->
+                    
                 </div>
                 <!-- end content -->
             </div>
@@ -230,6 +196,128 @@
                     </button>
                 </li>
             </ul>
+        </div>
+        <!--------------------------Profile-------------->
+
+        <div class="container-xl px-4 mt-4">
+            <!-- Account page navigation-->
+            <ul class="nav nav-tabs" role="tablist" id="nav_tabs">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active"
+                        id="profile-tab"
+                        data-bs-toggle="tab"
+                        href="#profile_tab"
+                        role="tab"
+                        aria-controls="profile_tab"
+                        aria-selected="true"
+                        >Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                        id="security-tab"
+                        data-bs-toggle="tab"
+                        href="#security_tab"
+                        role="tab"
+                        aria-controls="security_tab"
+                        aria-selected="false"
+                        >Security</a>
+                    </li>
+            </ul>
+            <!-- end nav -->
+            <hr class="mt-0 mb-4">
+            
+            
+            <div class="tab-content">
+                <!-- Profile Tab Cantent -->
+                <div class="tab-pane fade show active" id="profile_tab" role="tabpanel" aria-labelledby="profile_tab">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <!-- Profile picture card-->
+                            <div class="card mb-4 mb-xl-0">
+                                <div class="card-header">Profile Picture</div>
+                                <div class="card-body text-center">
+                                    <!-- Profile picture image-->
+                                    <img class="img-account-profile rounded-circle mb-2" src="../_assets/blank_profile_pics/blank_profile_pic.jpg" alt="">
+                                    <!-- Profile picture help block-->
+                                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                    <!-- Profile picture upload button-->
+                                    <button class="btn btn-primary" type="button">Upload new image</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <!-- Account details card-->
+                            <div class="card mb-4">
+                                <div class="card-header">Account Details</div>
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Form Group (username)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="">
+                                        </div>
+                                        <!-- Form Row-->
+                                        <div class="row gx-3 mb-3">
+                                            <!-- Form Group (first name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="">
+                                            </div>
+                                            <!-- Form Group (last name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
+                                        </div>
+                                        <!-- Save changes button-->
+                                        <button class="btn btn-primary" type="button">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Profile  -->
+                <!-- Security Tab Content -->
+                <div class="tab-pane fade" id="security_tab" role="tabpanel" aria-labelledby="security_tab">
+                    <div class="col-lg-8">
+                        <!-- Change password card-->
+                        <div class="card mb-4">
+                            <div class="card-header">Change Password</div>
+                            <div class="card-body">
+                                <form>
+                                    <!-- Form Group (current password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="currentPassword">Current Password</label>
+                                        <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
+                                    </div>
+                                    <!-- Form Group (new password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="newPassword">New Password</label>
+                                        <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
+                                    </div>
+                                    <!-- Form Group (confirm password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                        <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
+                                    </div>
+                                    <button class="btn btn-primary" type="button">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Security  -->
+            </div>
+            <!-- ENd of Tab Content -->
+
+            
+
         </div>
 
         

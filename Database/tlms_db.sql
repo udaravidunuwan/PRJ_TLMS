@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2023 at 07:37 AM
+-- Generation Time: Aug 08, 2023 at 05:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,54 @@ CREATE TABLE `tlms_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `tlms_admin`
+--
+
+INSERT INTO `tlms_admin` (`tlms_admin_id`, `tlms_admin_type`, `tlms_admin_email`, `tlms_admin_password`) VALUES
+(1, 1, 'admin@mail.com', 'admin'),
+(2, 2, 'admin_cus@mail.com', 'admincus');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tlms_manager`
+--
+
+CREATE TABLE `tlms_manager` (
+  `tlms_manager_id` int(255) NOT NULL,
+  `tlms_manager_email` varchar(255) NOT NULL,
+  `tlms_manager_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tlms_manager`
+--
+
+INSERT INTO `tlms_manager` (`tlms_manager_id`, `tlms_manager_email`, `tlms_manager_password`) VALUES
+(1, 'manager@mail.com', 'manager');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tlms_user`
+--
+
+CREATE TABLE `tlms_user` (
+  `tlms_user_id` int(255) NOT NULL,
+  `tlms_user_type` int(255) NOT NULL,
+  `tlms_user_email` varchar(255) NOT NULL,
+  `tlms_user_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tlms_user`
+--
+
+INSERT INTO `tlms_user` (`tlms_user_id`, `tlms_user_type`, `tlms_user_email`, `tlms_user_password`) VALUES
+(1, 1, 'user@mail.com', 'user'),
+(2, 2, 'usercus@mail.com', 'usercus');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -45,6 +93,18 @@ ALTER TABLE `tlms_admin`
   ADD PRIMARY KEY (`tlms_admin_id`);
 
 --
+-- Indexes for table `tlms_manager`
+--
+ALTER TABLE `tlms_manager`
+  ADD PRIMARY KEY (`tlms_manager_id`);
+
+--
+-- Indexes for table `tlms_user`
+--
+ALTER TABLE `tlms_user`
+  ADD PRIMARY KEY (`tlms_user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -52,7 +112,19 @@ ALTER TABLE `tlms_admin`
 -- AUTO_INCREMENT for table `tlms_admin`
 --
 ALTER TABLE `tlms_admin`
-  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tlms_manager`
+--
+ALTER TABLE `tlms_manager`
+  MODIFY `tlms_manager_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tlms_user`
+--
+ALTER TABLE `tlms_user`
+  MODIFY `tlms_user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
