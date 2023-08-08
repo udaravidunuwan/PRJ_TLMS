@@ -99,7 +99,7 @@
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                            <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
                         </div>   
                     </div>
 
