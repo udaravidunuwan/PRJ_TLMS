@@ -4,10 +4,10 @@
 <script type="text/javascript">
     // admin signin 
     $(document).ready(function(){
-        // $("#managerSigninBtn").on("click", function(event) {
-        //     event.preventDefault(); // Prevent form submission for now
-        //     managerSignin(); // Call your function
-        // });
+        $("#managerSigninBtn").on("click", function(event) {
+            event.preventDefault(); // Prevent form submission for now
+            managerSignin(); // Call your function
+        });
         
     });
 
@@ -26,10 +26,24 @@
                 type: 'POST',
                 data: data,
                 success: function(response){
-                    alert(response);
+                    // alert(response);
                     if(response == "Sign in Successful"){
                         window.location.reload();
-                    } 
+                    }  else {
+                        // Display the session status in toast
+                        const toastBody = document.querySelector('#liveToast .toast-body');
+                        const toastLiveExample = document.getElementById('liveToast');
+                        toastBody.textContent = response; // Update toast content
+                        // alert(toastBody.textContent);
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                        toastBootstrap.show(); // Show the toast
+                        // $('#liveToast').toast('show');
+
+                        // Clear the input fields
+                        $('#managerEmail').val('');
+                        $('#managerPassword').val('');
+
+                    }
                 }
             });
 

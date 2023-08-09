@@ -19,7 +19,7 @@ function signinUser(){
     $user_password = $_POST['passwordSignin'];
 
     if(empty($user_email) || empty($user_password)){
-        echo "USer Email and Password are required!";
+        echo "User Email and Password are required!";
         exit;
     }
     
@@ -42,11 +42,11 @@ function signinUser(){
                 $_SESSION["user_type"] = $admin['tlms_user_type'];
                 exit;
             } else {
-                echo "Sign in Failed! Please try again";
+                echo "Sign in Failed! Passsword does not exist";
                 exit;
             }
         } else {
-            echo "No users found with email " . $user_password . " in the database";
+            echo "No users found with email " . $user_email . " in the database";
             exit;
         }
 

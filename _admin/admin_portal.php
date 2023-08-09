@@ -1,5 +1,4 @@
-<?php 
-// session_start();
+<?php
 require 'admin_signin_functions.php';
 if(isset($_SESSION["session_id"])){
     if($_SESSION["admin_type"] == 1) {
@@ -119,7 +118,7 @@ if(isset($_SESSION["session_id"])){
                         <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn" >Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
