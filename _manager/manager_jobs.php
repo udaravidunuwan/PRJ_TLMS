@@ -1,29 +1,20 @@
-<?php 
-require './admin_signin_functions.php';
-if(isset($_SESSION["session_id"])) {
-    $session_id = $_SESSION["session_id"];
-    $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = '$session_id'"));
-} else {
-    header("Location: ../index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="http://localhost/tlms/_admin/admin_assets/js/admin_dashboard.js"></script>
+        <script src="./manager_assets/js/manager_jobs.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TLMS/ Admin</title>
+        <title>TLMS/ Manager</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_admin/admin_assets/css/admin_dashboard.css">
+        <link rel="stylesheet" href="./manager_assets/css/manager_jobs.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
 
         <!-- boostrap CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -56,7 +47,6 @@ if(isset($_SESSION["session_id"])) {
                             <a class="navbar-brand ms-3" href="#">
                                 TLMS
                             </a>
-                            
                         </div>
                         
                         <div>
@@ -77,8 +67,8 @@ if(isset($_SESSION["session_id"])) {
                         <div class="d-flex align-items-top">
                             <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">Customer Admin</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -90,21 +80,22 @@ if(isset($_SESSION["session_id"])) {
                         
 
                         <div class="list-group list-group-sm">
-                            <a href="./admin_dashboard_cus.php" class="list-group-item list-group-item-action" id="tab_dashboard"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="./admin_users_cus.php" class="list-group-item list-group-item-action" id="tab_users"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="./admin_jobs_cus.php" class="list-group-item list-group-item-action" id="tab_jobs"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
-                        <!-- <div class="list-group list-group-sm">
+                        <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-graph-up"></i>&nbsp;&nbsp;Reports</a>
-                        </div> -->
+                        </div>
                         <!-- <hr class="mt-2 mb-4"> -->
                         
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="./admin_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
@@ -126,28 +117,7 @@ if(isset($_SESSION["session_id"])) {
                     <div class="row">
                         <div class="px-md-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Dashboard</h1>
-                                <div class="btn-toolbar mb-2 mb-md-0">
-                                    <div class="btn-group me-2">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button 
-                                            type="button" 
-                                            id="dropdownButton_dashboard-cards" 
-                                            class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" 
-                                            data-bs-toggle="dropdown" 
-                                            aria-expanded="false">
-                                                <i class="bi bi-calendar3"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Today')">Today</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Week')">This Week</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Month')">This Month</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <h1 class="h2">Jobs</h1>
                             </div>
                         </div>
                     </div>
@@ -157,96 +127,43 @@ if(isset($_SESSION["session_id"])) {
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">Customer Administrator</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item">System Manager</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Jobs</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <!-- end breadcrumb -->
-                    <!-- start analytics -->
                     <div class="row">
                         <div class="px-md-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 border-bottom">
-                                <div class="col-12">
-                                    <div class="card widget-inline border-0 ">
-                                        <div class="card-body p-0">
-                                            <div class="row g-0">
-                                                <!-- card 1 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>29</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Completed</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 1 -->
-                                                <!-- card 2 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>715</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Pending</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 2 -->
-                                                <!-- card 3 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>31</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Wroking On</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 3 -->
-                                                <!-- card 4 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1 ">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 4 -->
-                                            </div> 
-                                            <!-- end row -->
-                                        </div>
-                                    </div> 
-                                    <!-- end card-box-->
-                                </div> 
-                                <!-- end col-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end anaytics -->
-                    <!-- start table -->
-                    <div class="row">
-                        <div class="px-md-4">
-                            <h3>Latest Jobs</h3>
+                            <h3>Jobs Table</h3>
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Job</th>
+                                            <th scope="col">Job Name</th>
                                             <th scope="col">Customer</th>
                                             <th scope="col">Created Date</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Assigned to</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">Assign To</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>Status here</td>
-                                            <td>to User</td>
+                                            <td>Job name</td>
+                                            <td>Customer name</td>
+                                            <td>Creared date here</td>
+                                            <td><span class="badge bg-primary">Status here</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="assignDropdown" data-bs-toggle="dropdown" aria-expanded="false">Assign To</button>
+                                                    <ul class="dropdown-menu" aria-labelledby="assignDropdown">
+                                                        <li><a class="dropdown-item" href="#">Name1</a></li>
+                                                        <li><a class="dropdown-item" href="#">Name2</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
