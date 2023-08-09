@@ -131,9 +131,9 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="px-md-4">
-                            <h3>Customers Table</h3>
+                            <!-- <h3>Customers Table</h3> -->
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
                                     <thead>
@@ -143,10 +143,10 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-group-divider">
                                         <tr>
                                             <td>Mk001</td>
-                                            <td>User name</td>
+                                            <td>KGH / DB Schenker</td>
                                              <td>
                                                 <a data-bs-placement="top" class="me-3" title="Edit"><i class="bi bi-pen"></i></a>
                                                 <a data-bs-placement="top" title="Delete"><i class="bi bi-trash3"></i></a>

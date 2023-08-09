@@ -133,22 +133,24 @@
                     </div>
                     <div class="row">
                         <div class="px-md-4">
-                            <h3>Users Table</h3>
+                            <!-- <h3>Users Table</h3> -->
                             <div class="table-responsive small">
                                 <table class="table table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">User Name</th>
+                                            <th scope="col">User Role</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-group-divider">
                                         <tr>
                                             <td>Mk001</td>
                                             <td>User name</td>
-                                            <td><span class="badge bg-primary">Status here</span></td>
+                                            <td>Admin</td>
+                                            <td><span class="badge bg-primary">N/A</span></td>
                                              <td>
                                                 <a data-bs-placement="top" class="me-3" title="Edit"><i class="bi bi-pen"></i></a>
                                                 <a data-bs-placement="top" title="Delete"><i class="bi bi-trash3"></i></a>
