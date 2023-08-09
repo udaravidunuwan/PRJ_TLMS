@@ -20,6 +20,8 @@ function signinAdmin(){
 
     if(empty($admin_email) || empty($admin_password)){
         echo "Admin Email and Password are required!";
+        // $_SESSION['status'] = "Admin Email and Password are required!";
+        // echo $_SESSION['status'];
         exit;
     }
     
@@ -42,14 +44,17 @@ function signinAdmin(){
                 $_SESSION["admin_type"] = $admin['tlms_admin_type'];
                 exit;
             } else {
-                echo "Sign in Failed! Please try again";
+                echo "Sign in Failed! Passsword does not exist";
+                // $_SESSION['status'] = "Sign in Failed! Please try again";
                 exit;
             }
         } else {
-            echo "No users found with email " . $admin_password . " in the database";
+            echo "No users found with email " . $admin_email . " in the database";
+            // $_SESSION['status'] = "No users found with email " . $admin_password . " in the database";
             exit;
         }
 
     }
     echo "Error: " . $checkStmt->error;
+    // $_SESSION['status'] = "Error: " . $checkStmt->error;
 }
