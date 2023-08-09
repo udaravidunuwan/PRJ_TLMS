@@ -67,7 +67,7 @@
                         <div class="d-flex align-items-top">
                             <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
                                 <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
                             </div>
                         </div>
@@ -79,11 +79,9 @@
 
                         
 
-                        <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                    <div class="list-group list-group-sm">
+                            <a href="./user_dashboard_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./user_jobs_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
@@ -95,12 +93,12 @@
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./user_profile_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
                             <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                        </div>     
                     </div>
 
                 </div>
@@ -127,7 +125,7 @@
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System User</li>
+                                    <li class="breadcrumb-item">Customer User</li>
                                     <li class="breadcrumb-item active" aria-current="page">Jobs</li>
                                 </ol>
                             </nav>

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="http://localhost/tlms/_user/user_assets/js/user_dashboard.js"></script>
+        <script src="./user_assets/js/user_profile.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <base href="http://localhost/tlms/"> -->
 
         <title>TLMS/ User</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
+        <link rel="stylesheet" href="./user_assets/css/user_profile.css">
 
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -65,10 +66,10 @@
                 <div class="offcanvas offcanvas-start rounded-4 rounded-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel" aria-modal="true" role="dialog">
                     <div class="offcanvas-header d-flex justify-content-between align-items-start">
                         <div class="d-flex align-items-top">
-                            <img src="../assets/img/favicon_io/" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
+                            <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                             <div>
-                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">User Name</p>
-                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">Customer user</p>
+                                <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">KGH</p>
+                                <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
                             </div>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -76,8 +77,6 @@
                     <hr class="mt-0 mb-1">
                     
                     <div class="offcanvas-body d-flex flex-column">
-
-                        
 
                         <div class="list-group list-group-sm">
                             <a href="./user_dashboard_cus.php" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
@@ -98,7 +97,7 @@
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
                             <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                        </div>     
                     </div>
 
                 </div>
@@ -115,28 +114,7 @@
                     <div class="row">
                         <div class="px-md-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Dashboard</h1>
-                                <div class="btn-toolbar mb-2 mb-md-0">
-                                    <div class="btn-group me-2">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button 
-                                            type="button" 
-                                            id="dropdownButton_dashboard-cards" 
-                                            class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" 
-                                            data-bs-toggle="dropdown" 
-                                            aria-expanded="false">
-                                                <i class="bi bi-calendar3"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Today')">Today</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Week')">This Week</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Month')">This Month</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <h1 class="h2">Profile</h1>
                             </div>
                         </div>
                     </div>
@@ -147,102 +125,15 @@
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">Customer User</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <!-- end breadcrumb -->
-                    <!-- start analytics -->
-                    <div class="row">
-                        <div class="px-md-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 border-bottom">
-                                <div class="col-12">
-                                    <div class="card widget-inline border-0 ">
-                                        <div class="card-body p-0">
-                                            <div class="row g-0">
-                                                <!-- card 1 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>29</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Completed</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 1 -->
-                                                <!-- card 2 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>715</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Pending</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 2 -->
-                                                <!-- card 3 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>31</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Wroking On</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 3 -->
-                                                <!-- card 4 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1 ">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 4 -->
-                                            </div> 
-                                            <!-- end row -->
-                                        </div>
-                                    </div> 
-                                    <!-- end card-box-->
-                                </div> 
-                                <!-- end col-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end anaytics -->
-                    <!-- start table -->
-                    <div class="row">
-                        <div class="px-md-4">
-                            <h3>Latest Jobs</h3>
-                            <div class="table-responsive small">
-                                <table class="table table-striped table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Job</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Assigned to</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>Status here</td>
-                                            <td>to User</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end table -->
+                    <!-- start show profile -->
+                    <!-- end show profile -->
+                    
                 </div>
                 <!-- end content -->
             </div>
@@ -302,6 +193,130 @@
                     </button>
                 </li>
             </ul>
+        </div>
+        <!--------------------------Profile-------------->
+
+        <div class="container-xl px-4 mt-4">
+            <!-- Account page navigation-->
+            <ul class="nav nav-borders" role="tablist" id="nav_tabs">
+                <li class="nav-item " role="presentation">
+                    <a 
+                        class="nav-link active ms-0"
+                        id="profile-tab"
+                        data-bs-toggle="tab"
+                        href="#profile_tab"
+                        role="tab"
+                        aria-controls="profile_tab"
+                        aria-selected="true"
+                        >Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a 
+                        class="nav-link"
+                        id="security-tab"
+                        data-bs-toggle="tab"
+                        href="#security_tab"
+                        role="tab"
+                        aria-controls="security_tab"
+                        aria-selected="false"
+                        >Security</a>
+                </li>
+            </ul>
+            <!-- end nav -->
+            <hr class="mt-0 mb-4">
+            
+            
+            <div class="tab-content">
+                <!-- Profile Tab Cantent -->
+                <div class="tab-pane fade show active" id="profile_tab" role="tabpanel" aria-labelledby="profile_tab">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <!-- Profile picture card-->
+                            <div class="card mb-4 mb-xl-0">
+                                <div class="card-header">Profile Picture</div>
+                                <div class="card-body text-center">
+                                    <!-- Profile picture image-->
+                                    <img class="img-account-profile rounded-circle mb-2" src="../_assets/blank_profile_pics/blank_profile_pic.jpg" alt="">
+                                    <!-- Profile picture help block-->
+                                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                    <!-- Profile picture upload button-->
+                                    <button class="btn btn-primary" type="button">Upload new image</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <!-- Account details card-->
+                            <div class="card mb-4">
+                                <div class="card-header">Account Details</div>
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Form Group (username)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="">
+                                        </div>
+                                        <!-- Form Row-->
+                                        <div class="row gx-3 mb-3">
+                                            <!-- Form Group (first name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="">
+                                            </div>
+                                            <!-- Form Group (last name)-->
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
+                                        </div>
+                                        <!-- Save changes button-->
+                                        <button class="btn btn-primary" type="button">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Profile  -->
+                <!-- Security Tab Content -->
+                <div class="tab-pane fade" id="security_tab" role="tabpanel" aria-labelledby="security_tab">
+                    <div class="col-lg-8">
+                        <!-- Change password card-->
+                        <div class="card mb-4">
+                            <div class="card-header">Change Password</div>
+                            <div class="card-body">
+                                <form>
+                                    <!-- Form Group (current password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="currentPassword">Current Password</label>
+                                        <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
+                                    </div>
+                                    <!-- Form Group (new password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="newPassword">New Password</label>
+                                        <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
+                                    </div>
+                                    <!-- Form Group (confirm password)-->
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                        <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
+                                    </div>
+                                    <button class="btn btn-primary" type="button">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Security  -->
+            </div>
+            <!-- ENd of Tab Content -->
+
+            
+
         </div>
 
         

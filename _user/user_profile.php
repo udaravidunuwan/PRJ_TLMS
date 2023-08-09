@@ -78,13 +78,9 @@
                     
                     <div class="offcanvas-body d-flex flex-column">
 
-                        
-
-                        <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person-workspace"></i>&nbsp;&nbsp;Users</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-people"></i>&nbsp;&nbsp;Customers</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
+                    <div class="list-group list-group-sm">
+                            <a href="./user_dashboard.php" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2"></i>&nbsp;&nbsp;Dashboard</a>
+                            <a href="./user_jobs.php" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-code"></i>&nbsp;&nbsp;Jobs</a>
                         </div>
                         <hr class="mt-2 mb-4">
                         
@@ -96,12 +92,12 @@
                         <div class="flex-fill">
                         </div>
                         <div class="list-group list-group-sm">
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
+                            <a href="./user_profile.php" class="list-group-item list-group-item-action"><i class="bi bi-person"></i>&nbsp;&nbsp;Profile</a>
                         </div>
                         <div class="list-group list-group-sm">
                             <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-gear-wide-connected"></i>&nbsp;&nbsp;Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
-                        </div>   
+                            <a href="../signout.php" class="list-group-item list-group-item-action"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;Sign Out</a>
+                        </div>  
                     </div>
 
                 </div>
@@ -207,7 +203,7 @@
                     <a 
                         class="nav-link active ms-0"
                         id="profile-tab"
-                        data-mdb-toggle="tab"
+                        data-bs-toggle="tab"
                         href="#profile_tab"
                         role="tab"
                         aria-controls="profile_tab"
@@ -216,9 +212,9 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <a 
-                    class="nav-link"
-                    id="security-tab"
-                    data-mdb-toggle="tab"
+                        class="nav-link"
+                        id="security-tab"
+                        data-bs-toggle="tab"
                         href="#security_tab"
                         role="tab"
                         aria-controls="security_tab"
