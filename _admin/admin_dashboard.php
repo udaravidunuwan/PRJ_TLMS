@@ -207,7 +207,7 @@ if(isset($_SESSION["session_id"])) {
                                                     <div class="card rounded-0 shadow-none m-0 border-1 ">
                                                         <div class="card-body text-center">
                                                             <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
+                                                            <p class="text-muted font-15 mb-0">Not Assigned</p>
                                                         </div>
                                                     </div>
                                                 </div>
