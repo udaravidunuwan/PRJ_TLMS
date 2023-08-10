@@ -2,12 +2,46 @@
 </script>
 
 <script type="text/javascript">
-    // admin signin 
     $(document).ready(function(){
+        // admin signin event click listner
         $("#adminSigninBtn").on("click", function(event) {
             event.preventDefault(); // Prevent form submission for now
             adminSignin(); // Call your function
         });
+        // end 
+
+        // // update dropdown label
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     updateDropdownLabelFilterRole("All");
+        // });
+        // function updateDropdownLabelFilterRole(label) {
+        //     document.getElementById("dropdownButton-users_roleFilter").innerHTML = `<i class="bi bi-funnel"></i>`+label;
+        // }
+        // // end
+
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     // Get the dropdown items
+        //     const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        //     // Attach click event listeners to each dropdown item
+        //     dropdownItems.forEach(item => {
+        //         item.addEventListener('click', function (event) {
+        //             event.preventDefault(); // Prevent the default link behavior
+        //             const selectedRole = item.getAttribute('data-role');
+        //             updateDropdownLabelFilterRole(selectedRole);
+        //         });
+        //     });
+
+        //     // Initialize the dropdown label
+        //     updateDropdownLabelFilterRole("All");
+        // });
+
+        // function updateDropdownLabelFilterRole(label) {
+        //     const dropdownButton = document.getElementById("dropdownButton-users_roleFilter");
+        //     dropdownButton.innerHTML = `<i class="bi bi-funnel"></i>` + label;
+        // }
+
+                
     });
 
     function adminSignin(){

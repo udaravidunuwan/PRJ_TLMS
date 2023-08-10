@@ -125,7 +125,7 @@ if(isset($_SESSION["session_id"])) {
                     <!-- start Page title -->
                     <div class="row">
                         <div class="px-md-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
                                 <h1 class="h2">Dashboard</h1>
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <div class="btn-group me-2">
@@ -152,8 +152,9 @@ if(isset($_SESSION["session_id"])) {
                         </div>
                     </div>
                     <!-- end page title -->
+                    
                     <!-- start breadcrumb -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="px-md-4">
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -162,7 +163,7 @@ if(isset($_SESSION["session_id"])) {
                                 </ol>
                             </nav>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- end breadcrumb -->
                     <!-- start analytics -->
                     <div class="row">

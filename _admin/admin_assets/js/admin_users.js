@@ -74,9 +74,9 @@
   })()
 
 document.addEventListener("DOMContentLoaded", function () {
-  updateDropdownLabel("Today");
+  updateDropdownLabelFilterRole("All");
 });
 
-function updateDropdownLabel(label) {
+function updateDropdownLabelFilterRole(label) {
   document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
 }
