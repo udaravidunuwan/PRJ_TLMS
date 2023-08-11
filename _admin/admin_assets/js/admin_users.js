@@ -74,9 +74,14 @@
   })()
 
 document.addEventListener("DOMContentLoaded", function () {
-  updateDropdownLabelFilterRole("All");
+  updateDropdownLabel("All");
 });
 
-function updateDropdownLabelFilterRole(label) {
-  document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
+function updateDropdownLabel(label) {
+  document.getElementById("dropdownButton-users_roleFilter").innerHTML = `<i class="bi bi-filter"></i>`+label;
 }
+
+// Datatables
+$(document).ready(function() {
+  $('#example').DataTable();
+})
