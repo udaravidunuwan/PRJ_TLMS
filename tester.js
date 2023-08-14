@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#users_table').DataTable();
+    // new DataTable('#users_table');
 })
-
-// new DataTable('#example');

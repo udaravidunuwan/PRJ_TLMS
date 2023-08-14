@@ -201,7 +201,7 @@
 
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-            <ul class="nav nav-borders" role="tablist" id="nav_tabs">
+            <ul class="nav nav-underline" role="tablist" id="nav_tabs">
                 <li class="nav-item " role="presentation">
                     <a 
                         class="nav-link active ms-0"

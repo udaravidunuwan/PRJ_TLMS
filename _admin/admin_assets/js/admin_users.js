@@ -83,5 +83,5 @@ function updateDropdownLabel(label) {
 
 // Datatables
 $(document).ready(function() {
-  $('#example').DataTable();
+  $('#admin_users_table').DataTable();
 })
