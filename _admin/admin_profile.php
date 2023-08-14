@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
-        <script src="./admin_assets/js/admin_profile.js"></script>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <base href="http://localhost/tlms/"> -->
@@ -202,7 +202,7 @@
 
         <div class="container-xl px-4 mt-4">
             <!-- Account page navigation-->
-            <ul class="nav nav-tabs" role="tablist" id="nav_tabs">
+            <ul class="nav nav-underline" role="tablist" id="nav_tabs">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active"
                         id="profile-tab"
@@ -321,7 +321,7 @@
 
         </div>
 
-        
+        <script src="./admin_assets/js/admin_profile.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
