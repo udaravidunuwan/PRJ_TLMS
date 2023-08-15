@@ -1,3 +1,60 @@
+<?php
+require './admin_signin_functions.php';
+
+// Check if the session variable is set and non-empty
+if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
+    // Sanitize the session ID to prevent SQL injection
+    $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
+
+    // Prepare the SQL statement to retrieve admin information
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = ?");
+    mysqli_stmt_bind_param($stmt, "s", $session_id);
+    mysqli_stmt_execute($stmt);
+    // Get the result of the query
+    $result = mysqli_stmt_get_result($stmt);
+    // Fetch admin data as an associative array
+    $admin = mysqli_fetch_assoc($result);
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
+    // Check if an admin was found
+    if (!$admin) {
+        // Redirect to index.php if admin not found
+        header("Location: ../index.php");
+        exit(); // Make sure to exit after sending the redirect header
+    }
+
+    // Table fetch
+    // Fetch data from tlms_system_users table using prepared statement
+    $query = "SELECT tlms_system_users_id, tlms_system_users_first_name, tlms_system_users_last_name, tlms_system_users_user_role, tlms_system_users_email FROM tlms_system_users";
+    $stmt = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Generate table rows
+    $rows = '';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows .= '<tr>
+                    <td>' . htmlspecialchars($row['tlms_system_users_id']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_system_users_first_name']) . ' ' . htmlspecialchars($row['tlms_system_users_last_name']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_system_users_user_role']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_system_users_email']) . '</td>
+                    <td>
+                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-sm me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>';
+    }
+
+    mysqli_stmt_close($stmt);
+    // End Table fetch
+} else {
+    // Redirect to index.php if session_id is not set
+    header("Location: ../index.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -14,17 +71,17 @@
     <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
     <!-- boostrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    
+
     <!-- DataTable CSS import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    
+
     <!-- DataTable JS Import -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="./admin_assets/js/admin_users.js"></script>
-    
+
 
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
@@ -140,15 +197,15 @@
                 <!-- end page title -->
                 <!-- start breadcrumb -->
                 <div class="row">
-                        <div class="px-md-4">
-                            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">System Administrator</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Users</li>
-                                </ol>
-                            </nav>
-                        </div>
+                    <div class="px-md-4">
+                        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">System Administrator</li>
+                                <li class="breadcrumb-item active" aria-current="page">Users</li>
+                            </ol>
+                        </nav>
                     </div>
+                </div>
                 <!-- end of Breadcrumb -->
                 <div class="row mt-3">
                     <div class="px-md-4">
@@ -156,23 +213,25 @@
                         <table id="admin_users_table" class="table table-striped table-sm">
                             <thead>
                                 <tr>
+                                    <th>User ID</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>User Role</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011-04-25</td>
-                                    <td>$320,800</td>
-                                </tr>
+                            <?php echo $rows; ?>
+                                <!-- <tr>
+                                    <td>01</td>
+                                    <td>sample name</td>
+                                    <td>admin</td>
+                                    <td>sample@email.com</td>
+                                    <td>
+                                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal"><i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-sm me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal"><i class="bi bi-trash3"></i></button>
+                                    </td>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -183,7 +242,42 @@
         </div>
     </main>
 
+    <!-- Modal Edit -->
+    <div class="modal fade" id="users_edit_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    THE EDIT FORM HERE
+                    <!-- THE EDIT FORM HERE -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL EDIT -->
+    <!-- Modal Delete -->
+    <div class="modal fade" id="users_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
+                <div class="modal-body">
+                    Are you sure to delete the field?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary delete-button">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL DELETE -->
 
     <!-- Theme SVG Images -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -251,6 +345,7 @@
 
     <!-- Script to pass data to Ajax -->
     <?php
+    
     require 'admin_signin_scripts.php'
     ?>
 
