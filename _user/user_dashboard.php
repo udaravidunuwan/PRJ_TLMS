@@ -155,10 +155,10 @@
                     <!-- end breadcrumb -->
                     <!-- start analytics -->
                     <div class="row">
-                        <div class="px-md-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 border-bottom">
+                        <div class="px-md-3">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-3 mb-3 border-bottom">
                                 <div class="col-12">
-                                    <div class="card widget-inline border-0 ">
+                                    <!-- <div class="card widget-inline border-0 "> -->
                                         <div class="card-body p-0">
                                             <div class="row g-0">
                                                 <!-- card 1 -->
@@ -192,14 +192,14 @@
                                                 </div>
                                                 <!-- end card 3 -->
                                                 <!-- card 4 -->
-                                                <div class="col-sm-6 col-lg-3">
+                                                <!-- <div class="col-sm-6 col-lg-3">
                                                     <div class="card rounded-0 shadow-none m-0 border-1 ">
                                                         <div class="card-body text-center">
                                                             <h3><span>93</span></h3>
                                                             <p class="text-muted font-15 mb-0">New</p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- end card 4 -->
                                             </div> 
                                             <!-- end row -->
