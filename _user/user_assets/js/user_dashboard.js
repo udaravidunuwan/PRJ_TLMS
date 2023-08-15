@@ -80,3 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateDropdownLabel(label) {
   document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateDropdownLabel("Status here");
+});
+
+function updateDropdownLabel(status) {
+  document.getElementById("statusDropdown").textContent = status;
+}
+
+
+$(document).ready(function() {
+  $('#sys_user_dashboard_tab').DataTable();
+});

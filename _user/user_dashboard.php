@@ -154,60 +154,41 @@
                     </div>
                     <!-- end breadcrumb -->
                     <!-- start analytics -->
-                    <div class="row">
-                        <div class="px-md-3">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-3 mb-3 border-bottom">
-                                <div class="col-12">
-                                    <!-- <div class="card widget-inline border-0 "> -->
-                                        <div class="card-body p-0">
-                                            <div class="row g-0">
-                                                <!-- card 1 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>29</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Completed</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 1 -->
-                                                <!-- card 2 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>715</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Pending</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 2 -->
-                                                <!-- card 3 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>31</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Wroking On</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 3 -->
-                                                <!-- card 4 -->
-                                                <!-- <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1 ">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <!-- end card 4 -->
-                                            </div> 
-                                            <!-- end row -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-3 mb-3 border-bottom">
+                                <!-- Card 1 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>29</span></h3>
+                                            <p class="text-muted font-15 mb-0">Completed</p>
                                         </div>
-                                    </div> 
-                                    <!-- end card-box-->
-                                </div> 
-                                <!-- end col-->
+                                    </div>
+                                </div>
+                                <!-- End Card 1 -->
+
+                                <!-- Card 2 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>715</span></h3>
+                                            <p class="text-muted font-15 mb-0">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Card 2 -->
+
+                                <!-- Card 3 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>31</span></h3>
+                                            <p class="text-muted font-15 mb-0">Working On</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Card 3 -->
                             </div>
                         </div>
                     </div>
@@ -217,7 +198,7 @@
                         <div class="px-md-4">
                             <h3>Latest Jobs</h3>
                             <div class="table-responsive small">
-                                <table class="table table-striped table-sm">
+                                <table class="table table-striped table-sm" id="sys_user_dashboard_tab">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -234,7 +215,18 @@
                                             <td>Job Name</td>
                                             <td>Customer Name</td>
                                             <td>Date here</td>
-                                            <td>Status here</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Status here
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
                                             <td>to User</td>
                                         </tr>
                                     </tbody>
@@ -308,6 +300,7 @@
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
