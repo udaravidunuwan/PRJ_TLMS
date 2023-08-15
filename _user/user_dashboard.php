@@ -198,7 +198,7 @@
                         <div class="px-md-4">
                             <h3>Latest Jobs</h3>
                             <div class="table-responsive small">
-                                <table class="table table-striped table-sm" id="sys_user_dashboard_tab">
+                                <table id="user_dashboard_table" class="table table-striped table-sm pt-2">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>

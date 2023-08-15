@@ -94,5 +94,5 @@ function updateDropdownLabel(status) {
 
 
 $(document).ready(function() {
-  $('#sys_user_dashboard_tab').DataTable();
+  $('#user_dashboard_table').DataTable();
 });
