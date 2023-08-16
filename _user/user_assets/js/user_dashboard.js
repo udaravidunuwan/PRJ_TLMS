@@ -85,5 +85,5 @@ document.addEventListener("onclick", function () {
   updateDropdown("Pending");
 })
 function updateDropdown(status) {
-  document.getElementById("statusDropdown").textContent = status;
+  document.getElementById("statusDropdown").textContent + status;
 }
