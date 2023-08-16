@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
-    <head>
-        <script src="http://localhost/tlms/_user/user_assets/js/user_dashboard.js"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f8fb">
 
-        <title>TLMS/ User</title>
+    <title>TLMS/ Admin</title>
 
-        <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
+    <!-- css load with absolute path -->
+    <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- boostrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-        <!-- BOOTSTRAP ICONS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- DataTable CSS import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
-        <!-- boostrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-        <meta name="theme-color" content="#f8f8fb">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    </head>
+    <!-- DataTable JS Import -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+</head>
 
     <body class="py-0 bg-body-tertiary">
         
@@ -221,180 +224,9 @@
                                                         Status here
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk002</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk0013</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                            <td>to User</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Pending')">Pending</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Working On')">Working On</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Completed')">Completed</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -469,14 +301,11 @@
 
         
 
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
         <script src="./user_assets/js/user_dashboard.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
         
     </body>
 
