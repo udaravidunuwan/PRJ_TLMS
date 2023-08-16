@@ -219,15 +219,20 @@
                                             <td>Customer Name</td>
                                             <td>Date here</td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Status here
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Pending')">Pending</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Working On')">Working On</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="updateDropdown('Completed')">Completed</a></li>
-                                                    </ul>
+                                                <div class="btn-toolbar mb-2 mb-md-0">
+                                                    <div class="btn-group me-2">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary">Status here</button>
+                                                    </div>
+                                                    <div class="dropdown">
+                                                        <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('All')">Pending</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Admin')">Working On</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Manager')">Completed</a></li>
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
                                             </td>
                                             <td>to User</td>

@@ -81,9 +81,6 @@ function updateDropdownLabel(label) {
   document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
 }
 
-document.addEventListener("onclick", function () {
-  updateDropdown("Pending");
+$(document).ready(function() {
+  $('#user_dashboard_table').DataTable();
 })
-function updateDropdown(status) {
-  document.getElementById("statusDropdown").textContent + status;
-}
