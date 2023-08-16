@@ -227,9 +227,9 @@
                                                         <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('All')">Pending</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Admin')">Working On</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Manager')">Completed</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
                                                         </ul>
                                                     </div>
 
