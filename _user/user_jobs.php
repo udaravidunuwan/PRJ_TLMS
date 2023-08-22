@@ -8,21 +8,24 @@
         <title>TLMS/ User</title>
 
         <!-- css load with absolute path -->
-        <link rel="stylesheet" href="./user_assets/css/user_jobs.css">
-
+        <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_jobs.css">
         <!-- BOOTSTRAP ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="../_assets/favicon_io/favicon-16x16.png">
-
+        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
         <!-- boostrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-        <meta name="theme-color" content="#f8f8fb">
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+        <!-- DataTable CSS import -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+        <!-- DataTable JS Import -->
+        <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     </head>
 
     <body class="py-0 bg-body-tertiary">
@@ -133,35 +136,42 @@
                         <div class="px-md-4">
                             <h3>Jobs Table</h3>
                             <div class="table-responsive small">
-                                <table class="table table-striped table-sm">
+                                <table id="user_jobs_table" class="table table-striped table-sm pt-2">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Job Name</th>
+                                            <th scope="col">Job</th>
                                             <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
-                                            <th scope="col">status</th>
-                                            <th scope="col">Assign To</th>
+                                            <th scope="col">Started Date</th>
+                                            <th scope="col">Completed Date</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Assigned to</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Mk001</td>
-                                            <td>Job name</td>
-                                            <td>Customer name</td>
-                                            <td>Creared date here</td>
-                                            <td><span class="badge bg-primary">Status here</span></td>
+                                            <td>Job Name</td>
+                                            <td>Customer Name</td>
+                                            <td>Start Date here</td>
+                                            <td>Completed Date here</td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="assignDropdown" data-bs-toggle="dropdown" aria-expanded="false">Assign To</button>
-                                                    <ul class="dropdown-menu" aria-labelledby="assignDropdown">
-                                                        <li><a class="dropdown-item" href="#">Name1</a></li>
-                                                        <li><a class="dropdown-item" href="#">Name2</a></li>
-                                                    </ul>
+                                                <div class="btn-toolbar mb-2 mb-md-0">
+                                                    <div class="dropdown">
+                                                        <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Pending')">Pending</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Working On')">Working On</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Completed')">Completed</a></li>
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
                                             </td>
+                                            <td>to User</td>
                                         </tr>
-                                    </tbody>
+                                   </tbody>
                                 </table>
                             </div>
                         </div>
@@ -230,12 +240,11 @@
 
         
 
+        <script src="./user_assets/js/user_jobs.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
         
     </body>
 

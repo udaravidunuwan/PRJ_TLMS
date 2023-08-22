@@ -1,3 +1,13 @@
+<?php 
+require './user_signin_functions.php';
+if(isset($_SESSION["session_id"])) {
+    $session_id = $_SESSION["session_id"];
+    $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = '$session_id'"));
+} else {
+    header("Location: ../index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
 <head>
@@ -134,9 +144,9 @@
                                                 <i class="bi bi-calendar3"></i>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Today')">Today</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Week')">This Week</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Month')">This Month</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('Today')">Today</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('This Week')">This Week</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('This Month')">This Month</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -207,7 +217,8 @@
                                             <th scope="col">ID</th>
                                             <th scope="col">Job</th>
                                             <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
+                                            <th scope="col">Start Date</th>
+                                            <th scope="col">Completed Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Assigned to</th>
                                         </tr>
@@ -217,19 +228,17 @@
                                             <td>Mk001</td>
                                             <td>Job Name</td>
                                             <td>Customer Name</td>
-                                            <td>Date here</td>
+                                            <td>Start Date here</td>
+                                            <td>Completed Date here</td>
                                             <td>
                                                 <div class="btn-toolbar mb-2 mb-md-0">
-                                                    <div class="btn-group me-2">
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary">Status here</button>
-                                                    </div>
                                                     <div class="dropdown">
-                                                        <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
+                                                        <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Pending')">Pending</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Working On')">Working On</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Completed')">Completed</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Pending')">Pending</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Working On')">Working On</a></li>
+                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Completed')">Completed</a></li>
                                                         </ul>
                                                     </div>
 
