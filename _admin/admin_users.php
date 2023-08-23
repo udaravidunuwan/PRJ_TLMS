@@ -176,7 +176,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                             <h1 class="h2">Users</h1>
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group me-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Add New User</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#users_new_modal">Add New User</button>
                                 </div>
                                 <div class="dropdown">
                                     <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
@@ -221,7 +221,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php echo $rows; ?>
+                                <?php echo $rows; ?>
                                 <!-- <tr>
                                     <td>01</td>
                                     <td>sample name</td>
@@ -241,6 +241,36 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
             <!-- end content -->
         </div>
     </main>
+
+
+    <!-- Modal Insert -->
+    <div class="modal fade" id="users_new_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL INSERT -->
 
     <!-- Modal Edit -->
     <div class="modal fade" id="users_edit_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -262,6 +292,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
     </div>
     <!-- END MODAL EDIT -->
+
     <!-- Modal Delete -->
     <div class="modal fade" id="users_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -345,7 +376,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 
     <!-- Script to pass data to Ajax -->
     <?php
-    
+
     require 'admin_signin_scripts.php'
     ?>
 
