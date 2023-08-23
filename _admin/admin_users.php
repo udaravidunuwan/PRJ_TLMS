@@ -176,10 +176,17 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                             <h1 class="h2">Users</h1>
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group me-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#users_new_modal">Add New User</button>
+                                    <button id="admin_users_addNewUsers" type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#users_new_modal">Add New User</button>
                                 </div>
-                                <div class="dropdown">
-                                    <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
+                                <!-- <div class=""> -->
+                                <!-- <select name="" id="" class="form-select form-select-sm  ">
+                                        <i class="bi bi-filter"></i>
+                                        <option class="dropdown-item" value="All"><i class="bi bi-filter"></i>All</option>
+                                        <option class="dropdown-item" value="Admin">Admin</option>
+                                        <option class="dropdown-item" value="Manger">Manager</option>
+                                        <option class="dropdown-item" value="User">User</option>
+                                    </select> -->
+                                <!-- <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
                                         <i class="bi bi-filter"></i>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -187,8 +194,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                                         <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Admin')">Admin</a></li>
                                         <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Manager')">Manager</a></li>
                                         <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('User')">User</a></li>
-                                    </ul>
-                                </div>
+                                    </ul> -->
+                                <!-- </div> -->
 
                             </div>
                         </div>
@@ -222,16 +229,6 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                             </thead>
                             <tbody>
                                 <?php echo $rows; ?>
-                                <!-- <tr>
-                                    <td>01</td>
-                                    <td>sample name</td>
-                                    <td>admin</td>
-                                    <td>sample@email.com</td>
-                                    <td>
-                                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-sm me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal"><i class="bi bi-trash3"></i></button>
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -248,23 +245,45 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New User</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Insert Form -->
                     <form>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <select id="admin_users_addNewUser_UserRole" class="form-select" label="User Role" aria-label="User Role">
+                                    <option selected disabled>User Role</option>
+                                    <option>Admin</option>
+                                    <option>Manager</option>
+                                    <option>User</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input id="temp_password_input" class="form-control" type="text" value="Temp Password" aria-label="readonly input example" readonly>
+                            </div>
                         </div>
                     </form>
+                    <!-- End of Insert Form -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" id="admin_users_addNewUser_btn">Save</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -277,15 +296,40 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    THE EDIT FORM HERE
-                    <!-- THE EDIT FORM HERE -->
+                    <!-- Edit Form -->
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <select id="inputState" class="form-select" label="User Role" aria-label="User Role">
+                                    <option selected disabled>User Role</option>
+                                    <option>Admin</option>
+                                    <option>Manager</option>
+                                    <option>User</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End of Edit Form -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" id="admin_users_editUser_btn">Save</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -302,7 +346,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     Are you sure to delete the field?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary delete-button">Yes</button>
+                    <button type="button" class="btn btn-primary delete-button" id="admin_users_deleteUser_btn">Yes</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 </div>
             </div>
