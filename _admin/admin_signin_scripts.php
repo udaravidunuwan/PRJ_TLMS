@@ -131,10 +131,10 @@
                 emailSignin: $('#adminEmail').val(),
                 passwordSignin: $('#adminPassword').val(),
             };
-            // alert(data);
+            // alert('check');
             // alert(JSON.stringify(data));
             $.ajax({
-                url: 'admin_functions.php',
+                url: 'admin_signin_functions.php',
                 type: 'POST',
                 data: data,
                 success: function(response) {
@@ -190,7 +190,7 @@
             // alert(data);
             alert(JSON.stringify(data));
             $.ajax({
-                url: 'admin_functions.php',
+                url: 'admin_signin_functions.php',
                 type: 'POST',
                 data: data,
                 success: function(response) {

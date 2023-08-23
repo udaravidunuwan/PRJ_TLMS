@@ -1,5 +1,5 @@
 <?php 
-require './_admin/admin_functions.php';
+require './_admin/admin_signin_functions.php';
 if(isset($_SESSION["session_id"])){
     header("Location: ./_admin/admin_dashboard.php");
 }
