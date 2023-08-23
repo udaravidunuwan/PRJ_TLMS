@@ -1,5 +1,5 @@
 <?php 
-require './_admin/admin_signin_functions.php';
+require './_admin/admin_functions.php';
 $_SESSION = [];
 session_unset();
 session_destroy();

@@ -1,5 +1,5 @@
 <?php 
-require './admin_signin_functions.php';
+require './admin_functions.php';
 if(isset($_SESSION["session_id"])) {
     $session_id = $_SESSION["session_id"];
     $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = '$session_id'"));

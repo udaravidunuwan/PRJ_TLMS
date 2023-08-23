@@ -1,5 +1,5 @@
 <?php
-require './admin_signin_functions.php';
+require './admin_functions.php';
 
 // Check if the session variable is set and non-empty
 if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
@@ -253,15 +253,15 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <form>
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                <input id="admin_users_addNewUser_firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                <input id="admin_users_addNewUser_lastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <select id="admin_users_addNewUser_UserRole" class="form-select" label="User Role" aria-label="User Role">
+                                <select id="admin_users_addNewUser_userRole" class="form-select" label="User Role" aria-label="User Role">
                                     <option selected disabled>User Role</option>
                                     <option>Admin</option>
                                     <option>Manager</option>
@@ -271,12 +271,12 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
+                                <input id="admin_users_addNewUser_email" type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <input id="temp_password_input" class="form-control" type="text" value="Temp Password" aria-label="readonly input example" readonly>
+                                <input id="admin_users_addNewUser_temp_password_input" class="form-control" type="text" value="Temp Password" aria-label="readonly input example" readonly>
                             </div>
                         </div>
                     </form>

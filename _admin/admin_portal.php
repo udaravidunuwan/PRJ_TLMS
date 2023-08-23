@@ -1,5 +1,5 @@
 <?php
-require 'admin_signin_functions.php';
+require 'admin_functions.php';
 if(isset($_SESSION["session_id"])){
     if($_SESSION["admin_type"] == 1) {
         header("Location: admin_dashboard.php");
