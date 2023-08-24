@@ -1,5 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 <script type="text/javascript">
     // Theme Selector
@@ -82,10 +81,8 @@
 
     $(document).ready(function() {
 
-        // // DataTable Loader
-        // $('#admin_users_table').DataTable();
-
-
+        
+        
         // admin signin event click listner
         $("#adminSigninBtn").on("click", function(event) {
             event.preventDefault(); // Prevent form submission for now
@@ -93,32 +90,34 @@
         });
         // end 
 
-        // // Add an event listener to the "Add New User" button
-        // const addNewUserButton = document.getElementById("admin_users_addNewUsers");
-        // addNewUserButton.addEventListener("click", setTemporaryPassword);
-        // // end
+        // Add an event listener to the "Add New User" button
+        const addNewUserButton = document.getElementById("admin_users_addNewUsers");
+        addNewUserButton.addEventListener("click", setTemporaryPassword);
+        // end
 
-        // // admin admin_users_addNewUser_btn click listner
-        // $("#admin_users_addNewUser_btn").on("click", function(event) {
-        //     event.preventDefault(); // Prevent form submission for now
-        //     admin_users_addNewUser_btn(); // Call your function
-        // });
-        // // end 
+        // admin admin_users_addNewUser_btn click listner
+        $("#admin_users_addNewUser_btn").on("click", function(event) {
+            event.preventDefault(); // Prevent form submission for now
+            admin_users_addNewUser_btn(); // Call your function
+        });
+        // end 
 
-        // // admin admin_users_editUser_btn click listner
-        // $("#admin_users_editUser_btn").on("click", function(event) {
-        //     event.preventDefault(); // Prevent form submission for now
-        //     admin_users_editUser_btn(); // Call your function
-        // });
-        // // end 
-
-        // // admin admin_users_deleteUser_btn click listner
-        // $("#admin_users_deleteUser_btn").on("click", function(event) {
-        //     event.preventDefault(); // Prevent form submission for now
-        //     admin_users_deleteUser_btn(); // Call your function
-        // });
-        // // end 
-
+        // admin admin_users_editUser_btn click listner
+        $("#admin_users_editUser_btn").on("click", function(event) {
+            event.preventDefault(); // Prevent form submission for now
+            admin_users_editUser_btn(); // Call your function
+        });
+        // end 
+        
+        // admin admin_users_deleteUser_btn click listner
+        $("#admin_users_deleteUser_btn").on("click", function(event) {
+            event.preventDefault(); // Prevent form submission for now
+            admin_users_deleteUser_btn(); // Call your function
+        });
+        // end 
+        
+        // DataTable Loader
+        $('#admin_users_table').DataTable();
 
 
 
