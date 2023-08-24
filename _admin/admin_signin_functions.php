@@ -45,7 +45,7 @@ function signinAdmin()
                 $_SESSION["admin_type"] = $admin['tlms_admin_type'];
                 exit;
             } else {
-                echo "Sign in Failed! Passsword does not exist";
+                echo "Sign in Failed! Incorrect Passsword";
                 // $_SESSION['status'] = "Sign in Failed! Please try again";
                 exit;
             }
