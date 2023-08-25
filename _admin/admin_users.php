@@ -40,8 +40,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <td>' . htmlspecialchars($row['tlms_system_users_user_role']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_system_users_email']) . '</td>
                     <td>
-                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-sm me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal"><i class="bi bi-trash3"></i></button>
+                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal" data-user-id="' . htmlspecialchars($row['tlms_system_users_id']) . '"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-sm ms-2 me-2 delete-user-button" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal" data-user-id="' . htmlspecialchars($row['tlms_system_users_id']) . '"><i class="bi bi-trash3"></i></button>
                     </td>
                 </tr>';
     }
@@ -175,29 +175,11 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <div class="px-md-4">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h1 class="h2">Users</h1>
+                            <a href="./admin_passwordReset.php">PR</a>
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group me-2">
                                     <button id="admin_users_addNewUsers" type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#users_new_modal">Add New User</button>
                                 </div>
-                                <!-- <div class=""> -->
-                                <!-- <select name="" id="" class="form-select form-select-sm  ">
-                                        <i class="bi bi-filter"></i>
-                                        <option class="dropdown-item" value="All"><i class="bi bi-filter"></i>All</option>
-                                        <option class="dropdown-item" value="Admin">Admin</option>
-                                        <option class="dropdown-item" value="Manger">Manager</option>
-                                        <option class="dropdown-item" value="User">User</option>
-                                    </select> -->
-                                <!-- <button type="button" id="dropdownButton-users_roleFilter" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
-                                        <i class="bi bi-filter"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('All')">All</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Admin')">Admin</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Manager')">Manager</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('User')">User</a></li>
-                                    </ul> -->
-                                <!-- </div> -->
-
                             </div>
                         </div>
                     </div>
@@ -215,6 +197,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     </div>
                 </div>
                 <!-- end of Breadcrumb -->
+                <!-- start table -->
                 <div class="row mt-3">
                     <div class="px-md-4">
                         <!-- <h3>Users Table</h3> -->
@@ -349,20 +332,20 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary delete-button" id="admin_users_deleteUser_btn">Yes</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-secondary" id="admin_users_deleteUser_btn-NO" data-bs-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- END MODAL DELETE -->
-    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+    
     <!-- Processes Toast -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="processToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <!-- <div class="toast-header">
+            <div class="toast-header">
                 <strong class="me-auto"><i class="bi bi-exclamation-circle"></i> Notification</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div> -->
+            </div>
             <div class="toast-body">
 
             </div>

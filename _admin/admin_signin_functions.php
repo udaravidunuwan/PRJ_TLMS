@@ -8,11 +8,11 @@ include("./connection.php");
 
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "action") {
-        AddNewUser();
+        signinAdmin();
     }
 }
 
-function AddNewUser()
+function signinAdmin()
 {
     global $connection;
 
@@ -36,10 +36,17 @@ function AddNewUser()
         if ($result->num_rows == 1) {
             $admin = $result->fetch_assoc();
             $stored_password = $admin['tlms_admin_password'];
+            $stored_password_temp = $admin['tlms_admin_temp_pwd'];
             // $admin_type = $admin['tlms_admin_type'];
 
             if ($stored_password == $admin_password) {
                 echo "Sign in Successful";
+                $_SESSION["signin"] = true;
+                $_SESSION["session_id"] = $admin['tlms_admin_id'];
+                $_SESSION["admin_type"] = $admin['tlms_admin_type'];
+                exit;
+            } else if($stored_password_temp == $admin_password) {
+                echo "Welcome New Admin";
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 $_SESSION["admin_type"] = $admin['tlms_admin_type'];

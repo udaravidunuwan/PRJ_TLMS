@@ -2,15 +2,7 @@
 
 <script>
     $(document).ready(function() {
-        // const toastTrigger = document.getElementById('liveToastBtn')
-        // const toastLiveExample = document.getElementById('processToast')
 
-        // if (toastTrigger) {
-        //     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-        //     toastTrigger.addEventListener('click', () => {
-        //         toastBootstrap.show()
-        //     })
-        // }
 
         // DataTable Loader
         $('#admin_users_table').DataTable();
@@ -18,28 +10,43 @@
         // Add an event listener to the "Add New User" button
         const addNewUserButton = document.getElementById("admin_users_addNewUsers");
         addNewUserButton.addEventListener("click", setTemporaryPassword);
-        // end
 
         // admin admin_users_addNewUser_btn click listner
         $("#admin_users_addNewUser_btn").on("click", function(event) {
             event.preventDefault(); // Prevent form submission for now
             admin_users_addNewUser_btn(); // Call your function
         });
-        // end 
+
+        // Check if the cookie is set with a toast message
+        const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)toastMessage\s*=\s*([^;]*).*$)|^.*$/, "$1");
+        if (cookieValue) {
+            displayToast(cookieValue);
+        }
 
         // admin admin_users_editUser_btn click listner
         $("#admin_users_editUser_btn").on("click", function(event) {
             event.preventDefault(); // Prevent form submission for now
             admin_users_editUser_btn(); // Call your function
         });
-        // end 
 
-        // admin admin_users_deleteUser_btn click listner
-        $("#admin_users_deleteUser_btn").on("click", function(event) {
-            event.preventDefault(); // Prevent form submission for now
-            admin_users_deleteUser_btn(); // Call your function
+        // Add a click event listener to all delete buttons
+        $(".delete-user-button").on("click", function() {
+            var userId = $(this).data("user-id"); // Get the user ID from the data attribute
+            $("#admin_users_deleteUser_btn").attr("data-user-id", userId); // Store the user ID in the modal's Yes button
         });
-        // end 
+
+        // Add a click event listener to the modal's Yes button
+        $("#admin_users_deleteUser_btn").on("click", function() {
+            var userId = $(this).data("user-id"); // Get the user ID from the modal's Yes button
+            // alert("Delete User with ID: " + userId);
+            admin_users_deleteUser_btn(); //Call for function 
+        });
+
+        // Add a click event listener to the modal's No button
+        $("#admin_users_deleteUser_btn-NO").on("click", function() {
+            window.location.reload();
+        });
+
     });
 
 
@@ -59,7 +66,7 @@
 
     // Function to add a new user
     function admin_users_addNewUser_btn() {
-        alert('Add New User');
+        // alert('Add New User');
         $(document).ready(function() {
             var data = {
                 action: $('#actionAddNewUser').val(),
@@ -70,41 +77,25 @@
                 tempPassword: $('#admin_users_addNewUser_temp_password_input').val(),
             };
             // alert(data);
-            alert(JSON.stringify(data));
+            // alert(JSON.stringify(data));
             $.ajax({
                 url: 'admin_users_functions.php',
                 type: 'POST',
                 data: data,
                 success: function(response) {
                     // alert(response);
-                    if (response == "Sign in Successful") {
+                    // Set a cookie to indicate that the toast should be displayed after the reload
+                    document.cookie = `toastMessage=${response}; path=/`;
+
+                    if (response == "User Created Successfully") {
                         window.location.reload();
                     } else {
-                        // Display the session status in toast
-                        const toastBody = document.querySelector('#processToast .toast-body');
-                        const toastLive = document.getElementById('processToast');
-                        toastBody.textContent = response; // Update toast content
-                        // alert(toastBody.textContent);
-                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
-                        toastBootstrap.show(); // Show the toast
-                        // $('#liveToast').toast('show');
-
-                        // Clear the input fields
-                        $('#adminEmail').val('');
-                        $('#adminPassword').val('');
-
+                        displayToast(response);
                     }
                 }
             });
 
         });
-    }
-
-    // Function to set the temporary password in the input field
-    function setTemporaryPassword() {
-        const tempPassword = generatePassword();
-        const tempPasswordInput = document.getElementById("admin_users_addNewUser_temp_password_input");
-        tempPasswordInput.value = tempPassword;
     }
 
     // Function to edit a user
@@ -114,6 +105,64 @@
 
     // Function to delete a user
     function admin_users_deleteUser_btn() {
-        alert('Delete User');
+        // alert('Delete User');
+        var userId = $("#admin_users_deleteUser_btn").data("user-id"); // Get the user ID from the modal's Yes button
+        // alert("Delete User with ID: " + userId);
+
+        $(document).ready(function() {
+            var data = {
+                action: "actionDeleteUser",
+                userId: userId
+            };
+            // alert(data);
+            // alert(JSON.stringify(data));
+            $.ajax({
+                url: 'admin_users_functions.php',
+                type: 'POST',
+                data: data,
+                success: function(response) {
+                    // alert(response);
+                    // Set a cookie to indicate that the toast should be displayed after the reload
+                    document.cookie = `toastMessage=${response}; path=/`;
+
+                    if (response == "User Deleted successfully") {
+                        window.location.reload();
+                    } else {
+                        displayToast(response);
+                    }
+                }
+            });
+
+        });
+    }
+
+    function displayToast(message) {
+        // Display the session status in toast
+        const toastBody = document.querySelector('#processToast .toast-body');
+        const toastLive = document.getElementById('processToast');
+
+        // Check if a toast message is stored in the cookie
+        const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)toastMessage\s*=\s*([^;]*).*$)|^.*$/, "$1");
+
+        if (cookieValue) {
+            toastBody.textContent = cookieValue; // Use the message from the cookie
+            // Remove the cookie since the toast message has been displayed
+            document.cookie = "toastMessage=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        } else {
+            toastBody.textContent = message; // Use the message passed as a parameter
+        }
+
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
+        toastBootstrap.show(); // Show the toast
+
+        // Clear the input fields
+        // $('#admin_users_addNewUser_firstName').val('');
+    }
+
+    // Function to set the temporary password in the input field
+    function setTemporaryPassword() {
+        const tempPassword = generatePassword();
+        const tempPasswordInput = document.getElementById("admin_users_addNewUser_temp_password_input");
+        tempPasswordInput.value = tempPassword;
     }
 </script>
