@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 12:19 PM
+-- Generation Time: Aug 25, 2023 at 12:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,16 +31,20 @@ CREATE TABLE `tlms_admin` (
   `tlms_admin_id` int(255) NOT NULL,
   `tlms_admin_type` int(255) NOT NULL,
   `tlms_admin_email` varchar(255) NOT NULL,
-  `tlms_admin_password` varchar(255) NOT NULL
+  `tlms_admin_password` varchar(255) DEFAULT NULL,
+  `tlms_admin_temp_pwd` varchar(255) DEFAULT NULL,
+  `tlms_admin_system_users_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tlms_admin`
 --
 
-INSERT INTO `tlms_admin` (`tlms_admin_id`, `tlms_admin_type`, `tlms_admin_email`, `tlms_admin_password`) VALUES
-(1, 1, 'admin@mail.com', 'admin'),
-(2, 2, 'admin_cus@mail.com', 'admincus');
+INSERT INTO `tlms_admin` (`tlms_admin_id`, `tlms_admin_type`, `tlms_admin_email`, `tlms_admin_password`, `tlms_admin_temp_pwd`, `tlms_admin_system_users_id`) VALUES
+(1, 1, 'admin@mail.com', 'admin', '', 0),
+(2, 2, 'admin_cus@mail.com', 'admincus', '', 0),
+(3, 1, 'sample@mail.com', NULL, 'WJIp7GrewZR12$AFF!_2', 20),
+(4, 1, 'sam@mail.com', NULL, 'b_QEnNoxR-m#YY82r^DS', 21);
 
 -- --------------------------------------------------------
 
@@ -60,6 +64,43 @@ CREATE TABLE `tlms_manager` (
 
 INSERT INTO `tlms_manager` (`tlms_manager_id`, `tlms_manager_email`, `tlms_manager_password`) VALUES
 (1, 'manager@mail.com', 'manager');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tlms_system_users`
+--
+
+CREATE TABLE `tlms_system_users` (
+  `tlms_system_users_id` int(255) NOT NULL,
+  `tlms_system_users_first_name` varchar(255) NOT NULL,
+  `tlms_system_users_last_name` varchar(255) NOT NULL,
+  `tlms_system_users_user_role` varchar(255) NOT NULL,
+  `tlms_system_users_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tlms_system_users`
+--
+
+INSERT INTO `tlms_system_users` (`tlms_system_users_id`, `tlms_system_users_first_name`, `tlms_system_users_last_name`, `tlms_system_users_user_role`, `tlms_system_users_email`) VALUES
+(5, 'test1', 'testname', 'Admin', 'test1@mail.com'),
+(6, 'test2', 'testname', 'Manager', 'test2@gmail.com'),
+(7, 'test3', 'testname', 'User', 'test3@gmail.com'),
+(8, 'test4', 'testname', 'User', 'test4@gmail.com'),
+(9, 'test5', 'testname', 'Manager', 'tesasdt3@gmail.com'),
+(10, 'test6', 'testname', 'Manager', 'tesasdfsdt3@gmail.com'),
+(11, 'test7', 'testname', 'Manager', 'teasdast1@mail.com'),
+(12, 'testas1', 'testname', 'Manager', 'tesasdt1@mail.com'),
+(13, 'test1sdf', 'sdf', 'Admin', 'sdf@asd'),
+(14, 'toast', 'final', 'Admin', 'toast@final.test'),
+(15, 'test1', 'testname', 'User', 'asdasda@asd'),
+(16, 'test1', 'testname', 'Admin', 'test1@gmgmail.com'),
+(17, 'test1', 'testname', 'User', 'test1@gmggmail.com'),
+(18, 'sample', 'nut', 'Admin', 'sample@nut.com'),
+(19, 'q1', 'q1', 'Admin', 'q1@q1.com'),
+(20, 'sample', 'samplelast', 'Admin', 'sample@mail.com'),
+(21, 'sam', 'lord', 'Admin', 'sam@mail.com');
 
 -- --------------------------------------------------------
 
@@ -99,6 +140,12 @@ ALTER TABLE `tlms_manager`
   ADD PRIMARY KEY (`tlms_manager_id`);
 
 --
+-- Indexes for table `tlms_system_users`
+--
+ALTER TABLE `tlms_system_users`
+  ADD PRIMARY KEY (`tlms_system_users_id`);
+
+--
 -- Indexes for table `tlms_user`
 --
 ALTER TABLE `tlms_user`
@@ -112,13 +159,19 @@ ALTER TABLE `tlms_user`
 -- AUTO_INCREMENT for table `tlms_admin`
 --
 ALTER TABLE `tlms_admin`
-  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tlms_manager`
 --
 ALTER TABLE `tlms_manager`
   MODIFY `tlms_manager_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tlms_system_users`
+--
+ALTER TABLE `tlms_system_users`
+  MODIFY `tlms_system_users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tlms_user`
