@@ -71,7 +71,7 @@
           })
         })
     })
-  })()
+  })();
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   updateDropdownLabel("Today");
