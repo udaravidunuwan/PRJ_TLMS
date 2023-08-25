@@ -1,5 +1,6 @@
 <?php
 require './admin_signin_functions.php';
+require './admin_users_functions.php';
 
 // Check if the session variable is set and non-empty
 if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
@@ -250,7 +251,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                 </div>
                 <div class="modal-body">
                     <!-- Insert Form -->
-                    <form>
+                    <form autocomplete="on" action="" method="post">
+                        <input type="hidden" id="actionAddNewUser" value="actionAddNewUser">
                         <div class="row">
                             <div class="col">
                                 <input id="admin_users_addNewUser_firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -353,6 +355,20 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
     </div>
     <!-- END MODAL DELETE -->
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+    <!-- Processes Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="processToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <!-- <div class="toast-header">
+                <strong class="me-auto"><i class="bi bi-exclamation-circle"></i> Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div> -->
+            <div class="toast-body">
+
+            </div>
+        </div>
+    </div>
+    <!-- End of Toast -->
 
     <!-- Theme SVG Images -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -420,8 +436,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 
     <!-- Script to pass data to Ajax -->
     <?php
-
-    require 'admin_signin_scripts.php'
+    require './admin_signin_scripts.php';
+    require './admin_users_scripts.php';
     ?>
 
 

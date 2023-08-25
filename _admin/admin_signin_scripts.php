@@ -80,8 +80,6 @@
 
 
     $(document).ready(function() {
-
-        
         
         // admin signin event click listner
         $("#adminSigninBtn").on("click", function(event) {
@@ -89,37 +87,6 @@
             adminSignin(); // Call your function
         });
         // end 
-
-        // Add an event listener to the "Add New User" button
-        const addNewUserButton = document.getElementById("admin_users_addNewUsers");
-        addNewUserButton.addEventListener("click", setTemporaryPassword);
-        // end
-
-        // admin admin_users_addNewUser_btn click listner
-        $("#admin_users_addNewUser_btn").on("click", function(event) {
-            event.preventDefault(); // Prevent form submission for now
-            admin_users_addNewUser_btn(); // Call your function
-        });
-        // end 
-
-        // admin admin_users_editUser_btn click listner
-        $("#admin_users_editUser_btn").on("click", function(event) {
-            event.preventDefault(); // Prevent form submission for now
-            admin_users_editUser_btn(); // Call your function
-        });
-        // end 
-        
-        // admin admin_users_deleteUser_btn click listner
-        $("#admin_users_deleteUser_btn").on("click", function(event) {
-            event.preventDefault(); // Prevent form submission for now
-            admin_users_deleteUser_btn(); // Call your function
-        });
-        // end 
-        
-        // DataTable Loader
-        $('#admin_users_table').DataTable();
-
-
 
     });
 
@@ -161,75 +128,4 @@
         });
     }
 
-
-    // // Temp Password Generator
-    // function generatePassword() {
-    //     const length = 20; // The desired password length 
-    //     const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*_-";
-    //     let password = "";
-
-    //     for (let i = 0; i < length; i++) {
-    //         const randomIndex = Math.floor(Math.random() * charset.length);
-    //         password += charset[randomIndex];
-    //     }
-
-    //     return password;
-    // }
-
-    // function admin_users_addNewUser_btn() {
-    //     alert('Add New User');
-    //     $(document).ready(function() {
-    //         var data = {
-    //             firstName: $('#admin_users_addNewUser_firstName').val(),
-    //             lastName: $('#admin_users_addNewUser_lastName').val(),
-    //             userRole: $('#admin_users_addNewUser_userRole').val(),
-    //             email: $('#admin_users_addNewUser_email').val(),
-    //             tempPassword: $('#admin_users_addNewUser_temp_password_input').val(),
-    //         };
-    //         // alert(data);
-    //         alert(JSON.stringify(data));
-    //         $.ajax({
-    //             // url: 'admin_signin_functions.php',
-    //             // type: 'POST',
-    //             // data: data,
-    //             // success: function(response) {
-    //             //     // alert(response);
-    //             //     if (response == "Sign in Successful") {
-    //             //         window.location.reload();
-    //             //     } else {
-    //             //         // Display the session status in toast
-    //             //         const toastBody = document.querySelector('#liveToast .toast-body');
-    //             //         const toastLiveExample = document.getElementById('liveToast');
-    //             //         toastBody.textContent = response; // Update toast content
-    //             //         // alert(toastBody.textContent);
-    //             //         const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-    //             //         toastBootstrap.show(); // Show the toast
-    //             //         // $('#liveToast').toast('show');
-
-    //             //         // Clear the input fields
-    //             //         $('#adminEmail').val('');
-    //             //         $('#adminPassword').val('');
-
-    //             //     }
-    //             // }
-    //         });
-
-    //     });
-    // }
-
-    // // Function to set the temporary password in the input field
-    // function setTemporaryPassword() {
-    //     const tempPassword = generatePassword();
-    //     const tempPasswordInput = document.getElementById("admin_users_addNewUser_temp_password_input");
-    //     tempPasswordInput.value = tempPassword;
-    // }
-
-    // function admin_users_editUser_btn() {
-    //     alert('Edit User');
-    // }
-
-    // function admin_users_deleteUser_btn() {
-    //     alert('Delete User');
-    // }
-    
 </script>

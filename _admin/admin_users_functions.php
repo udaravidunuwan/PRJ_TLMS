@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include("./connection.php");
 
 // echo "<pre>";
@@ -8,11 +8,11 @@ include("./connection.php");
 
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "action") {
-        AddNewUser();
+        signinAdmin();
     }
 }
 
-function AddNewUser()
+function signinAdmin()
 {
     global $connection;
 
