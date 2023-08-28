@@ -1,12 +1,14 @@
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+<script>
 
 
 // Update job status
 function updateJobStatus(jobId) {
   $.ajax({
-      url: 'user_jobs_script.php',
+      url: 'user_jobs.php',
       type: 'POST',
       data: { jobId: jobId },
       dataType: 'json',
@@ -33,3 +35,5 @@ $('#dropdownButton-users .dropdown-item').click(function() {
       updateJobStatus(jobId);
   }
 });
+
+</script>
