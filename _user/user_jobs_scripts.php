@@ -1,25 +1,35 @@
-<?php
-// Include your database connection code if not included already
-require 'tlms_db'; // Replace with your actual connection file
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $jobId = $_POST['jobId'];
-    
-    // Update the job status in the database
-    $updateQuery = "UPDATE tlms_jobs SET tlms_jobs_status = 'Completed' WHERE tlms_jobs_id = ?";
-    $stmt = mysqli_prepare($connection, $updateQuery);
-    mysqli_stmt_bind_param($stmt, "s", $jobId);
-    mysqli_stmt_execute($stmt);
-    
-    // Handle any other relevant actions, such as updating timestamps, etc.
-    
-    mysqli_stmt_close($stmt);
-    
-    // Return a response to indicate success or failure
-    if ($stmt) {
-        echo json_encode(array("success" => true));
-    } else {
-        echo json_encode(array("success" => false, "message" => "Failed to update job status"));
-    }
+
+
+
+
+// Update job status
+function updateJobStatus(jobId) {
+  $.ajax({
+      url: 'user_jobs_script.php',
+      type: 'POST',
+      data: { jobId: jobId },
+      dataType: 'json',
+      success: function(response) {
+          if (response.success) {
+              // Handle success, maybe show a notification to the user
+              console.log('Job status updated successfully');
+          } else {
+              // Handle failure, show an error message
+              console.error('Failed to update job status');
+          }
+      },
+      error: function() {
+          console.error('An error occurred during the AJAX request');
+      }
+  });
 }
-?>
+
+// Add an event listener to the dropdown
+$('#dropdownButton-users .dropdown-item').click(function() {
+  const newStatus = $(this).text();
+  if (newStatus === 'Completed') {
+      // const jobId = /* Get the jobId of the current row */;
+      updateJobStatus(jobId);
+  }
+});
