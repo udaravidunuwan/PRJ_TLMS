@@ -1,5 +1,6 @@
 <?php
 require './admin_signin_functions.php';
+require './admin_passwordReset_functions.php';
 
 // Check if the session variable is set and non-empty
 if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
@@ -122,8 +123,24 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
-    
+
     <main class="form-signin w-100 m-auto">
+        <!-- Error Toast -->
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 danger">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto"><i class="bi bi-exclamation-triangle"></i> Error</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+
+                </div>
+            </div>
+        </div>
+        <!-- End of Error Toast -->
+        <div class="mb-3 d-flex justify-content-center">
+            <h5>Reset your password here</h5>
+        </div>
         <form autocomplete="on" action="" method="post">
             <div class="border rounded p-5 bg-body">
                 <input type="hidden" id="action" value="action">
@@ -212,6 +229,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     <!-- Script to pass data to Ajax -->
     <?php
     require './admin_signin_scripts.php';
+    require './admin_passwordReset_scripts.php';
     ?>
 
 

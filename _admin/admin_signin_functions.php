@@ -45,7 +45,7 @@ function signinAdmin()
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
                 $_SESSION["admin_type"] = $admin['tlms_admin_type'];
                 exit;
-            } else if($stored_password_temp == $admin_password) {
+            } else if ($stored_password_temp == $admin_password) {
                 echo "Welcome New Admin";
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_admin_id'];
