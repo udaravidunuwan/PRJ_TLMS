@@ -1,25 +1,34 @@
 <?php
-// Include your database connection code if not included already
-require './connection.php'; // Replace with your actual connection file
+    // Include your database connection code if not included already
+    require './connection.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $jobId = $_POST['jobId'];
-    
-    // Update the job status in the database
-    $updateQuery = "UPDATE tlms_jobs SET tlms_jobs_status = 'Completed' WHERE tlms_jobs_id = ?";
-    $stmt = mysqli_prepare($connection, $updateQuery);
-    mysqli_stmt_bind_param($stmt, "s", $jobId);
-    mysqli_stmt_execute($stmt);
-    
-    // Handle any other relevant actions, such as updating timestamps, etc.
-    
-    mysqli_stmt_close($stmt);
-    
-    // Return a response to indicate success or failure
-    if ($stmt) {
-        echo json_encode(array("success" => true));
-    } else {
-        echo json_encode(array("success" => false, "message" => "Failed to update job status"));
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $jobId = $_POST['jobId'];
+        $newStatus = $_POST['newStatus'];
+        
+      // Fetch and display job data from the database
+      $selectQuery = "SELECT * FROM tlms_job";
+      $result = mysqli_query($connection, $selectQuery);
+      while ($row = mysqli_fetch_assoc($result)) {
+          echo '<tr data-job-id="' . htmlspecialchars($row['tlms_jobs_id']) . '">
+                  <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_name']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_start_date']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
+                  <td>' . htmlspecialchars($row['tlms_jobs_assign_to']) . '</td>
+              </tr>';
+      }
+        // Handle any other relevant actions, such as updating timestamps, etc.
+        
+        mysqli_stmt_close($stmt);
+        
+        // Return a response to indicate success or failure
+        if ($stmt) {
+            echo json_encode(array("success" => true));
+        } else {
+            echo json_encode(array("success" => false, "message" => "Failed to update job status"));
+        }
     }
-}
 ?>

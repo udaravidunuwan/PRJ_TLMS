@@ -1,59 +1,29 @@
 <?php
 
-// require './user_signin_functions.php';
+require './user_jobs_functions.php'; 
 
-// // Check if the session variable is set and non-empty
-// if (isset($_SESSION["tlms_user_id"]) && !empty($_SESSION["tlms_user_id"])) {
-//     // Sanitize the user ID to prevent SQL injection
-//     $user_id = mysqli_real_escape_string($connection, $_SESSION["tlms_user_id"]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $jobId = $_POST['jobId'];
+    $newStatus = $_POST['newStatus'];
+    
+    // Update the job status in the database
+    $updateQuery = "UPDATE tlms_job SET tlms_jobs_status = ? WHERE tlms_jobs_id = ?";
+    $stmt = mysqli_prepare($connection, $updateQuery);
+    mysqli_stmt_bind_param($stmt, "si", $newStatus, $jobId); // Assuming jobId is an integer
+    $success = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    
+    // Return a response to indicate success or failure
+    if ($success) {
+        echo json_encode(array("success" => true));
+    } else {
+        echo json_encode(array("success" => false, "message" => "Failed to update job status"));
+    }
+    exit(); // Terminate script execution after handling the request
+}
+?>
 
-//     // Prepare the SQL statement to retrieve user information
-//     $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = ?");
-//     mysqli_stmt_bind_param($stmt, "s", $user_id);
-//     mysqli_stmt_execute($stmt);
-//     // Get the result of the query
-//     $result = mysqli_stmt_get_result($stmt);
-//     // Fetch user data as an associative array
-//     $user = mysqli_fetch_assoc($result);
-//     // Close the prepared statement
-//     mysqli_stmt_close($stmt);
-//     // Check if a user was found
-//     if (!$user) {
-//         // Redirect to index.php if user not found
-//         header("Location: ../index.php");
-//         exit(); // Make sure to exit after sending the redirect header
-//     }
-
-//     // Table fetch
-//     // Fetch data from tlms_jobs table using prepared statement
-//     $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_start_date, tlms_jobs_completed_date, tlms_jobs_status, tlms_jobs_assign_to FROM tlms_jobs";
-//     $stmt = mysqli_prepare($connection, $query);
-//     mysqli_stmt_execute($stmt);
-//     $result = mysqli_stmt_get_result($stmt);
-
-//     // Generate table rows
-//     $rows = '';
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         $rows .= '<tr>
-//                     <td>' . htmlspecialchars($row['tlms_job_id']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_name']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_customer']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_start_date']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_completed_date']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_status']) . '</td>
-//                     <td>' . htmlspecialchars($row['tlms_job_assigned_to']) . '</td>
-//                 </tr>';
-//     }
-
-//     mysqli_stmt_close($stmt);
-//     // End Table fetch
-// } else {
-//     // Redirect to index.php if user_id is not set
-//     header("Location: ../index.php");
-//     exit();
-// }
-
- ?>
+ 
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
     <head>
@@ -82,6 +52,7 @@
         <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+        
     </head>
 
     <body class="py-0 bg-body-tertiary">
@@ -214,7 +185,7 @@
                                             <td>
                                                 <div class="btn-toolbar mb-2 mb-md-0">
                                                     <div class="dropdown">
-                                                        <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
+                                                        <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t" method="post">
                                                         </button>
                                                         <ul class="dropdown-menu">
                                                             <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Pending')">Pending</a></li>
