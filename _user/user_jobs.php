@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="px-md-4">
                             <h3>Jobs Table</h3>
                             <div class="table-responsive small">
-                                <table id="user_jobs_table" class="table table-striped table-sm pt-2">
+                                <table id="user_jobs_table" class="table table-striped table-sm pt-2" style="height: 300px">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
