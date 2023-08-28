@@ -230,20 +230,7 @@ if(isset($_SESSION["session_id"])) {
                                             <td>Customer Name</td>
                                             <td>Start Date here</td>
                                             <td>Completed Date here</td>
-                                            <td>
-                                                <div class="btn-toolbar mb-2 mb-md-0">
-                                                    <div class="dropdown">
-                                                        <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t">
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Pending')">Pending</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Working On')">Working On</a></li>
-                                                            <li><a class="dropdown-item" href="#" onclick="updateJobsStatusDropdownLabel('Completed')">Completed</a></li>
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </td>
+                                            <td>status here</td>
                                             <td>to User</td>
                                         </tr>
                                    </tbody>

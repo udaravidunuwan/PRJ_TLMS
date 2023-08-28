@@ -1,57 +1,57 @@
 <?php
 
-require './user_signin_functions.php';
+// require './user_signin_functions.php';
 
-// Check if the session variable is set and non-empty
-if (isset($_SESSION["tlms_user_id"]) && !empty($_SESSION["tlms_user_id"])) {
-    // Sanitize the user ID to prevent SQL injection
-    $user_id = mysqli_real_escape_string($connection, $_SESSION["tlms_user_id"]);
+// // Check if the session variable is set and non-empty
+// if (isset($_SESSION["tlms_user_id"]) && !empty($_SESSION["tlms_user_id"])) {
+//     // Sanitize the user ID to prevent SQL injection
+//     $user_id = mysqli_real_escape_string($connection, $_SESSION["tlms_user_id"]);
 
-    // Prepare the SQL statement to retrieve user information
-    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = ?");
-    mysqli_stmt_bind_param($stmt, "s", $user_id);
-    mysqli_stmt_execute($stmt);
-    // Get the result of the query
-    $result = mysqli_stmt_get_result($stmt);
-    // Fetch user data as an associative array
-    $user = mysqli_fetch_assoc($result);
-    // Close the prepared statement
-    mysqli_stmt_close($stmt);
-    // Check if a user was found
-    if (!$user) {
-        // Redirect to index.php if user not found
-        header("Location: ../index.php");
-        exit(); // Make sure to exit after sending the redirect header
-    }
+//     // Prepare the SQL statement to retrieve user information
+//     $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = ?");
+//     mysqli_stmt_bind_param($stmt, "s", $user_id);
+//     mysqli_stmt_execute($stmt);
+//     // Get the result of the query
+//     $result = mysqli_stmt_get_result($stmt);
+//     // Fetch user data as an associative array
+//     $user = mysqli_fetch_assoc($result);
+//     // Close the prepared statement
+//     mysqli_stmt_close($stmt);
+//     // Check if a user was found
+//     if (!$user) {
+//         // Redirect to index.php if user not found
+//         header("Location: ../index.php");
+//         exit(); // Make sure to exit after sending the redirect header
+//     }
 
-    // Table fetch
-    // Fetch data from tlms_jobs table using prepared statement
-    $query = "SELECT tlms_job_id, tlms_job_name, tlms_job_customer, tlms_job_start_date, tlms_job_completed_date, tlms_job_status, tlms_job_assigned_to FROM tlms_jobs";
-    $stmt = mysqli_prepare($connection, $query);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+//     // Table fetch
+//     // Fetch data from tlms_jobs table using prepared statement
+//     $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_start_date, tlms_jobs_completed_date, tlms_jobs_status, tlms_jobs_assign_to FROM tlms_jobs";
+//     $stmt = mysqli_prepare($connection, $query);
+//     mysqli_stmt_execute($stmt);
+//     $result = mysqli_stmt_get_result($stmt);
 
-    // Generate table rows
-    $rows = '';
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows .= '<tr>
-                    <td>' . htmlspecialchars($row['tlms_job_id']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_name']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_customer']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_start_date']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_completed_date']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_status']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_job_assigned_to']) . '</td>
-                </tr>';
-    }
+//     // Generate table rows
+//     $rows = '';
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $rows .= '<tr>
+//                     <td>' . htmlspecialchars($row['tlms_job_id']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_name']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_customer']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_start_date']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_completed_date']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_status']) . '</td>
+//                     <td>' . htmlspecialchars($row['tlms_job_assigned_to']) . '</td>
+//                 </tr>';
+//     }
 
-    mysqli_stmt_close($stmt);
-    // End Table fetch
-} else {
-    // Redirect to index.php if user_id is not set
-    header("Location: ../index.php");
-    exit();
-}
+//     mysqli_stmt_close($stmt);
+//     // End Table fetch
+// } else {
+//     // Redirect to index.php if user_id is not set
+//     header("Location: ../index.php");
+//     exit();
+// }
 
  ?>
 <!DOCTYPE html>
