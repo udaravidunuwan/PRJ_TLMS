@@ -68,6 +68,7 @@ function actionAddNewUser()
 
         // Check if the userRole is "Admin"
         if ($userRole === "Admin") {
+
             // Insert data into tlms_admin table
             $insertAdminQuery = "INSERT INTO tlms_admin (tlms_admin_type, tlms_admin_email, tlms_admin_password, tlms_admin_temp_pwd, tlms_admin_system_users_id) VALUES (1, ?, NULL, ?, ?)";
             $stmtAdmin = mysqli_prepare($connection, $insertAdminQuery);
@@ -85,8 +86,46 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtAdmin);
-        } else {
-            // echo "User Created Successfully";
+
+        } else if ($userRole === "Manager") {
+
+            // Insert data into tlms_manager table
+            $insertManagerQuery = "INSERT INTO tlms_manager (tlms_manager_email, tlms_manager_password, tlms_manager_temp_pwd, tlms_manager_system_users_id) VALUES (?, NULL, ?, ?)";
+            $stmtManager = mysqli_prepare($connection, $insertManagerQuery);
+
+            if (!$stmtManager) {
+                die("Prepared statement creation for manager failed: " . mysqli_error($connection));
+            }
+
+            mysqli_stmt_bind_param($stmtManager, "ssi", $email, $tempPassword, $systemUserId);
+
+            if (mysqli_stmt_execute($stmtManager)) {
+                echo "User Created Successfully";
+            } else {
+                echo "Error inserting manager data: " . mysqli_error($connection);
+            }
+
+            mysqli_stmt_close($stmtManager);
+        } else if($userRole === "User"){
+
+            // Insert data into tlms_user table
+            $insertUserQuery = "INSERT INTO tlms_user (tlms_user_type, tlms_user_email, tlms_user_password, tlms_user_temp_pwd, tlms_user_system_users_id) VALUES (1, ?, NULL, ?, ?)";
+            $stmtUser = mysqli_prepare($connection, $insertUserQuery);
+
+            if (!$stmtUser) {
+                die("Prepared statement creation for user failed: " . mysqli_error($connection));
+            }
+
+            mysqli_stmt_bind_param($stmtUser, "ssi", $email, $tempPassword, $systemUserId);
+
+            if (mysqli_stmt_execute($stmtUser)) {
+                echo "User Created Successfully";
+            } else {
+                echo "Error inserting user data: " . mysqli_error($connection);
+            }
+
+            mysqli_stmt_close($stmtUser);
+
         }
     } else {
         echo "Error inserting user data: " . mysqli_error($connection);
@@ -123,6 +162,6 @@ function actionDeleteUser()
 
         // Close the statement and connection
         mysqli_stmt_close($stmt);
-        // mysqli_close($connection); // Uncomment if needed
+        mysqli_close($connection); 
     }
 }

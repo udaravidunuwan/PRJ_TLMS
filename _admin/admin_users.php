@@ -40,7 +40,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <td>' . htmlspecialchars($row['tlms_system_users_user_role']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_system_users_email']) . '</td>
                     <td>
-                        <button class="btn btn-sm ms-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal" data-user-id="' . htmlspecialchars($row['tlms_system_users_id']) . '"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-sm ms-2 me-2 edit-user-button" type="button" data-bs-toggle="modal" data-bs-target="#users_edit_modal" data-user-id="' . htmlspecialchars($row['tlms_system_users_id']) . '"><i class="bi bi-pencil-square"></i></button>
                         <button class="btn btn-sm ms-2 me-2 delete-user-button" type="button" data-bs-toggle="modal" data-bs-target="#users_delete_modal" data-user-id="' . htmlspecialchars($row['tlms_system_users_id']) . '"><i class="bi bi-trash3"></i></button>
                     </td>
                 </tr>';
@@ -229,7 +229,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body">
                     <!-- Insert Form -->
@@ -281,22 +281,23 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body">
                     <!-- Edit Form -->
-                    <form>
+                    <form autocomplete="on" action="" method="post">
+                        <input type="hidden" id="actionEditUser" value="actionEditUser">
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                <input id="admin_users_editUser_firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                <input id="admin_users_editUser_lastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <select id="inputState" class="form-select" label="User Role" aria-label="User Role">
+                                <select id="admin_users_editUser_userRole" class="form-select" label="User Role" aria-label="User Role">
                                     <option selected disabled>User Role</option>
                                     <option>Admin</option>
                                     <option>Manager</option>
@@ -306,7 +307,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
+                                <input id="admin_users_editUser_email" type="email" class="form-control" placeholder="name@example.com" aria-label="name@example.com">
                             </div>
                         </div>
                     </form>
@@ -314,7 +315,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="admin_users_editUser_btn">Save</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" id="admin_users_editUser_btn-NO" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -337,7 +338,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
     </div>
     <!-- END MODAL DELETE -->
-    
+
     <!-- Processes Toast -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="processToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

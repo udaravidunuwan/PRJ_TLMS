@@ -3,10 +3,7 @@
 <script>
     $(document).ready(function() {
 
-
-        // DataTable Loader
-        $('#admin_users_table').DataTable();
-
+        // ADD NEW USER modal
         // Add an event listener to the "Add New User" button
         const addNewUserButton = document.getElementById("admin_users_addNewUsers");
         addNewUserButton.addEventListener("click", setTemporaryPassword);
@@ -23,12 +20,27 @@
             displayToast(cookieValue);
         }
 
-        // admin admin_users_editUser_btn click listner
+        // Add a click event listener to all EDIT buttons
+        $(".edit-user-button").on("click", function() {
+            var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
+            $("#admin_users_editUser_btn").attr("data-user-id", userIdEdit); // Store the user ID in the modal's Save button
+        });
+
+        // EDIT modal
+        // admin_users_editUser_btn click listner
         $("#admin_users_editUser_btn").on("click", function(event) {
+            var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
+            // alert("Edit User with ID: " + userIdEdit);
             event.preventDefault(); // Prevent form submission for now
             admin_users_editUser_btn(); // Call your function
         });
 
+        // Add a click event listener to the EDIT modal's No button
+        $("#admin_users_editUser_btn-NO").on("click", function() {
+            window.location.reload();
+        });
+
+        // DELETE modal
         // Add a click event listener to all delete buttons
         $(".delete-user-button").on("click", function() {
             var userId = $(this).data("user-id"); // Get the user ID from the data attribute
@@ -47,6 +59,8 @@
             window.location.reload();
         });
 
+        // DataTable Loader
+        $('#admin_users_table').DataTable();
     });
 
 
@@ -100,7 +114,38 @@
 
     // Function to edit a user
     function admin_users_editUser_btn() {
-        alert('Edit User');
+        // alert('Edit User');
+        // alert('Add New User');
+        var userId = $("#admin_users_editUser_btn").data("user-id"); // Get the user ID from the modal's Yes button
+        alert("Edit User with ID: " + userId);
+        $(document).ready(function() {
+            var data = {
+                action: $('#actionEditUser').val(),
+                firstName: $('#admin_users_editUser_firstName').val(),
+                lastName: $('#admin_users_editUser_lastName').val(),
+                userRole: $('#admin_users_editUser_userRole').val(),
+                email: $('#admin_users_editUser_email').val(),
+            };
+            // alert(data);
+            alert(JSON.stringify(data));
+            // $.ajax({
+            //     url: 'admin_users_functions.php',
+            //     type: 'POST',
+            //     data: data,
+            //     success: function(response) {
+            //         // alert(response);
+            //         // Set a cookie to indicate that the toast should be displayed after the reload
+            //         document.cookie = `toastMessage=${response}; path=/`;
+
+            //         if (response == "User Created Successfully") {
+            //             window.location.reload();
+            //         } else {
+            //             displayToast(response);
+            //         }
+            //     }
+            // });
+
+        });
     }
 
     // Function to delete a user
@@ -155,8 +200,6 @@
         const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
         toastBootstrap.show(); // Show the toast
 
-        // Clear the input fields
-        // $('#admin_users_addNewUser_firstName').val('');
     }
 
     // Function to set the temporary password in the input field
