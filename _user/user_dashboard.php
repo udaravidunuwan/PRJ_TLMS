@@ -1,12 +1,56 @@
 <?php 
 require './user_signin_functions.php';
 require './user_jobs_functions.php';
-if(isset($_SESSION["session_id"])) {
-    $session_id = $_SESSION["session_id"];
-    $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = '$session_id'"));
+// Check if the session variable is set and non-empty
+if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
+    // Sanitize the session ID to prevent SQL injection
+    $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
+
+    // Prepare the SQL statement to retrieve admin information
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_job WHERE tlms_jobs_id = ?");
+    mysqli_stmt_bind_param($stmt, "s", $session_id);
+    mysqli_stmt_execute($stmt);
+    // Get the result of the query
+    $result = mysqli_stmt_get_result($stmt);
+    // Fetch admin data as an associative array
+    $admin = mysqli_fetch_assoc($result);
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
+    // Check if an admin was found
+    if (!$admin) {
+        // Redirect to index.php if admin not found
+        header("Location: ../index.php");
+        exit(); // Make sure to exit after sending the redirect header
+    }
+
+    // Table fetch
+    // Fetch data from tlms_system_users table using prepared statement
+    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_assigned_date, tlms_jobs_completed_date, tlms_jobs_status, FROM tlms_job";
+    $stmt = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Generate table rows
+    $rows = '';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows .= '<tr>
+                    <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_name'])  . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_assigned_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
+                </tr>';
+    }
+
+    mysqli_stmt_close($stmt);
+    // End Table fetch
 } else {
+    // Redirect to index.php if session_id is not set
     header("Location: ../index.php");
+    exit();
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,26 +1,26 @@
 <?php
 
-require './user_jobs_functions.php'; 
+// require './user_jobs_functions.php'; 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $jobId = $_POST['jobId'];
-    $newStatus = $_POST['newStatus'];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $jobId = $_POST['jobId'];
+//     $newStatus = $_POST['newStatus'];
     
-    // Update the job status in the database
-    $updateQuery = "UPDATE tlms_job SET tlms_jobs_status = ? WHERE tlms_jobs_id = ?";
-    $stmt = mysqli_prepare($connection, $updateQuery);
-    mysqli_stmt_bind_param($stmt, "si", $newStatus, $jobId); // Assuming jobId is an integer
-    $success = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+//     // Update the job status in the database
+//     $updateQuery = "UPDATE tlms_job SET tlms_jobs_status = ? WHERE tlms_jobs_id = ?";
+//     $stmt = mysqli_prepare($connection, $updateQuery);
+//     mysqli_stmt_bind_param($stmt, "si", $newStatus, $jobId); // Assuming jobId is an integer
+//     $success = mysqli_stmt_execute($stmt);
+//     mysqli_stmt_close($stmt);
     
-    // Return a response to indicate success or failure
-    if ($success) {
-        echo json_encode(array("success" => true));
-    } else {
-        echo json_encode(array("success" => false, "message" => "Failed to update job status"));
-    }
-    exit(); // Terminate script execution after handling the request
-}
+//     // Return a response to indicate success or failure
+//     if ($success) {
+//         echo json_encode(array("success" => true));
+//     } else {
+//         echo json_encode(array("success" => false, "message" => "Failed to update job status"));
+//     }
+//     exit(); // Terminate script execution after handling the request
+// }
 ?>
 
  
