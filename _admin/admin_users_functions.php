@@ -10,8 +10,12 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == "actionAddNewUser") {
         actionAddNewUser();
         // echo "Add New User";
+    } elseif ($_POST['action'] == "actionEditUser") {
+        actionEditUser();
     } elseif ($_POST['action'] == "actionDeleteUser") {
         actionDeleteUser();
+    } elseif ($_POST['action'] == "getUserData") {
+        getUserData();
     }
 }
 
@@ -86,7 +90,6 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtAdmin);
-
         } else if ($userRole === "Manager") {
 
             // Insert data into tlms_manager table
@@ -106,7 +109,7 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtManager);
-        } else if($userRole === "User"){
+        } else if ($userRole === "User") {
 
             // Insert data into tlms_user table
             $insertUserQuery = "INSERT INTO tlms_user (tlms_user_type, tlms_user_email, tlms_user_password, tlms_user_temp_pwd, tlms_user_system_users_id) VALUES (1, ?, NULL, ?, ?)";
@@ -125,7 +128,6 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtUser);
-
         }
     } else {
         echo "Error inserting user data: " . mysqli_error($connection);
@@ -133,6 +135,71 @@ function actionAddNewUser()
 
     mysqli_close($connection);
 }
+
+function getUserData()
+{
+    global $connection;
+    if (isset($_POST['userId'])) {
+        $userId = $_POST['userId'];
+
+        // Prepare a query to fetch user data
+        $query = "SELECT tlms_system_users_first_name, tlms_system_users_last_name, tlms_system_users_user_role, tlms_system_users_email FROM tlms_system_users WHERE tlms_system_users_id = ?";
+        $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+
+        if (mysqli_stmt_execute($stmt)) {
+            $result = mysqli_stmt_get_result($stmt);
+            $userData = mysqli_fetch_assoc($result);
+
+            // Return user data as JSON
+            header('Content-Type: application/json'); // Set the response content type to JSON
+            echo json_encode($userData);
+        } else {
+            echo json_encode(array("error" => "Error fetching user data"));
+        }
+
+        mysqli_stmt_close($stmt);
+    }
+}
+
+
+function actionEditUser()
+{
+    global $connection;
+
+    // Check if the required data is set in the POST request
+    // if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'], $_POST['userRole'], $_POST['email'])) {
+    if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'])) {
+        $userId = $_POST['userId'];
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        // $userRole = $_POST['userRole'];
+        // $email = $_POST['email'];
+
+        // Update the user's information in the tlms_system_users table
+        $updateQuery = "UPDATE tlms_system_users SET tlms_system_users_first_name=?, tlms_system_users_last_name=? WHERE tlms_system_users_id=?";
+
+        $stmt = mysqli_prepare($connection, $updateQuery);
+
+        if (!$stmt) {
+            echo "Error preparing update statement: " . mysqli_error($connection);
+            return;
+        }
+
+        mysqli_stmt_bind_param($stmt, "ssi", $firstName, $lastName, $userId);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "User Updated Successfully";
+        } else {
+            echo "Error updating user: " . mysqli_error($connection);
+        }
+
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Missing required data.";
+    }
+}
+
 
 function actionDeleteUser()
 {
@@ -162,6 +229,6 @@ function actionDeleteUser()
 
         // Close the statement and connection
         mysqli_stmt_close($stmt);
-        mysqli_close($connection); 
+        mysqli_close($connection);
     }
 }

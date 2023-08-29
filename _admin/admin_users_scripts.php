@@ -2,8 +2,9 @@
 
 <script>
     $(document).ready(function() {
-
         // ADD NEW USER modal
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         // Add an event listener to the "Add New User" button
         const addNewUserButton = document.getElementById("admin_users_addNewUsers");
         addNewUserButton.addEventListener("click", setTemporaryPassword);
@@ -20,13 +21,40 @@
             displayToast(cookieValue);
         }
 
+
+        // EDIT modal
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Add a click event listener to all EDIT buttons
         $(".edit-user-button").on("click", function() {
             var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
-            $("#admin_users_editUser_btn").attr("data-user-id", userIdEdit); // Store the user ID in the modal's Save button
+            // $("#admin_users_editUser_btn").attr("data-user-id", userIdEdit); // Store the user ID in the modal's Save button
+            // alert("Edit User with ID: " + userIdEdit);
+            // Make an AJAX request to fetch user data
+            $.ajax({
+                url: 'admin_users_functions.php',
+                type: 'POST',
+                data: {
+                    action: 'getUserData',
+                    userId: userIdEdit
+                },
+                dataType: 'json', // Expect JSON data in response
+                success: function(response) {
+                    // Populate the modal input fields with user data
+                    // alert(JSON.stringify(response));
+                    $("#admin_users_editUser_firstName").val(response.tlms_system_users_first_name);
+                    $("#admin_users_editUser_lastName").val(response.tlms_system_users_last_name);
+                    $("#admin_users_editUser_userRole").val(response.tlms_system_users_user_role);
+                    $("#admin_users_editUser_email").val(response.tlms_system_users_email);
+
+                    // Store the user ID in the modal's Save button
+                    $("#admin_users_editUser_btn").attr("data-user-id", userIdEdit);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching user data: " + error);
+                }
+            });
         });
 
-        // EDIT modal
         // admin_users_editUser_btn click listner
         $("#admin_users_editUser_btn").on("click", function(event) {
             var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
@@ -41,6 +69,7 @@
         });
 
         // DELETE modal
+        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Add a click event listener to all delete buttons
         $(".delete-user-button").on("click", function() {
             var userId = $(this).data("user-id"); // Get the user ID from the data attribute
@@ -117,33 +146,36 @@
         // alert('Edit User');
         // alert('Add New User');
         var userId = $("#admin_users_editUser_btn").data("user-id"); // Get the user ID from the modal's Yes button
-        alert("Edit User with ID: " + userId);
+        // alert("Edit User with ID: " + userId);
+        // alert($('#admin_users_editUser_firstName').val());
         $(document).ready(function() {
+            // Collect the data from the input fields
             var data = {
-                action: $('#actionEditUser').val(),
+                action: 'actionEditUser', // The action for editing the user
+                userId: userId, // The user ID to edit
                 firstName: $('#admin_users_editUser_firstName').val(),
                 lastName: $('#admin_users_editUser_lastName').val(),
-                userRole: $('#admin_users_editUser_userRole').val(),
-                email: $('#admin_users_editUser_email').val(),
+                // userRole: $('#admin_users_editUser_userRole').val(),
+                // email: $('#admin_users_editUser_email').val(),
             };
-            // alert(data);
-            alert(JSON.stringify(data));
-            // $.ajax({
-            //     url: 'admin_users_functions.php',
-            //     type: 'POST',
-            //     data: data,
-            //     success: function(response) {
-            //         // alert(response);
-            //         // Set a cookie to indicate that the toast should be displayed after the reload
-            //         document.cookie = `toastMessage=${response}; path=/`;
+            // alert("Edit User with ID: " + userId);
+            // alert(JSON.stringify(data));
+            $.ajax({
+                url: 'admin_users_functions.php',
+                type: 'POST',
+                data: data,
+                success: function(response) {
+                    // alert(response);
+                    // Set a cookie to indicate that the toast should be displayed after the reload
+                    document.cookie = `toastMessage=${response}; path=/`;
 
-            //         if (response == "User Created Successfully") {
-            //             window.location.reload();
-            //         } else {
-            //             displayToast(response);
-            //         }
-            //     }
-            // });
+                    if (response == "User Updated Successfully") {
+                        window.location.reload();
+                    } else {
+                        displayToast(response);
+                    }
+                }
+            });
 
         });
     }
