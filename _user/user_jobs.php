@@ -169,10 +169,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <th scope="col">ID</th>
                                             <th scope="col">Job</th>
                                             <th scope="col">Customer</th>
-                                            <th scope="col">Started Date</th>
+                                            <th scope="col">Assigned Date</th>
                                             <th scope="col">Completed Date</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Assigned to</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -180,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <td>Mk001</td>
                                             <td>Job Name</td>
                                             <td>Customer Name</td>
-                                            <td>Start Date here</td>
+                                            <td>Assigned Date here</td>
                                             <td>Completed Date here</td>
                                             <td>
                                                 <div class="btn-toolbar mb-2 mb-md-0">
@@ -196,7 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                                                 </div>
                                             </td>
-                                            <td>to User</td>
                                         </tr>
                                    </tbody>
                                 </table>

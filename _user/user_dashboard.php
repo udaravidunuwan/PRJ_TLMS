@@ -1,5 +1,6 @@
 <?php 
 require './user_signin_functions.php';
+require './user_jobs_functions.php';
 if(isset($_SESSION["session_id"])) {
     $session_id = $_SESSION["session_id"];
     $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = '$session_id'"));
@@ -217,10 +218,9 @@ if(isset($_SESSION["session_id"])) {
                                             <th scope="col">ID</th>
                                             <th scope="col">Job</th>
                                             <th scope="col">Customer</th>
-                                            <th scope="col">Start Date</th>
+                                            <th scope="col">Assigned Date</th>
                                             <th scope="col">Completed Date</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Assigned to</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -228,10 +228,9 @@ if(isset($_SESSION["session_id"])) {
                                             <td>Mk001</td>
                                             <td>Job Name</td>
                                             <td>Customer Name</td>
-                                            <td>Start Date here</td>
+                                            <td>Assigned Date here</td>
                                             <td>Completed Date here</td>
                                             <td>status here</td>
-                                            <td>to User</td>
                                         </tr>
                                    </tbody>
                                 </table>
