@@ -6,26 +6,26 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     // Sanitize the session ID to prevent SQL injection
     $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
 
-    // Prepare the SQL statement to retrieve admin information
+    // Prepare the SQL statement to retrieve user information
     $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_job WHERE tlms_jobs_id = ?");
     mysqli_stmt_bind_param($stmt, "s", $session_id);
     mysqli_stmt_execute($stmt);
     // Get the result of the query
     $result = mysqli_stmt_get_result($stmt);
-    // Fetch admin data as an associative array
-    $admin = mysqli_fetch_assoc($result);
+    // Fetch user data as an associative array
+    $user = mysqli_fetch_assoc($result);
     // Close the prepared statement
     mysqli_stmt_close($stmt);
-    // Check if an admin was found
-    if (!$admin) {
-        // Redirect to index.php if admin not found
+    // Check if a user was found
+    if (!$user) {
+        // Redirect to index.php if user not found
         header("Location: ../index.php");
         exit(); // Make sure to exit after sending the redirect header
     }
 
     // Table fetch
     // Fetch data from tlms_system_users table using prepared statement
-    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_assigned_date, tlms_jobs_completed_date, tlms_jobs_status, FROM tlms_job";
+    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_assigned_date, tlms_jobs_completed_date, tlms_jobs_status FROM tlms_job";
     $stmt = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
