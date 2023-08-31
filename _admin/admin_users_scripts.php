@@ -155,8 +155,8 @@
                 userId: userId, // The user ID to edit
                 firstName: $('#admin_users_editUser_firstName').val(),
                 lastName: $('#admin_users_editUser_lastName').val(),
-                // userRole: $('#admin_users_editUser_userRole').val(),
-                // email: $('#admin_users_editUser_email').val(),
+                userRole: $('#admin_users_editUser_userRole').val(),
+                email: $('#admin_users_editUser_email').val(),
             };
             // alert("Edit User with ID: " + userId);
             // alert(JSON.stringify(data));

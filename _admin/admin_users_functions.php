@@ -168,36 +168,47 @@ function actionEditUser()
     global $connection;
 
     // Check if the required data is set in the POST request
-    // if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'], $_POST['userRole'], $_POST['email'])) {
-    if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'])) {
+    if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'], $_POST['userRole'], $_POST['email'])) {
         $userId = $_POST['userId'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
-        // $userRole = $_POST['userRole'];
-        // $email = $_POST['email'];
-
-        // Update the user's information in the tlms_system_users table
-        $updateQuery = "UPDATE tlms_system_users SET tlms_system_users_first_name=?, tlms_system_users_last_name=? WHERE tlms_system_users_id=?";
-
-        $stmt = mysqli_prepare($connection, $updateQuery);
-
-        if (!$stmt) {
-            echo "Error preparing update statement: " . mysqli_error($connection);
-            return;
+        $userRole = $_POST['userRole'];
+        $email = $_POST['email'];
+        // Check user role and call the appropriate function
+        if ($userRole === 'Admin') {
+            actionEditUserAdmin();
+        } elseif ($userRole === 'Manager') {
+            actionEditUserManager();
+        } elseif ($userRole === 'User') {
+            actionEditUserUser();
         }
-
-        mysqli_stmt_bind_param($stmt, "ssi", $firstName, $lastName, $userId);
-
-        if (mysqli_stmt_execute($stmt)) {
-            echo "User Updated Successfully";
-        } else {
-            echo "Error updating user: " . mysqli_error($connection);
-        }
-
-        mysqli_stmt_close($stmt);
+        echo "User Updated Successfully";
     } else {
         echo "Missing required data.";
     }
+}
+
+function actionEditUserAdmin(){
+    global $connection;
+
+    // Check if $email is present in tlms_admin table
+    $checkAdminQuery = "SELECT * FROM tlms_admin WHERE tlms_admin_email=?";
+    $stmt = mysqli_prepare($connection, $checkAdminQuery);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+        return "User Updated Successfully";
+    }
+
+
+}
+function actionEditUserManager(){
+
+}
+function actionEditUserUser(){
+
 }
 
 

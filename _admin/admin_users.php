@@ -297,13 +297,13 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <input id="admin_users_editUser_userRole" class="form-control" placeholder="User Role" aria-label="readonly input User Role" readonly>
-                                <!-- <select id="admin_users_editUser_userRole" class="form-select" label="User Role" aria-label="User Role">
+                                <!-- <input id="admin_users_editUser_userRole" class="form-control" placeholder="User Role" aria-label="readonly input User Role" readonly> -->
+                                <select id="admin_users_editUser_userRole" class="form-select" label="User Role" aria-label="User Role">
                                     <option selected disabled>User Role</option>
                                     <option>Admin</option>
                                     <option>Manager</option>
                                     <option>User</option>
-                                </select> -->
+                                </select>
                             </div>
                         </div>
                         <div class="row mt-3">
