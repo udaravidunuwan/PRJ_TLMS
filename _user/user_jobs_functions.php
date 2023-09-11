@@ -1,19 +1,24 @@
 <?php
-    // Include your database connection code if not included already
-    require './connection.php';
+  // Include your database connection code if not included already
+  include './connection.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $jobId = $_POST['jobId'];
-      $newStatus = $_POST['newStatus'];
-      
-      // Fetch and display job data from the database
-      $query = "SELECT * FROM tlms_job WHERE tlms_jobs_id = ?";
-      $stmt = mysqli_prepare($connection, $query);
-      mysqli_stmt_bind_param($stmt, "s", $jobId);
-  
-      mysqli_stmt_execute($stmt);
-      $result = mysqli_stmt_get_result($stmt);
-      $job = mysqli_fetch_assoc($result);
-      mysqli_stmt_close($stmt);
+// Fetch data from the database table
+$query = "SELECT * FROM tlms_job";
+$result = mysqli_query($connection, $query);
+
+// Check if there is any data
+if (mysqli_num_rows($result) > 0) {
+    $data = array();
+    
+    // Fetch rows and store them in an array
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
     }
+
+    // Return the data as JSON
+    // header('Content-Type: application/json');
+    echo json_encode($data);
+} else {
+    echo 'No data found';
+}
 ?>

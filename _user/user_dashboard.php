@@ -1,6 +1,7 @@
 <?php 
 require './user_signin_functions.php';
 require './user_jobs_functions.php';
+
 // Check if the session variable is set and non-empty
 if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     // Sanitize the session ID to prevent SQL injection
@@ -256,28 +257,21 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                         <div class="px-md-4">
                             <h3>Latest Jobs</h3>
                             <div class="table-responsive small">
-                                <table id="user_dashboard_table" class="table table-striped table-sm pt-2">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Job</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Assigned Date</th>
-                                            <th scope="col">Completed Date</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Assigned Date here</td>
-                                            <td>Completed Date here</td>
-                                            <td>status here</td>
-                                        </tr>
-                                   </tbody>
-                                </table>
+                            <table id="user_dashboard_table" class="table table-striped table-sm pt-2" method="get">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Job</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Assigned Date</th>
+                                        <th scope="col">Completed Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- This is where the data will be dynamically added -->
+                                </tbody>
+                            </table>
                             </div>
                         </div>
                     </div>
