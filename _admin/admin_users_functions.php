@@ -90,7 +90,7 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtAdmin);
-        } else if ($userRole === "Manager") {
+        } else if ($userRole === "Manager") { // Check if the userRole is "Manager"
 
             // Insert data into tlms_manager table
             $insertManagerQuery = "INSERT INTO tlms_manager (tlms_manager_email, tlms_manager_password, tlms_manager_temp_pwd, tlms_manager_system_users_id) VALUES (?, NULL, ?, ?)";
@@ -109,7 +109,7 @@ function actionAddNewUser()
             }
 
             mysqli_stmt_close($stmtManager);
-        } else if ($userRole === "User") {
+        } else if ($userRole === "User") { // Check if the userRole is "User"
 
             // Insert data into tlms_user table
             $insertUserQuery = "INSERT INTO tlms_user (tlms_user_type, tlms_user_email, tlms_user_password, tlms_user_temp_pwd, tlms_user_system_users_id) VALUES (1, ?, NULL, ?, ?)";

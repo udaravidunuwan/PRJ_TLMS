@@ -233,70 +233,7 @@ if (isset($_SESSION["session_id"])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk002</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk0013</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
-                                <tr>
-                                    <td>Mk001</td>
-                                    <td>Job Name</td>
-                                    <td>Customer Name</td>
-                                    <td>Date here</td>
-                                    <td>Status here</td>
-                                    <td>to User</td>
-                                </tr>
+                                
                                 <tr>
                                     <td>Mk001</td>
                                     <td>Job Name</td>
