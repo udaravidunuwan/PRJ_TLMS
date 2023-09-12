@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2023 at 12:52 PM
+-- Generation Time: Sep 12, 2023 at 01:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,8 +31,8 @@ CREATE TABLE `tlms_admin` (
   `tlms_admin_id` int(255) NOT NULL,
   `tlms_admin_type` int(255) NOT NULL,
   `tlms_admin_email` varchar(255) NOT NULL,
-  `tlms_admin_password` varchar(255) DEFAULT NULL,
-  `tlms_admin_temp_pwd` varchar(255) DEFAULT NULL,
+  `tlms_admin_password` varchar(255) NOT NULL,
+  `tlms_admin_temp_pwd` varchar(255) NOT NULL,
   `tlms_admin_system_users_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,7 +41,8 @@ CREATE TABLE `tlms_admin` (
 --
 
 INSERT INTO `tlms_admin` (`tlms_admin_id`, `tlms_admin_type`, `tlms_admin_email`, `tlms_admin_password`, `tlms_admin_temp_pwd`, `tlms_admin_system_users_id`) VALUES
-(1, 1, 'admin@mail.com', 'admin', NULL, 1);
+(1, 1, 'admin@mail.com', 'admin', '', 0),
+(2, 2, 'admin_cus@mail.com', 'admincus', '', 0);
 
 -- --------------------------------------------------------
 
@@ -52,8 +53,8 @@ INSERT INTO `tlms_admin` (`tlms_admin_id`, `tlms_admin_type`, `tlms_admin_email`
 CREATE TABLE `tlms_manager` (
   `tlms_manager_id` int(255) NOT NULL,
   `tlms_manager_email` varchar(255) NOT NULL,
-  `tlms_manager_password` varchar(255) DEFAULT NULL,
-  `tlms_manager_temp_pwd` varchar(255) DEFAULT NULL,
+  `tlms_manager_password` varchar(255) NOT NULL,
+  `tlms_manager_temp_pwd` varchar(255) NOT NULL,
   `tlms_manager_system_users_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,7 +63,7 @@ CREATE TABLE `tlms_manager` (
 --
 
 INSERT INTO `tlms_manager` (`tlms_manager_id`, `tlms_manager_email`, `tlms_manager_password`, `tlms_manager_temp_pwd`, `tlms_manager_system_users_id`) VALUES
-(3, 'manager@mail.com', NULL, '@Q0FoV7UQLm7loL48RYQ', 26);
+(1, 'manager@mail.com', 'manager', '', 0);
 
 -- --------------------------------------------------------
 
@@ -83,9 +84,10 @@ CREATE TABLE `tlms_system_users` (
 --
 
 INSERT INTO `tlms_system_users` (`tlms_system_users_id`, `tlms_system_users_first_name`, `tlms_system_users_last_name`, `tlms_system_users_user_role`, `tlms_system_users_email`) VALUES
-(1, 'admin', 'admin', 'Admin', 'admin@mail.com'),
-(26, 'Manager', 'manager', 'Manager', 'manager@mail.com'),
-(27, 'User', 'user', 'User', 'user@mail.com');
+(1, 'testuser', 'testname', 'Admin', 'testuser@mail.com'),
+(2, 'test1', 'testname', 'Admin', 'test1@mail.com'),
+(3, 'test2', 'testname', 'Manager', 'test2@gmail.com'),
+(4, 'test3', 'testname', 'User', 'test3@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -97,8 +99,8 @@ CREATE TABLE `tlms_user` (
   `tlms_user_id` int(255) NOT NULL,
   `tlms_user_type` int(255) NOT NULL,
   `tlms_user_email` varchar(255) NOT NULL,
-  `tlms_user_password` varchar(255) DEFAULT NULL,
-  `tlms_user_temp_pwd` varchar(255) DEFAULT NULL,
+  `tlms_user_password` varchar(255) NOT NULL,
+  `tlms_user_temp_pwd` varchar(255) NOT NULL,
   `tlms_user_system_users_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -107,7 +109,8 @@ CREATE TABLE `tlms_user` (
 --
 
 INSERT INTO `tlms_user` (`tlms_user_id`, `tlms_user_type`, `tlms_user_email`, `tlms_user_password`, `tlms_user_temp_pwd`, `tlms_user_system_users_id`) VALUES
-(4, 1, 'user@mail.com', NULL, 'YdPTFobzImvRpqC*GjFY', 27);
+(1, 1, 'user@mail.com', 'user', '', 0),
+(2, 2, 'usercus@mail.com', 'usercus', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -145,25 +148,25 @@ ALTER TABLE `tlms_user`
 -- AUTO_INCREMENT for table `tlms_admin`
 --
 ALTER TABLE `tlms_admin`
-  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `tlms_admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tlms_manager`
 --
 ALTER TABLE `tlms_manager`
-  MODIFY `tlms_manager_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tlms_manager_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tlms_system_users`
 --
 ALTER TABLE `tlms_system_users`
-  MODIFY `tlms_system_users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `tlms_system_users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tlms_user`
 --
 ALTER TABLE `tlms_user`
-  MODIFY `tlms_user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `tlms_user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
