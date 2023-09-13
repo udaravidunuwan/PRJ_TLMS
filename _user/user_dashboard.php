@@ -270,6 +270,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                                 </thead>
                                 <tbody>
                                     <!-- This is where the data will be dynamically added -->
+                                    <?php echo $rows; ?>
                                 </tbody>
                             </table>
                             </div>
