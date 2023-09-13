@@ -148,11 +148,11 @@
                                             <th scope="col">Assign To</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-group-divider">
                                         <tr>
-                                            <td>Mk001</td>
+                                            <td>001</td>
                                             <td>Job name</td>
-                                            <td>Customer name</td>
+                                            <td>KGH / DB Schenker</td>
                                             <td>Creared date here</td>
                                             <td><span class="badge bg-primary">Status here</span></td>
                                             <td>

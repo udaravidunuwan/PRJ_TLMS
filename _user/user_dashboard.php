@@ -1,29 +1,88 @@
+<?php 
+require './user_signin_functions.php';
+require './user_jobs_functions.php';
+
+// Check if the session variable is set and non-empty
+if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
+    // Sanitize the session ID to prevent SQL injection
+    $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
+
+    // Prepare the SQL statement to retrieve user information
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_job WHERE tlms_jobs_id = ?");
+    mysqli_stmt_bind_param($stmt, "s", $session_id);
+    mysqli_stmt_execute($stmt);
+    // Get the result of the query
+    $result = mysqli_stmt_get_result($stmt);
+    // Fetch user data as an associative array
+    $user = mysqli_fetch_assoc($result);
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
+    // Check if a user was found
+    if (!$user) {
+        // Redirect to index.php if user not found
+        header("Location: ../index.php");
+        exit(); // Make sure to exit after sending the redirect header
+    }
+
+    // Table fetch
+    // Fetch data from tlms_system_users table using prepared statement
+    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_assigned_date, tlms_jobs_completed_date, tlms_jobs_status FROM tlms_job";
+    $stmt = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Generate table rows
+    $rows = '';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows .= '<tr>
+                    <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_name'])  . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_assigned_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
+                </tr>';
+    }
+
+    mysqli_stmt_close($stmt);
+    // End Table fetch
+} else {
+    // Redirect to index.php if session_id is not set
+    header("Location: ../index.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
-    <head>
-        <script src="http://localhost/tlms/_user/user_assets/js/user_dashboard.js"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f8fb">
 
-        <title>TLMS/ User</title>
+    <title>TLMS/ Admin</title>
 
-        <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
+    <!-- css load with absolute path -->
+    <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- boostrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-        <!-- BOOTSTRAP ICONS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- DataTable CSS import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
-        <!-- boostrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-        <meta name="theme-color" content="#f8f8fb">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    </head>
+    <!-- DataTable JS Import -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+</head>
 
     <body class="py-0 bg-body-tertiary">
         
@@ -131,9 +190,9 @@
                                                 <i class="bi bi-calendar3"></i>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('Today')">Today</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Week')">This Week</a></li>
-                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownLabel('This Month')">This Month</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('Today')">Today</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('This Week')">This Week</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateCalendarDropdownLabel('This Month')">This Month</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -154,60 +213,41 @@
                     </div>
                     <!-- end breadcrumb -->
                     <!-- start analytics -->
-                    <div class="row">
-                        <div class="px-md-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 border-bottom">
-                                <div class="col-12">
-                                    <div class="card widget-inline border-0 ">
-                                        <div class="card-body p-0">
-                                            <div class="row g-0">
-                                                <!-- card 1 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>29</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Completed</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 1 -->
-                                                <!-- card 2 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>715</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Pending</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 2 -->
-                                                <!-- card 3 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>31</span></h3>
-                                                            <p class="text-muted font-15 mb-0">Wroking On</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 3 -->
-                                                <!-- card 4 -->
-                                                <div class="col-sm-6 col-lg-3">
-                                                    <div class="card rounded-0 shadow-none m-0 border-1 ">
-                                                        <div class="card-body text-center">
-                                                            <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end card 4 -->
-                                            </div> 
-                                            <!-- end row -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-3 mb-3 border-bottom">
+                                <!-- Card 1 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>29</span></h3>
+                                            <p class="text-muted font-15 mb-0">Completed</p>
                                         </div>
-                                    </div> 
-                                    <!-- end card-box-->
-                                </div> 
-                                <!-- end col-->
+                                    </div>
+                                </div>
+                                <!-- End Card 1 -->
+
+                                <!-- Card 2 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>715</span></h3>
+                                            <p class="text-muted font-15 mb-0">Pending</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Card 2 -->
+
+                                <!-- Card 3 -->
+                                <div class="col-sm-4">
+                                    <div class="card rounded-0 shadow-none m-0 border-1">
+                                        <div class="card-body text-center">
+                                            <h3><span>31</span></h3>
+                                            <p class="text-muted font-15 mb-0">Working On</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Card 3 -->
                             </div>
                         </div>
                     </div>
@@ -217,28 +257,22 @@
                         <div class="px-md-4">
                             <h3>Latest Jobs</h3>
                             <div class="table-responsive small">
-                                <table class="table table-striped table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Job</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Created Date</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Assigned to</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mk001</td>
-                                            <td>Job Name</td>
-                                            <td>Customer Name</td>
-                                            <td>Date here</td>
-                                            <td>Status here</td>
-                                            <td>to User</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <table id="user_dashboard_table" class="table table-striped table-sm pt-2" method="get">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Job</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Assigned Date</th>
+                                        <th scope="col">Completed Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- This is where the data will be dynamically added -->
+                                    <?php echo $rows; ?>
+                                </tbody>
+                            </table>
                             </div>
                         </div>
                     </div>
@@ -306,12 +340,11 @@
 
         
 
+        <script src="./user_assets/js/user_dashboard.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
         
     </body>
 

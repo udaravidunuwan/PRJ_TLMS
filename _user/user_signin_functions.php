@@ -19,7 +19,7 @@ function signinUser(){
     $user_password = $_POST['passwordSignin'];
 
     if(empty($user_email) || empty($user_password)){
-        echo "USer Email and Password are required!";
+        echo "User Email and Password are required!";
         exit;
     }
     
@@ -31,22 +31,22 @@ function signinUser(){
         $result = $checkStmt->get_result();
         
         if($result->num_rows == 1) {
-            $admin = $result->fetch_assoc();
-            $stored_password = $admin['tlms_user_password'];
+            $user = $result->fetch_assoc();
+            $stored_password = $user['tlms_user_password'];
             // $admin_type = $admin['tlms_admin_type'];
 
             if($stored_password == $user_password) {
                 echo "Sign in Successful";
                 $_SESSION["signin"] = true;
-                $_SESSION["session_id"] = $admin['tlms_user_id'];
-                $_SESSION["user_type"] = $admin['tlms_user_type'];
+                $_SESSION["session_id"] = $user['tlms_user_id'];
+                $_SESSION["user_type"] = $user['tlms_user_type'];
                 exit;
             } else {
-                echo "Sign in Failed! Please try again";
+                echo "Sign in Failed! Passsword does not exist";
                 exit;
             }
         } else {
-            echo "No users found with email " . $user_password . " in the database";
+            echo "No users found with email " . $user_email . " in the database";
             exit;
         }
 

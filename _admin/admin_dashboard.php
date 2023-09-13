@@ -9,30 +9,33 @@ if(isset($_SESSION["session_id"])) {
 ?>
 <!DOCTYPE html>
 <html lang ="en" data-bs-theme="auto">
-    <head>
-        <script src="http://localhost/tlms/_admin/admin_assets/js/admin_dashboard.js"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f8fb">
 
-        <title>TLMS/ Admin</title>
+    <title>TLMS/ Admin</title>
 
-        <!-- css load with absolute path -->
-        <link rel="stylesheet" href="http://localhost/tlms/_admin/admin_assets/css/admin_dashboard.css">
+    <!-- css load with absolute path -->
+    <link rel="stylesheet" href="http://localhost/tlms/_admin/admin_assets/css/admin_dashboard.css">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- boostrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-        <!-- BOOTSTRAP ICONS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+    <!-- DataTable CSS import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
-        <!-- boostrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-        <meta name="theme-color" content="#f8f8fb">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    </head>
+    <!-- DataTable JS Import -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+</head>
 
     <body class="py-0 bg-body-tertiary">
         
@@ -207,7 +210,7 @@ if(isset($_SESSION["session_id"])) {
                                                     <div class="card rounded-0 shadow-none m-0 border-1 ">
                                                         <div class="card-body text-center">
                                                             <h3><span>93</span></h3>
-                                                            <p class="text-muted font-15 mb-0">New</p>
+                                                            <p class="text-muted font-15 mb-0">Not Assigned</p>
                                                         </div>
                                                     </div>
                                                 </div>

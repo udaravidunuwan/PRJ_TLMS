@@ -73,10 +73,40 @@
     })
   })()
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   updateDropdownLabel("Today");
+// });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   updateDropdownLabel("Pending");
+// });
+
+// function updateDropdownLabel(label) {
+//   document.getElementById("dropdownButton-users").innerHTML= label;
+// }
+
+// // Datatables
+// $(document).ready(function() {
+//   $('#user_dashboard_table').DataTable();
+// })
+
+
+function updateCalendarDropdownLabel(label) {
+  document.getElementById("dropdownButton_dashboard-cards").innerHTML = '<i class="bi bi-calendar3"></i>'+label;
+}
 document.addEventListener("DOMContentLoaded", function () {
-  updateDropdownLabel("Today");
+  updateCalendarDropdownLabel("Today");
 });
 
-function updateDropdownLabel(label) {
-  document.getElementById("dropdownButton_dashboard-cards").innerHTML = `<i class="bi bi-calendar3"></i>`+label;
+//dashboard_jobs_table_status
+function updateJobsStatusDropdownLabel(label) {
+  document.getElementById("dropdownButton-users").innerHTML = label;
 }
+document.addEventListener("DOMContentLoaded", function () {
+  updateJobsStatusDropdownLabel("Pending");
+});
+
+//Datatables
+$(document).ready(function() {
+  $('#user_dashboard_table').DataTable();
+});

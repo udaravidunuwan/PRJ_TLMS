@@ -40,11 +40,11 @@ function signinManager(){
                 $_SESSION["session_id"] = $manager['tlms_manager_id'];
                 exit;
             } else {
-                echo "Sign in Failed! Please try again";
+                echo "Sign in Failed! Passsword does not exist";
                 exit;
             }
         } else {
-            echo "No users found with email " . $manager_password . " in the database";
+            echo "No users found with email " . $manager_email . " in the database";
             exit;
         }
 

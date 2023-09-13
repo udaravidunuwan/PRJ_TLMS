@@ -84,6 +84,19 @@ if(isset($_SESSION["session_id"])){
             </ul>
         </div>
         <main class="form-signin w-100 m-auto">
+            <!-- Error Toast -->
+            <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 danger">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto"><i class="bi bi-exclamation-triangle"></i> Error</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- End of Error Toast -->
             <form autocomplete="on" action="" method="post">
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="action">
@@ -102,7 +115,7 @@ if(isset($_SESSION["session_id"])){
                         Remember me
                         </label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="userSigninBtn"  onclick="userSignin();">Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="userSigninBtn">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="../index.php">Go Back</a>
                 </div>
             </form>
