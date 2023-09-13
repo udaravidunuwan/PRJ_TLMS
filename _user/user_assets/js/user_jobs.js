@@ -128,3 +128,15 @@ $('#dropdownButton-users .dropdown-item').click(function() {
       updateJobStatus(jobId);
   }
 });
+
+//  // function selectStatus status
+//  function selectStatus(status) {
+//   // You can update a hidden input field with the selected status value
+//   document.getElementById('Pending').value = status;
+
+//   // Alternatively, you can perform any other action you need with the selected status
+//   // For example, you can display it on the page, submit it to a server, etc.
+
+//   // Close the modal (optional)
+//   // $('#exampleModal').modal('hide');
+// }
