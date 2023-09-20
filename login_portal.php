@@ -1,8 +1,14 @@
-<?php 
-require './_admin/admin_signin_functions.php';
-if(isset($_SESSION["session_id"])){
-    header("Location: ./_admin/admin_dashboard.php");
-}
+<?php
+// require './admin_signin_functions.php';
+// if(isset($_SESSION["session_id"])){
+//     if($_SESSION["admin_type"] == 1) {
+//         header("Location: admin_dashboard.php");
+//         exit;
+//     } elseif($_SESSION["admin_type"] == 2) {
+//         header("Location: admin_dashboard_cus.php");
+//         exit;
+//     }
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -11,13 +17,13 @@ if(isset($_SESSION["session_id"])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TLMS/ Admin</title>
+        <title>TLMS/ Login</title>
 
         <!-- css load with absolute path --><!-- Have to change the absolute path when hosting -->
-        <link rel="stylesheet" href="./_assets/css/index.css" />
+        <link rel="stylesheet" href="./_assets/css/login_portal.css" />
 
         <!-- favicon -->
-        <link rel="shortcut icon" type="image/png" sizes="16x16" href="http://localhost/tlms/_assets/favicon_io/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/png" sizes="16x16" href="./_assets/favicon_io/favicon-16x16.png">
 
         <!-- bootstrap CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -26,8 +32,8 @@ if(isset($_SESSION["session_id"])){
         <meta name="theme-color" content="#f8f8fb">
     </head>
     
-    <body class="d-flex h-100 text-center bg-body-tertiary">
-
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+        <!-- SVG for theme Change -->
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -43,7 +49,8 @@ if(isset($_SESSION["session_id"])){
                 <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
             </symbol>
         </svg>
-
+        <!-- End of SVG -->
+        <!-- Theme button -->
         <div class="dropdown position-fixed bottom-0 end-0 mb-2 me-2 bd-mode-toggle">
             <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
                 id="bd-theme"
@@ -78,38 +85,56 @@ if(isset($_SESSION["session_id"])){
                 </li>
             </ul>
         </div>
-
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-
-            <header class="mb-auto">
-              <div>
-                <!-- <h3 class="float-md-start mb-0">Task Link Management System</h3> -->
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./login_portal.php">Log In</a>
-                  <!-- <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_manager/manager_portal.php">Manager</a>
-                  <a class="nav-link fw-bold py-1 px-0 text-secondary" href="./_user/user_portal.php">User</a> -->
-                </nav>
-              </div>
-            </header>
-          
-            <main class="px-3">
-                <div class="d-flex flex-column align-items-center">
-                    <img class="mb-4" src="http://localhost/TLMS/_assets/favicon_io/android-chrome-192x192.png" alt="" width="250" height="250">
+        <!-- End of Theme BUtton -->
+        <!-- Signin Form -->
+        <main class="form-signin w-100 m-auto">
+            <!-- Error Toast -->
+            <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 danger">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto"><i class="bi bi-exclamation-triangle"></i> Error</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        
+                    </div>
                 </div>
+            </div>
+            <!-- End of Error Toast -->
+
+            <form autocomplete="on" action="" method="post">
+                <div class="border rounded p-5 bg-body">
+                    <input type="hidden" id="action" value="action">
+                    <div class="form-floating">
+                        <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
+                        <label for="adminEmail">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="Password" >
+                        <label for="adminPassword">Password</label>
+                    </div>
                 
-            </main>
-          
-            <footer class="mt-auto text-white-50">
-              <!-- <p>By <a href="#" class="text-white">IT</a>.</p> -->
-            </footer>
-        </div>
+                    <div class="form-check text-start my-3">
+                        <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn">Sign in</button>
+                    <a class="btn btn-secondary w-100 py-2 mt-3" href="./index.php">Go Back</a>
+                </div>
+            </form>
+        </main>
+        <!-- End of Signin Form -->
+        <!-- FOOTER -->
+        <footer class="footer" id="footer">
 
-   
+        </footer>
 
-        
+         <!-- Script to pass data to Ajax -->
+        <?php 
+        // require './admin_signin_scripts.php' ?>
         
         <!-- Have to change the absolute path when hosting -->
-        <script src="./_assets/js/index.js"></script>
+        <!-- <script src="./admin_assets/js/admin_portal.js"></script> -->
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
