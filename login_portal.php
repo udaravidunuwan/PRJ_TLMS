@@ -1,14 +1,17 @@
 <?php
-// require './admin_signin_functions.php';
-// if(isset($_SESSION["session_id"])){
-//     if($_SESSION["admin_type"] == 1) {
-//         header("Location: admin_dashboard.php");
-//         exit;
-//     } elseif($_SESSION["admin_type"] == 2) {
-//         header("Location: admin_dashboard_cus.php");
-//         exit;
-//     }
-// }
+require './login_portal_functions.php';
+if(isset($_SESSION["session_id"])){
+    if($_SESSION["user_role"] == "Admin") {
+        header("Location: ./_admin/admin_dashboard.php");
+        exit;
+    } elseif($_SESSION["user_role"] == "Manager") {
+        header("Location: ./_manager/manager_dashboard.php");
+        exit;
+    } elseif($_SESSION["user_role"] == "User") {
+        header("Location: ./_user/user_dashboard.php");
+        exit;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -106,19 +109,19 @@
                 <div class="border rounded p-5 bg-body">
                     <input type="hidden" id="action" value="action">
                     <div class="form-floating">
-                        <input type="email" class="form-control bg-body-tertiary" id="adminEmail" name="adminEmail" placeholder="name@example.com" >
-                        <label for="adminEmail">Email address</label>
+                        <input type="email" class="form-control bg-body-tertiary" id="loginEmail" name="loginEmail" placeholder="name@example.com" >
+                        <label for="loginEmail">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="Password" >
-                        <label for="adminPassword">Password</label>
+                        <input type="password" class="form-control bg-body-tertiary" id="loginPassword" name="loginPassword" placeholder="Password" >
+                        <label for="loginPassword">Password</label>
                     </div>
                 
                     <div class="form-check text-start my-3">
                         <input class="form-check-input bg-body-tertiary" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                     </div>
-                    <button class="btn btn-primary w-100 py-2" type="submit" id="adminSigninBtn">Sign in</button>
+                    <button class="btn btn-primary w-100 py-2" type="submit" id="loginSigninBtn">Sign in</button>
                     <a class="btn btn-secondary w-100 py-2 mt-3" href="./index.php">Go Back</a>
                 </div>
             </form>
@@ -131,7 +134,7 @@
 
          <!-- Script to pass data to Ajax -->
         <?php 
-        // require './admin_signin_scripts.php' ?>
+        require './login_portal_script.php' ?>
         
         <!-- Have to change the absolute path when hosting -->
         <!-- <script src="./admin_assets/js/admin_portal.js"></script> -->
