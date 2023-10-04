@@ -347,9 +347,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                 <strong class="me-auto"><i class="bi bi-exclamation-circle"></i> Notification</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body">
-
-            </div>
+            <div class="toast-body"></div>
         </div>
     </div>
     <!-- End of Toast -->

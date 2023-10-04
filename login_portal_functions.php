@@ -47,7 +47,7 @@ function login()
                 // $_SESSION["admin_type"] = $admin['tlms_system_users_user_type'];
                 exit;
             } else if ($stored_password_temp == $password) {
-                echo "Welcome New Admin";
+                echo "Welcome New User";
                 $_SESSION["signin"] = true;
                 $_SESSION["session_id"] = $admin['tlms_system_users_id'];
                 $_SESSION["user_role"] = $admin['tlms_system_users_user_role'];

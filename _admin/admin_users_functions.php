@@ -56,7 +56,7 @@ function actionAddNewUser()
 
     // If the email doesn't exist, proceed with user insertion
     // Prepare the SQL statement with placeholders
-    $insertQuery = "INSERT INTO tlms_system_users (tlms_system_users_first_name, tlms_system_users_last_name, tlms_system_users_user_role, tlms_system_users_email) VALUES (?,?,?,?)";
+    $insertQuery = "INSERT INTO tlms_system_users (tlms_system_users_first_name, tlms_system_users_last_name, tlms_system_users_user_role, tlms_system_users_email, tlms_system_users_temp_password) VALUES (?,?,?,?,?)";
 
     $stmt = mysqli_prepare($connection, $insertQuery);    // Create a prepared statement
 
@@ -64,75 +64,15 @@ function actionAddNewUser()
         die("Prepared statement creation failed: " . mysqli_error($connection));
     }
 
-    mysqli_stmt_bind_param($stmt, "ssss", $firstName, $lastName, $userRole, $email);    // Bind parameters to the prepared statement
+    mysqli_stmt_bind_param($stmt, "sssss", $firstName, $lastName, $userRole, $email, $tempPassword);    // Bind parameters to the prepared statement
     // Execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
-        $systemUserId = mysqli_insert_id($connection); // Get the ID of the inserted user
-        mysqli_stmt_close($stmt);
-
-        // Check if the userRole is "Admin"
-        if ($userRole === "Admin") {
-
-            // Insert data into tlms_admin table
-            $insertAdminQuery = "INSERT INTO tlms_admin (tlms_admin_type, tlms_admin_email, tlms_admin_password, tlms_admin_temp_pwd, tlms_admin_system_users_id) VALUES (1, ?, NULL, ?, ?)";
-            $stmtAdmin = mysqli_prepare($connection, $insertAdminQuery);
-
-            if (!$stmtAdmin) {
-                die("Prepared statement creation for admin failed: " . mysqli_error($connection));
-            }
-
-            mysqli_stmt_bind_param($stmtAdmin, "ssi", $email, $tempPassword, $systemUserId);
-
-            if (mysqli_stmt_execute($stmtAdmin)) {
-                echo "User Created Successfully";
-            } else {
-                echo "Error inserting admin data: " . mysqli_error($connection);
-            }
-
-            mysqli_stmt_close($stmtAdmin);
-        } else if ($userRole === "Manager") { // Check if the userRole is "Manager"
-
-            // Insert data into tlms_manager table
-            $insertManagerQuery = "INSERT INTO tlms_manager (tlms_manager_email, tlms_manager_password, tlms_manager_temp_pwd, tlms_manager_system_users_id) VALUES (?, NULL, ?, ?)";
-            $stmtManager = mysqli_prepare($connection, $insertManagerQuery);
-
-            if (!$stmtManager) {
-                die("Prepared statement creation for manager failed: " . mysqli_error($connection));
-            }
-
-            mysqli_stmt_bind_param($stmtManager, "ssi", $email, $tempPassword, $systemUserId);
-
-            if (mysqli_stmt_execute($stmtManager)) {
-                echo "User Created Successfully";
-            } else {
-                echo "Error inserting manager data: " . mysqli_error($connection);
-            }
-
-            mysqli_stmt_close($stmtManager);
-        } else if ($userRole === "User") { // Check if the userRole is "User"
-
-            // Insert data into tlms_user table
-            $insertUserQuery = "INSERT INTO tlms_user (tlms_user_type, tlms_user_email, tlms_user_password, tlms_user_temp_pwd, tlms_user_system_users_id) VALUES (1, ?, NULL, ?, ?)";
-            $stmtUser = mysqli_prepare($connection, $insertUserQuery);
-
-            if (!$stmtUser) {
-                die("Prepared statement creation for user failed: " . mysqli_error($connection));
-            }
-
-            mysqli_stmt_bind_param($stmtUser, "ssi", $email, $tempPassword, $systemUserId);
-
-            if (mysqli_stmt_execute($stmtUser)) {
-                echo "User Created Successfully";
-            } else {
-                echo "Error inserting user data: " . mysqli_error($connection);
-            }
-
-            mysqli_stmt_close($stmtUser);
-        }
+        echo "User Created Successfully";
     } else {
         echo "Error inserting user data: " . mysqli_error($connection);
     }
 
+    mysqli_stmt_close($stmt);
     mysqli_close($connection);
 }
 
@@ -162,7 +102,7 @@ function getUserData()
     }
 }
 
-
+// Edit User i completely Changed Remake it-----------------------------------------------------------------------------IMPORTANT---------------------------------------------------
 function actionEditUser()
 {
     global $connection;
@@ -188,7 +128,8 @@ function actionEditUser()
     }
 }
 
-function actionEditUserAdmin(){
+function actionEditUserAdmin()
+{
     global $connection;
 
     // Check if $email is present in tlms_admin table
@@ -201,14 +142,12 @@ function actionEditUserAdmin(){
     if (mysqli_num_rows($result) > 0) {
         return "User Updated Successfully";
     }
-
-
 }
-function actionEditUserManager(){
-
+function actionEditUserManager()
+{
 }
-function actionEditUserUser(){
-
+function actionEditUserUser()
+{
 }
 
 

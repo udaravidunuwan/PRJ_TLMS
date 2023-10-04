@@ -112,10 +112,10 @@
                     } else {
                         // Display the session status in toast
                         const toastBody = document.querySelector('#liveToast .toast-body');
-                        const toastLiveExample = document.getElementById('liveToast');
+                        const toastLogin = document.getElementById('liveToast');
                         toastBody.textContent = response; // Update toast content
                         // alert(toastBody.textContent);
-                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLogin);
                         toastBootstrap.show(); // Show the toast
                         // $('#liveToast').toast('show');
 

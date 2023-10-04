@@ -17,3 +17,5 @@ use bootastrap 5 qyuick snippets extension
 
 session management 
 https://www.youtube.com/watch?v=_h_-F87XjRs
+
+Remove admin, manager, and uer portal and relavant files. and tester files.

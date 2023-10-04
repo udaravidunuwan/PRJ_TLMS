@@ -165,7 +165,7 @@
                 type: 'POST',
                 data: data,
                 success: function(response) {
-                    // alert(response);
+                    alert(response);
                     // Set a cookie to indicate that the toast should be displayed after the reload
                     document.cookie = `toastMessage=${response}; path=/`;
 
@@ -232,6 +232,10 @@
         const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
         toastBootstrap.show(); // Show the toast
 
+        // Automatically dismiss the toast after 3 seconds
+        setTimeout(() => {
+            toastBootstrap.hide();
+        }, 3000);
     }
 
     // Function to set the temporary password in the input field
