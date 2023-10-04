@@ -8,7 +8,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
 
     // Prepare the SQL statement to retrieve admin information
-    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = ?");
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_system_users WHERE tlms_system_users_id = ?");
     mysqli_stmt_bind_param($stmt, "s", $session_id);
     mysqli_stmt_execute($stmt);
     // Get the result of the query

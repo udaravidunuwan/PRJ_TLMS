@@ -1,12 +1,37 @@
 <?php
 require './admin_signin_functions.php';
-if (isset($_SESSION["session_id"])) {
+
+// Check if the session_id is set and is a valid integer
+if (isset($_SESSION["session_id"]) && is_numeric($_SESSION["session_id"])) {
     $session_id = $_SESSION["session_id"];
-    $admin = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = '$session_id'"));
+
+    // Create a prepared statement to retrieve user data
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_system_users WHERE tlms_system_users_id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $session_id);
+    mysqli_stmt_execute($stmt);
+
+    // Get the result
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Check if a row was found
+    if ($row = mysqli_fetch_assoc($result)) {
+        // You can access user data like $row['column_name']
+        $admin = $row;
+    } else {
+        // No matching user found, redirect to the index.php page
+        header("Location: ../index.php");
+        exit();
+    }
 } else {
+    // Invalid session_id or not set, redirect to the index.php page
     header("Location: ../index.php");
+    exit();
 }
+
+// Close the prepared statement
+mysqli_stmt_close($stmt);
 ?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -73,8 +98,8 @@ if (isset($_SESSION["session_id"])) {
                     <div class="d-flex align-items-top">
                         <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                         <div>
-                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
-                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel"> <?php echo $admin['tlms_system_users_first_name'] . ' ' . $admin['tlms_system_users_last_name']; ?></p>
+                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel"> <?php echo $admin['tlms_system_users_user_role']; ?></p>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -233,7 +258,7 @@ if (isset($_SESSION["session_id"])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 <tr>
                                     <td>Mk001</td>
                                     <td>Job Name</td>
