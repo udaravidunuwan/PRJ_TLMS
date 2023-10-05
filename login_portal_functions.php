@@ -21,8 +21,6 @@ function login()
 
     if (empty($email) || empty($password)) {
         echo "Email and Password are required!";
-        // $_SESSION['status'] = "Admin Email and Password are required!";
-        // echo $_SESSION['status'];
         exit;
     }
 

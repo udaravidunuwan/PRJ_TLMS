@@ -107,8 +107,8 @@
                     // alert(response);
                     if (response == "Sign in Successful") {
                         window.location.reload();
-                    // } else if (response == "Welcome New Admin") {
-                    //     window.location.href = 'admin_passwordReset.php'; //Redirect to New User Password Change Page
+                    } else if (response == "Welcome New User") {
+                        window.location.href = 'passwordReset.php'; //Redirect to New User Password Change Page
                     } else {
                         // Display the session status in toast
                         const toastBody = document.querySelector('#liveToast .toast-body');

@@ -1,26 +1,26 @@
 <?php
-require './admin_signin_functions.php';
-require './admin_passwordReset_functions.php';
+require './login_portal_functions.php';
+require './passwordReset_functions.php';
 
 // Check if the session variable is set and non-empty
 if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);    // Sanitize the session ID to prevent SQL injection
 
-    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_admin WHERE tlms_admin_id = ?");    // Prepare the SQL statement to retrieve admin information
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_system_users WHERE tlms_system_users_id = ?");    // Prepare the SQL statement to retrieve admin information
     mysqli_stmt_bind_param($stmt, "i", $session_id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);    // Get the result of the query
-    $admin = mysqli_fetch_assoc($result);    // Fetch admin data as an associative array
+    $user = mysqli_fetch_assoc($result);    // Fetch admin data as an associative array
     mysqli_stmt_close($stmt);    // Close the prepared statement
     // Check if an admin was found
-    if (!$admin) {
+    if (!$user) {
         // Redirect to index.php if admin not found
-        header("Location: ../index.php");
+        header("Location: ./index.php");
         exit(); // Make sure to exit after sending the redirect header
     }
 } else {
     // Redirect to index.php if session_id is not set
-    header("Location: ../index.php");
+    header("Location: ./index.php");
     exit();
 }
 
@@ -32,7 +32,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TLMS/ Admin Password Reset</title>
+    <title>TLMS/ Password Reset</title>
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <!-- BOOTSTRAP ICONS -->
@@ -139,21 +139,22 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
         <!-- End of Error Toast -->
         <div class="mb-3 d-flex justify-content-center">
-            <h5>Reset your password here</h5>
+            <h5>Welcome, <?php echo $user['tlms_system_users_first_name'] . ' ' . $user['tlms_system_users_last_name']; ?>! <br>Reset your password here</h5>
         </div>
         <form autocomplete="on" action="" method="post">
             <div class="border rounded p-5 bg-body">
                 <input type="hidden" id="action" value="action">
+                <input type="hidden" id="userRole" value="<?php echo $user['tlms_system_users_user_role'] ?>">
                 <!-- <div class="mb-3 mx-5">
                     <label >Enter New Password</label>
                 </div> -->
                 <div class="form-floating">
-                    <input type="password" class="form-control bg-body-tertiary" id="adminPassword" name="adminPassword" placeholder="New Password">
-                    <label for="adminPassword">New Password</label>
+                    <input type="password" class="form-control bg-body-tertiary" id="Password" name="Password" placeholder="New Password">
+                    <label for="Password">New Password</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control bg-body-tertiary" id="adminPasswordConfirm" name="adminConfirmPassword" placeholder="Confirm Password">
-                    <label for="adminPassword">Confirm Password</label>
+                    <input type="password" class="form-control bg-body-tertiary" id="PasswordConfirm" name="ConfirmPassword" placeholder="Confirm Password">
+                    <label for="ConfirmPassword">Confirm Password</label>
                 </div>
 
                 <button class="btn btn-primary w-100 py-2" type="submit" id="passwordReset">Reset Passowrd</button>
@@ -228,8 +229,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 
     <!-- Script to pass data to Ajax -->
     <?php
-    require './admin_signin_scripts.php';
-    require './admin_passwordReset_scripts.php';
+    require './login_portal_script.php';
+    require './passwordReset_scripts.php';
     ?>
 
 
