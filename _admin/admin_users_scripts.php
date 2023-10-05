@@ -2,6 +2,13 @@
 
 <script>
     $(document).ready(function() {
+
+        // Check if the cookie is set with a toast message
+        const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)toastMessage\s*=\s*([^;]*).*$)|^.*$/, "$1");
+        if (cookieValue) {
+            displayToast(cookieValue);
+        }
+
         // ADD NEW USER modal
         // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -15,11 +22,7 @@
             admin_users_addNewUser_btn(); // Call your function
         });
 
-        // Check if the cookie is set with a toast message
-        const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)toastMessage\s*=\s*([^;]*).*$)|^.*$/, "$1");
-        if (cookieValue) {
-            displayToast(cookieValue);
-        }
+
 
 
         // EDIT modal
@@ -57,7 +60,7 @@
 
         // admin_users_editUser_btn click listner
         $("#admin_users_editUser_btn").on("click", function(event) {
-            var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
+            // var userIdEdit = $(this).data("user-id"); // Get the user ID from the data attribute
             // alert("Edit User with ID: " + userIdEdit);
             event.preventDefault(); // Prevent form submission for now
             admin_users_editUser_btn(); // Call your function
@@ -153,6 +156,7 @@
             var data = {
                 action: 'actionEditUser', // The action for editing the user
                 userId: userId, // The user ID to edit
+                actionsession_id: $('#actionsession_id').val(),
                 firstName: $('#admin_users_editUser_firstName').val(),
                 lastName: $('#admin_users_editUser_lastName').val(),
                 userRole: $('#admin_users_editUser_userRole').val(),
@@ -185,11 +189,13 @@
         // alert('Delete User');
         var userId = $("#admin_users_deleteUser_btn").data("user-id"); // Get the user ID from the modal's Yes button
         // alert("Delete User with ID: " + userId);
+        // alert("Delete User with sESSION ID: " + sessionId);
 
         $(document).ready(function() {
             var data = {
                 action: "actionDeleteUser",
-                userId: userId
+                userId: userId,
+                action_del_session_id: $('#action_del_session_id').val(),
             };
             // alert(data);
             // alert(JSON.stringify(data));

@@ -110,10 +110,15 @@ function actionEditUser()
     // Check if the required data is set in the POST request
     if (isset($_POST['userId'], $_POST['firstName'], $_POST['lastName'], $_POST['userRole'])) {
         $userId = $_POST['userId'];
+        $actionsession_id = $_POST['actionsession_id'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $userRole = $_POST['userRole'];
 
+        if ($userId == $actionsession_id) {
+            echo "You cannot edit your own data.";
+            exit;
+        }
 
         // Prepare the SQL statement to update the user
         $query = "UPDATE tlms_system_users SET tlms_system_users_first_name = ?, tlms_system_users_last_name = ?, tlms_system_users_user_role = ? WHERE tlms_system_users_id = ?";
@@ -150,7 +155,13 @@ function actionDeleteUser()
     // Check if the userId is set in the POST data
     if (isset($_POST['userId'])) {
         $userId = $_POST['userId'];
+        $action_del_session_id = $_POST['action_del_session_id'];
 
+        if ($userId == $action_del_session_id) {
+            echo "You cannot delete your own data.";
+            exit;
+        }
+        
         // Prepare the SQL statement to delete the user
         $query = "DELETE FROM tlms_system_users WHERE tlms_system_users_id = ?";
         $stmt = mysqli_prepare($connection, $query);

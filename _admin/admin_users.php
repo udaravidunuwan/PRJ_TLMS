@@ -287,6 +287,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <!-- Edit Form -->
                     <form autocomplete="on" action="" method="post">
                         <input type="hidden" id="actionEditUser" value="actionEditUser">
+                        <input type="hidden" id="actionsession_id" value="<?php echo $_SESSION["session_id"] ?>">
                         <div class="row">
                             <div class="col">
                                 <input id="admin_users_editUser_firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -331,6 +332,9 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                 <div class="modal-body">
                     Are you sure to delete the field?
                 </div>
+                <form action="" method="post">
+                    <input type="hidden" id="action_del_session_id" value="<?php echo $_SESSION["session_id"] ?>">
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary delete-button" id="admin_users_deleteUser_btn">Yes</button>
                     <button type="button" class="btn btn-secondary" id="admin_users_deleteUser_btn-NO" data-bs-dismiss="modal">No</button>
