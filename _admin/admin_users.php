@@ -126,8 +126,8 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <div class="d-flex align-items-top">
                         <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                         <div>
-                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
-                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel"><?php echo $admin['tlms_system_users_first_name'] . ' ' . $admin['tlms_system_users_last_name']; ?></p>
+                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel"><?php echo $admin['tlms_system_users_user_role']; ?></p>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

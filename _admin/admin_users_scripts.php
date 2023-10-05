@@ -156,7 +156,7 @@
                 firstName: $('#admin_users_editUser_firstName').val(),
                 lastName: $('#admin_users_editUser_lastName').val(),
                 userRole: $('#admin_users_editUser_userRole').val(),
-                email: $('#admin_users_editUser_email').val(),
+                // email: $('#admin_users_editUser_email').val(),
             };
             // alert("Edit User with ID: " + userId);
             // alert(JSON.stringify(data));
@@ -165,7 +165,7 @@
                 type: 'POST',
                 data: data,
                 success: function(response) {
-                    alert(response);
+                    // alert(response);
                     // Set a cookie to indicate that the toast should be displayed after the reload
                     document.cookie = `toastMessage=${response}; path=/`;
 
