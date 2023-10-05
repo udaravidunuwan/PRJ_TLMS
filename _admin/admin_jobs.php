@@ -1,3 +1,62 @@
+<?php
+require './admin_signin_functions.php';
+require './admin_jobs_functions.php';
+
+// Check if the session variable is set and non-empty
+if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
+    // Sanitize the session ID to prevent SQL injection
+    $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
+
+    // Prepare the SQL statement to retrieve admin information
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_system_users WHERE tlms_system_users_id = ?");
+    mysqli_stmt_bind_param($stmt, "s", $session_id);
+    mysqli_stmt_execute($stmt);
+    // Get the result of the query
+    $result = mysqli_stmt_get_result($stmt);
+    // Fetch admin data as an associative array
+    $admin = mysqli_fetch_assoc($result);
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
+    // Check if an admin was found
+    if (!$admin) {
+        // Redirect to index.php if admin not found
+        header("Location: ../index.php");
+        exit(); // Make sure to exit after sending the redirect header
+    }
+
+    // Table fetch
+    // Fetch data from tlms_system_users table using prepared statement
+    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_created_date, tlms_jobs_recieved_date, tlms_jobs_started_date, tlms_jobs_completed_date, tlms_jobs_status, tlms_jobs_assigned_to FROM tlms_jobs";
+    $stmt = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Generate table rows
+    $rows = '';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows .= '<tr>
+                    <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_name']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_created_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_recieved_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_started_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_assigned_to']) . '</td>
+                </tr>';
+    }
+
+    mysqli_stmt_close($stmt);
+    // End Table fetch
+} else {
+    // Redirect to index.php if session_id is not set
+    header("Location: ../index.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -67,8 +126,8 @@
                     <div class="d-flex align-items-top">
                         <img src="./admin_assets/img/blur/bg_blur11.jpg" alt="Profile Pic" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
                         <div>
-                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel">Sandaruwan Samaraweera</p>
-                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel">system role</p>
+                            <p class="h6 offcanvas-title ms-2" id="offcanvasProfileLabel"><?php echo $admin['tlms_system_users_first_name'] . ' ' . $admin['tlms_system_users_last_name']; ?></p>
+                            <p class="ms-2 text-body-secondary" id="offcanvasProfileLabel"><?php echo $admin['tlms_system_users_user_role']; ?></p>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -144,27 +203,15 @@
                                         <th scope="col">Job Name</th>
                                         <th scope="col">Customer</th>
                                         <th scope="col">Created Date</th>
-                                        <th scope="col">status</th>
+                                        <th scope="col">Recieved Date</th>
+                                        <th scope="col">Started Date</th>
+                                        <th scope="col">Completed Date</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Assign To</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                        <td>001</td>
-                                        <td>Job name</td>
-                                        <td>KGH / DB Schenker</td>
-                                        <td>Creared date here</td>
-                                        <td><span class="badge">Status here</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button class="btn  btn-sm dropdown-toggle" type="button" id="assignDropdown" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
-                                                <ul class="dropdown-menu" aria-labelledby="assignDropdown">
-                                                    <li><a class="dropdown-item" href="#">Name1</a></li>
-                                                    <li><a class="dropdown-item" href="#">Name2</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tbody >
+                                    <?php echo $rows; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -242,7 +289,13 @@
     </div>
 
 
-    <script src="./admin_assets/js/admin_jobs.js"></script>
+    <!-- <script src="./admin_assets/js/admin_jobs.js"></script> -->
+
+    <!-- Script to pass data to Ajax -->
+    <?php
+    require './admin_signin_scripts.php';
+    require './admin_jobs_scripts.php';
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
