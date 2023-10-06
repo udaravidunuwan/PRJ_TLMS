@@ -38,12 +38,23 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_name']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_created_date']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_recieved_date']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_started_date']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_created_date_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_created_date_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-calendar3"></i>  ' . htmlspecialchars($row['tlms_jobs_created_date']) . '</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_recieved_date_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_recieved_date_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-calendar3"></i>  ' . htmlspecialchars($row['tlms_jobs_recieved_date']) . '</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_started_date_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_started_date_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-calendar3"></i>  ' . htmlspecialchars($row['tlms_jobs_started_date']) . '</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_completed_date_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_completed_date_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-calendar3"></i>  ' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</button>
+                    </td>
                     <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_assigned_to']) . '</td>
+                    <td>
+                        <button class="btn btn-sm ms-2 me-2 delete-job-button" type="button" data-bs-toggle="modal" data-bs-target="#jobs_delete_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-trash3"></i></button>
+                    </td>
                 </tr>';
     }
 
@@ -79,14 +90,18 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     <!-- boostrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
+    <!-- DateTime Picker CDN -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <!-- DataTable CSS import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
-    <!-- DataTable JS Import -->
+    <!-- JQuery Import -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
@@ -208,9 +223,10 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                                         <th scope="col">Completed Date</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Assign To</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     <?php echo $rows; ?>
                                 </tbody>
                             </table>
@@ -223,6 +239,97 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
     </main>
 
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="jobs_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    Are you sure to delete the field?
+                </div>
+                <form action="" method="post">
+                    <input type="hidden" id="action_del_session_id" value="<?php echo $_SESSION["session_id"] ?>">
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary delete-button" id="admin_users_deleteUser_btn">Yes</button>
+                    <button type="button" class="btn btn-secondary" id="admin_users_deleteUser_btn-NO" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL DELETE -->
+
+    <!-- Modal Date Job Created -->
+    <div class="modal modal-sm fade" id="tlms_jobs_created_date_modal" tabindex="-1" aria-labelledby="tlms_jobs_created_date_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Created Date</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_created_date_modal_datepicker"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_created_date_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Date Job Created -->
+
+
+    <!-- Modal Date Job Recieved -->
+    <div class="modal modal-sm fade" id="tlms_jobs_recieved_date_modal" tabindex="-1" aria-labelledby="tlms_jobs_recieved_date_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Recieved Date</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_recieved_date_modal_datepicker"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_recieved_date_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Date Job Recieved -->
+
+
+    <!-- Modal Date Job Started -->
+    <div class="modal modal-sm fade" id="tlms_jobs_started_date_modal" tabindex="-1" aria-labelledby="tlms_jobs_started_date_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Started Date</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_started_date_modal_datepicker"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_started_date_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Date Job Started -->
+
+
+    <!-- Modal Date Job Completed -->
+    <div class="modal modal-sm fade" id="tlms_jobs_completed_date_modal" tabindex="-1" aria-labelledby="tlms_jobs_completed_date_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Completed Date</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_completed_date_modal_datepicker"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_completed_date_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Date Job Completed -->
 
 
     <!-- Theme SVG Images -->
