@@ -182,7 +182,7 @@
                                             <td>Assigned Date here</td>
                                             <td>Completed Date here</td>
                                             <td>
-                                                <div class="btn-toolbar mb-2 mb-md-0">
+                                                <!-- <div class="btn-toolbar mb-2 mb-md-0">
                                                     <div class="dropdown">
                                                         <button type="button" id="dropdownButton-users" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown" aria-expanded="t" method="post">
                                                         </button>
@@ -193,12 +193,12 @@
                                                         </ul>
                                                     </div>
 
-                                                </div>
+                                                </div> -->
                                                 <!-- Button trigger modal -->
-                                                <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pending</button> -->
+                                                <div class="btn-toolbar mb-2 mb-md-0">
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pending</button>
                                                     <!-- Modal -->
-                                                    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -220,7 +220,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                             </td>
                                         </tr>
                                    </tbody>

@@ -8,7 +8,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     $session_id = mysqli_real_escape_string($connection, $_SESSION["session_id"]);
 
     // Prepare the SQL statement to retrieve user information
-    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_job WHERE tlms_jobs_id = ?");
+    $stmt = mysqli_prepare($connection, "SELECT * FROM tlms_user WHERE tlms_user_id = ?");
     mysqli_stmt_bind_param($stmt, "s", $session_id);
     mysqli_stmt_execute($stmt);
     // Get the result of the query
@@ -26,7 +26,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
 
     // Table fetch
     // Fetch data from tlms_system_users table using prepared statement
-    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_assigned_date, tlms_jobs_completed_date, tlms_jobs_status FROM tlms_job";
+    $query = "SELECT tlms_jobs_id, tlms_jobs_name, tlms_jobs_customer, tlms_jobs_started_date, tlms_jobs_completed_date, tlms_jobs_status FROM tlms_job";
     $stmt = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -38,7 +38,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <td>' . htmlspecialchars($row['tlms_jobs_id']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_name'])  . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_customer']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_assigned_date']) . '</td>
+                    <td>' . htmlspecialchars($row['tlms_jobs_started_date']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</td>
                     <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
                 </tr>';
@@ -61,7 +61,7 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8f8fb">
 
-    <title>TLMS/ Admin</title>
+    <title>TLMS/ User</title>
 
     <!-- css load with absolute path -->
     <link rel="stylesheet" href="http://localhost/tlms/_user/user_assets/css/user_dashboard.css">
