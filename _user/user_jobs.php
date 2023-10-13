@@ -1,26 +1,25 @@
 <?php
+require_once './user_jobs_functions.php';
 
-// require './user_jobs_functions.php'; 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $jobId = $_POST['jobId'];
+    $newStatus = $_POST['newStatus'];
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $jobId = $_POST['jobId'];
-//     $newStatus = $_POST['newStatus'];
-    
-//     // Update the job status in the database
-//     $updateQuery = "UPDATE tlms_job SET tlms_jobs_status = ? WHERE tlms_jobs_id = ?";
-//     $stmt = mysqli_prepare($connection, $updateQuery);
-//     mysqli_stmt_bind_param($stmt, "si", $newStatus, $jobId); // Assuming jobId is an integer
-//     $success = mysqli_stmt_execute($stmt);
-//     mysqli_stmt_close($stmt);
-    
-//     // Return a response to indicate success or failure
-//     if ($success) {
-//         echo json_encode(array("success" => true));
-//     } else {
-//         echo json_encode(array("success" => false, "message" => "Failed to update job status"));
-//     }
-//     exit(); // Terminate script execution after handling the request
-// }
+    // Update the job status in the database
+    $updateQuery = "UPDATE tlms_job SET tlms_jobs_status = ? WHERE tlms_jobs_id = ?";
+    $stmt = mysqli_prepare($connection, $updateQuery);
+    mysqli_stmt_bind_param($stmt, "si", $newStatus, $jobId); // Assuming jobId is an integer
+    $success = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Return a response to indicate success or failure
+    if ($success) {
+        echo json_encode(array("success" => true));
+    } else {
+        echo json_encode(array("success" => false, "message" => "Failed to update job status"));
+    }
+    exit(); // Terminate script execution after handling the request
+}
 ?>
 
  
@@ -210,12 +209,13 @@
                                                                         <button type="button" class="btn btn-outline-primary" onclick="selectStatus('Pending')">Pending</button>
                                                                         <button type="button" class="btn btn-outline-primary" onclick="selectStatus('Working On')">Working On</button>
                                                                         <button type="button" class="btn btn-outline-primary" onclick="selectStatus('Completed')">Completed</button>
+                                                                        <button type="button" class="btn btn-outline-primary" onclick="selectStatus('Rejected')">Rejected</button>
                                                                         <input type="hidden" id="selectedStatus" name="selectedStatus" value="">
                                                                     </form>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary" onclick="submitStatusForm()">Save changes</button>
+                                                                    <button id="saveChangesButton" type="button" class="btn btn-primary" onclick="submitStatusForm()">Save changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>

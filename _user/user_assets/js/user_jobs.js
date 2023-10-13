@@ -98,45 +98,18 @@ $(document).ready(function() {
   $('#user_jobs_table').DataTable();
 });
 
-// Update job status
-function updateJobStatus(jobId) {
-  $.ajax({
-      url: 'user_jobs_script.php',
-      type: 'POST',
-      data: { jobId: jobId },
-      dataType: 'json',
-      success: function(response) {
-          if (response.success) {
-              // Handle success, maybe show a notification to the user
-              console.log('Job status updated successfully');
-          } else {
-              // Handle failure, show an error message
-              console.error('Failed to update job status');
-          }
-      },
-      error: function() {
-          console.error('An error occurred during the AJAX request');
-      }
-  });
+//--- Update job status
+
+function selectStatus(status) {
+  // Set the selected status in the hidden input field within the modal form
+  $('#selectedStatus').val(status);
 }
 
-// Add an event listener to the dropdown
-$('#dropdownButton-users .dropdown-item').click(function() {
-  const newStatus = $(this).text();
-  if (newStatus === 'Completed') {
-      // const jobId = /* Get the jobId of the current row */;
-      updateJobStatus(jobId);
-  }
-});
+function submitStatusForm() {
+  // Get jobId and selectedStatus from your form or modal inputs
+  var jobId = "Mk001"; // Example jobId, replace it with your actual jobId logic
+  var selectedStatus = $('#selectedStatus').val();
 
-//  // function selectStatus status
-//  function selectStatus(status) {
-//   // You can update a hidden input field with the selected status value
-//   document.getElementById('Pending').value = status;
-
-//   // Alternatively, you can perform any other action you need with the selected status
-//   // For example, you can display it on the page, submit it to a server, etc.
-
-//   // Close the modal (optional)
-//   // $('#exampleModal').modal('hide');
-// }
+  // Call updateJobStatus function with jobId and selectedStatus
+  updateJobStatus(jobId, selectedStatus);
+}
