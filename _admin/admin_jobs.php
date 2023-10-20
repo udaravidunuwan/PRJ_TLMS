@@ -50,8 +50,12 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
                     <td>
                         <button class="btn btn-sm ms-0 me-0 tlms_jobs_completed_date_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_completed_date_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-calendar3"></i>  ' . htmlspecialchars($row['tlms_jobs_completed_date']) . '</button>
                     </td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_status']) . '</td>
-                    <td>' . htmlspecialchars($row['tlms_jobs_assigned_to']) . '</td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_status_change_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_Status_Change_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-bookmarks"></i>  ' . htmlspecialchars($row['tlms_jobs_status']) . '</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm ms-0 me-0 tlms_jobs_status_change_button" type="button" data-bs-toggle="modal" data-bs-target="#tlms_jobs_Assignnee_Change_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-person"></i>  ' . htmlspecialchars($row['tlms_jobs_assigned_to']) . '</button>
+                    </td>
                     <td>
                         <button class="btn btn-sm ms-2 me-2 delete-job-button" type="button" data-bs-toggle="modal" data-bs-target="#jobs_delete_modal" data-user-id="' . htmlspecialchars($row['tlms_jobs_id']) . '"><i class="bi bi-trash3"></i></button>
                     </td>
@@ -330,6 +334,70 @@ if (isset($_SESSION["session_id"]) && !empty($_SESSION["session_id"])) {
         </div>
     </div>
     <!-- End Modal Date Job Completed -->
+
+
+    <!-- Modal Status Change -->
+    <div class="modal modal-sm fade" id="tlms_jobs_Status_Change_modal" tabindex="-1" aria-labelledby="tlms_jobs_Status_Change_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Status Change</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_completed_date_modal_Status_Change">
+                    <!-- Radio buttons for status -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="pending" value="Pending">
+                        <label class="form-check-label" for="pending">Pending</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="started" value="Started">
+                        <label class="form-check-label" for="started">Started</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="completed" value="Completed">
+                        <label class="form-check-label" for="completed">Completed</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="rejected" value="Rejected">
+                        <label class="form-check-label" for="rejected">Rejected</label>
+                    </div>
+                    <!-- End of radio buttons -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_Status_Change_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Status Change -->
+
+
+    <!-- Modal Assignnee Change -->
+    <div class="modal modal-sm fade" id="tlms_jobs_Assignnee_Change_modal" tabindex="-1" aria-labelledby="tlms_jobs_Assignnee_Change_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Assignnee Change</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="tlms_jobs_completed_date_modal_Assignnee">
+                    <!-- Radio buttons for Assignnee -->
+                    <div id="user-radio-buttons">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="assignee" id="none" value="None" data-user-id="">
+                            <label class="form-check-label" for="none">None</label>
+                        </div>
+                        <!-- End of radio buttons -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tlms_jobs_Assignnee_Change_modal_save_btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Assignnee Change -->
 
 
     <!-- Theme SVG Images -->
